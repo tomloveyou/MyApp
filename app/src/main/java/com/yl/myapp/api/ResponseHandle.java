@@ -29,17 +29,19 @@ public class ResponseHandle {
 
     public static <T> Func1<Throwable, Observable<? extends T>> errorResumeFunc() {
         return throwable -> {
-            if (throwable instanceof UnknownHostException || throwable instanceof JsonParseException) {
-                if (!AppContext.isNetworkAvailable()) {
-                    return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_NO_NETWORK, AppContext.getContext().getString(R.string.load_no_network)));
-                }
-                return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_ERROR_TYPE_ERROR, AppContext.getString(R.string.load_system_busy)));
+            if (!AppContext.isNetworkAvailable()) {
+                return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_NO_NETWORK, AppContext.getContext().getString(R.string.load_no_network)));
+            }
+            if (throwable instanceof UnknownHostException) {
+                return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_ERROR_TYPE_ERROR, AppContext.getString(R.string.service_conn_fail)));
+            } else if (throwable instanceof JsonParseException) {
+                return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_TIMEOUT_ERROR, AppContext.getString(R.string.load_jsonpaser_error)));
             } else if (throwable instanceof SocketTimeoutException || throwable instanceof ConnectException) {
                 return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_TIMEOUT_ERROR, AppContext.getString(R.string.load_time_out)));
             } else if (throwable instanceof ErrorThrowable) {
                 Observable.error(throwable);
             }
-            return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_UNKNOWN_ERROR, AppContext.getString(R.string.load_system_busy)));
+            return Observable.error(new ErrorThrowable(ReturnCode.LOCAL_UNKNOWN_ERROR, AppContext.getString(R.string.load_unknow_error)));
         };
     }
 
@@ -47,13 +49,13 @@ public class ResponseHandle {
     private static class ReadDataFunc<E> implements Func1<Response<E>, Observable<E>> {
         @Override
         public Observable<E> call(Response<E> x) {
-            if (x.rsCode == ReturnCode.CODE_SUCCESS) {
+            if (x.code == ReturnCode.CODE_SUCCESS) {
                 if (x.data != null && x.data instanceof BaseInfo) {
-                    ((BaseInfo) x.data).setSussceHintMsg(x.rsMsg);
+                    ((BaseInfo) x.data).setSussceHintMsg(x.msg);
                 }
                 return Observable.just(x.data);
             } else {
-                return Observable.error(new ErrorThrowable(x.rsCode, (x.rsCode == ReturnCode.CODE_TOKEN_INVALID) ? "" : x.rsMsg));//用户失效不显示提示语
+                return Observable.error(new ErrorThrowable(x.code, (x.code == ReturnCode.CODE_TOKEN_INVALID) ? "" : x.msg));//用户失效不显示提示语
             }
         }
     }
@@ -63,10 +65,10 @@ public class ResponseHandle {
 
         @Override
         public Observable<Response> call(Response x) {
-            if (x.rsCode == ReturnCode.CODE_SUCCESS) {
+            if (x.code == ReturnCode.CODE_SUCCESS) {
                 return Observable.just(x);
             } else {
-                return Observable.error(new ErrorThrowable(x.rsCode, x.rsCode == ReturnCode.CODE_TOKEN_INVALID ? "" : x.rsMsg));
+                return Observable.error(new ErrorThrowable(x.code, x.code == ReturnCode.CODE_TOKEN_INVALID ? "" : x.msg));
             }
         }
     }

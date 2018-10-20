@@ -4,8 +4,11 @@ import com.standards.library.model.ListData;
 import com.standards.library.model.Response;
 
 import java.util.List;
+import java.util.Map;
 
 
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import rx.Observable;
 
@@ -18,8 +21,8 @@ import rx.Observable;
 public class DataManager extends ResponseHandle {
 
     //获取所有彩票列表
-    public static Observable<ListData<String>> getTicketList() {
-        return Dao.getApiService().getTicketList(null)
+    public static   Observable<Response<String>> login(Map<String,String> data){
+        return Dao.getApiService().login(data)
                 .flatMap(newEntityData())
                 .compose(applySchedulersWithToken());
     }

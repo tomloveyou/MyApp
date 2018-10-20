@@ -12,30 +12,30 @@ import com.standards.library.app.ReturnCodeConfig;
  */
 public class Response<T> {
 
-    @SerializedName("showapi_res_code")
-    public int rsCode;
+    @SerializedName("code")
+    public int code;
 
-    @SerializedName("showapi_res_error")
-    public String rsMsg;
+    @SerializedName("msg")
+    public String msg;
 
-    @SerializedName("showapi_res_body")
+    @SerializedName("data")
     public T data;
 
     public Response(int rsCode) {
-        this.rsCode = rsCode;
+        this.code = rsCode;
     }
 
     public Response(int rsCode, String rsMsg) {
-        this.rsCode = rsCode;
-        this.rsMsg = rsMsg;
+        this.code = rsCode;
+        this.msg = rsMsg;
     }
 
     public boolean isSuccess() {
-        return rsCode == ReturnCodeConfig.getInstance().successCode;
+        return code == ReturnCodeConfig.getInstance().successCode;
     }
 
     public boolean isEmptyCode() {
-        return ReturnCodeConfig.getInstance().isEmptyCode(rsCode);
+        return ReturnCodeConfig.getInstance().isEmptyCode(code);
     }
 
 }

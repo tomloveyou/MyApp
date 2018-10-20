@@ -5,9 +5,15 @@ import com.standards.library.model.ListData;
 import com.standards.library.model.Response;
 
 
+import java.util.Map;
+
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.PartMap;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -20,14 +26,13 @@ import rx.Observable;
 public interface ApiService {
 
     /**
-     * 查询支持彩票类别
+     * 登陆
      *
-     * @param extra
+     * @param data
      * @return
      */
-    @FormUrlEncoded
-    @POST("44-6")
-    Observable<Response<ListData<String>>> getTicketList(@Field("extra") String extra);
+    @POST("hunt-admin/system/login")
+    Observable<Response<String>> login(@QueryMap Map<String,String> data);
 
 
 }
