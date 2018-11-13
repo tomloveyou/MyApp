@@ -42,5 +42,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':picture_library')
     implementation project(':devlib')
-
+    implementation 'com.just.agentweb:agentweb:4.0.2'
+    implementation 'com.just.agentweb:download:4.0.2'
+    implementation 'com.just.agentweb:filechooser:4.0.2'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    implementation 'com.tencent.sonic:sdk:2.0.0'
+    implementation 'com.coolindicator.sdk:coolindicator:1.0.0-beta'
 }
