@@ -55,7 +55,7 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         rootView.setOrientation(LinearLayout.VERTICAL);
         rootView.setLayoutParams(params);
         rootView.addView(contentView, params);
-        StatusBarCompat.compat(this, rootView, getStatusBar());
+       // StatusBarCompat.compat(this, rootView, getStatusBar());//不需要
         super.setContentView(rootView);
     }
 

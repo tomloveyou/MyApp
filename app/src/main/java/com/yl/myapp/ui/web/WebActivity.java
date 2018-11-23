@@ -1,8 +1,10 @@
 package com.yl.myapp.ui.web;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yl.myapp.R;
 import com.yl.myapp.base.BasePresenter;
@@ -22,7 +24,7 @@ import com.yl.myapp.ui.utils.LaunchUtil;
  */
 public class WebActivity<T extends BasePresenter> extends BaseTitleBarActivity<T> {
     private static final int REQUEST_CODE_LOGIN = 0x1111;
-    protected BaseTitleBar titleBar;
+    protected Toolbar titleBar;
     protected WebGroup webGroup;
     protected WebConfig config;
 
@@ -38,11 +40,7 @@ public class WebActivity<T extends BasePresenter> extends BaseTitleBarActivity<T
         if (config == null) return;
     }
 
-    @Override
-    public void initTitleBar(BaseTitleBar titleBar) {
-        this.titleBar = titleBar;
-        titleBar.setTitleText(TextUtils.isEmpty(config.title) ? "" : config.title);
-    }
+
 
     @Override
     public int getLayoutId() {
@@ -63,8 +61,14 @@ public class WebActivity<T extends BasePresenter> extends BaseTitleBarActivity<T
 
         webGroup.setOnReceiveTitleListener(title -> {
             if (TextUtils.isEmpty(config.title)) {
-                titleBar.setTitleText(title);
+                titleBar.setTitle(title);
             }
         });
+    }
+
+    @Override
+    public void initTitleBar(Toolbar titleBar) {
+        this.titleBar=titleBar;
+        titleBar.setTitle(TextUtils.isEmpty(config.title) ? "" : config.title);
     }
 }
