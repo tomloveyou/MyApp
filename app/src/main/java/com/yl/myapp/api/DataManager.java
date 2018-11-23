@@ -2,6 +2,7 @@ package com.yl.myapp.api;
 
 import com.standards.library.model.ListData;
 import com.standards.library.model.Response;
+import com.yl.myapp.ui.mvp.model.LoginStatus;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ import rx.Observable;
 public class DataManager extends ResponseHandle {
 
     //获取所有彩票列表
-    public static   Observable<Response<String>> login(Map<String,String> data){
+    public static   Observable<LoginStatus> login(Map<String,String> data){
         return Dao.getApiService().login(data)
                 .flatMap(newEntityData())
                 .compose(applySchedulersWithToken());
