@@ -3,7 +3,7 @@ package com.yl.myapp.api;
 
 import com.standards.library.model.ListData;
 import com.standards.library.model.Response;
-import com.yl.myapp.ui.mvp.model.LoginStatus;
+//import com.yl.myapp.ui.mvp.model.LoginStatus;
 
 
 import java.util.Map;
@@ -26,14 +26,14 @@ import rx.Observable;
  */
 public interface ApiService {
 
-    /**
-     * 登陆
-     *
-     * @param data
-     * @return
-     */
-    @POST("hunt-admin/system/login")
-    Observable<Response<LoginStatus>> login(@QueryMap Map<String,String> data);
+//    /**
+//     * 登陆
+//     *
+//     * @param data
+//     * @return
+//     */
+//    @POST("hunt-admin/system/login")
+//    Observable<Response<LoginStatus>> login(@QueryMap Map<String,String> data);
 
 
 }

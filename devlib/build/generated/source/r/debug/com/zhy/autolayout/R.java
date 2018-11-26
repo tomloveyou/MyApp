@@ -552,12 +552,12 @@ public final class R {
         public static int time = 0x7f0c00c0;
         public static int title = 0x7f0c00c1;
         public static int title_template = 0x7f0c00c3;
-        public static int topPanel = 0x7f0c00c6;
-        public static int up = 0x7f0c00cf;
-        public static int useLogo = 0x7f0c00d0;
-        public static int width = 0x7f0c00d4;
-        public static int withText = 0x7f0c00d5;
-        public static int wrap_content = 0x7f0c00d6;
+        public static int topPanel = 0x7f0c00c7;
+        public static int up = 0x7f0c00d0;
+        public static int useLogo = 0x7f0c00d1;
+        public static int width = 0x7f0c00d5;
+        public static int withText = 0x7f0c00d6;
+        public static int wrap_content = 0x7f0c00d7;
     }
     public static final class integer {
         public static int abc_config_activityDefaultDur = 0x7f0d0001;

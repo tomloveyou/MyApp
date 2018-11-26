@@ -49,6 +49,7 @@ public class WebActivity<T extends BasePresenter> extends BaseTitleBarActivity<T
 
     @Override
     public void init() {
+        setTitle(TextUtils.isEmpty(config.title) ? "" : config.title);
 //        mWebProgress = findView(R.id.webProgress);
         webGroup = WebGroup.create(this, config, new LoadingPage(this, Scene.DEFAULT));
         ((RelativeLayout) findView(R.id.webContainer)).addView(webGroup.getRootView());
@@ -66,9 +67,5 @@ public class WebActivity<T extends BasePresenter> extends BaseTitleBarActivity<T
         });
     }
 
-    @Override
-    public void initTitleBar(Toolbar titleBar) {
-        this.titleBar=titleBar;
-        titleBar.setTitle(TextUtils.isEmpty(config.title) ? "" : config.title);
-    }
+
 }

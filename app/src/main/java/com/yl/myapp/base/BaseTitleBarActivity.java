@@ -18,20 +18,22 @@ import com.yl.myapp.ui.utils.StatusBarValue;
  * @param <T>
  */
 public abstract class BaseTitleBarActivity<T extends BasePresenter> extends BaseFuncActivity<T> {
+    protected Toolbar mToolbar;
 
     @Override
     public void setContentView(View contentView) {
         ViewGroup superContentView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_base, (ViewGroup) contentView, false);
-        Toolbar toolbar = (Toolbar) superContentView.findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar = (Toolbar) superContentView.findViewById(R.id.toolbar);
+        mToolbar.setTitle("");//先置空后面设置title才有用
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
         TextView titleview = (TextView) superContentView.findViewById(R.id.toolbar_title);
-        initTitleBar(toolbar);
+
         RelativeLayout content = (RelativeLayout) superContentView.findViewById(R.id.content);
         content.addView(contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
@@ -44,8 +46,10 @@ public abstract class BaseTitleBarActivity<T extends BasePresenter> extends Base
     }
 
 
+    public void  setTitle(String title){
+        mToolbar.setTitle(title);
+    }
 
-    public abstract void initTitleBar(Toolbar titleBar);
 
     @Override
     public StatusBarValue getStatusBar() {

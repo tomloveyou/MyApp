@@ -28,9 +28,9 @@ public class UserPresenterImpl extends BasePresenter<UserContract.UserLoginView>
 
      //   RequestBody data = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
 
-        addSubscribe(DataManager.login(data).subscribe(getSubscriber(o -> {
-            mView.loginSuccess();
-        })));
+//        addSubscribe(DataManager.login(data).subscribe(getSubscriber(o -> {
+//            mView.loginSuccess();
+//        })));
     }
 
 }

@@ -23,6 +23,7 @@
         <item name="colorPrimary">@color/bar_grey</item>
         <item name="colorPrimaryDark">@color/bar_grey</item>
         <item name="colorAccent">@color/bar_grey</item>
+
     </style>
 
     <style name="picture_alert_dialog" parent="android:Theme.Dialog">
