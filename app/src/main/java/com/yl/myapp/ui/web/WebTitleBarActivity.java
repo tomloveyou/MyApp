@@ -15,11 +15,11 @@ import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -45,15 +45,12 @@ import com.just.agentweb.download.AgentWebDownloader;
 import com.just.agentweb.download.DefaultDownloadImpl;
 import com.just.agentweb.download.DownloadListenerAdapter;
 import com.just.agentweb.download.DownloadingService;
-import com.standards.library.activity.AutoLayoutActivity;
 import com.yl.myapp.R;
-import com.yl.myapp.base.BaseFuncActivity;
 import com.yl.myapp.base.BasePresenter;
-import com.yl.myapp.base.BaseTitleBar;
+import com.yl.myapp.base.BaseTitleBarActivity;
 import com.yl.myapp.ui.client.MiddlewareChromeClient;
 import com.yl.myapp.ui.client.MiddlewareWebViewClient;
 import com.yl.myapp.ui.common.UIController;
-import com.yl.myapp.ui.utils.StatusBarValue;
 
 import java.util.HashMap;
 
@@ -63,7 +60,7 @@ import java.util.HashMap;
  *
  * @param <T>
  */
-public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutActivity{
+public class WebTitleBarActivity<T extends BasePresenter> extends BaseTitleBarActivity {
     public static final String URL_KEY = "url_key";
     private ImageView mMoreImageView;
     private PopupMenu mPopupMenu;
@@ -77,18 +74,22 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
     private MiddlewareWebChromeBase mMiddleWareWebChrome;
     private DownloadingService mDownloadingService;
     private AgentWebDownloader.ExtraService mExtraService;
+    private RelativeLayout mWebContainer;
+
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
-        RelativeLayout content = (RelativeLayout) findViewById(R.id.content);
+    protected int getLayoutId() {
+        return R.layout.activity_base_web;
+    }
+
+    @Override
+    protected void init() {
+        setTitle("测试网页");
+        mWebContainer = (RelativeLayout) findViewById(R.id.webContainer);
         long p = System.currentTimeMillis();
 
         mAgentWeb = AgentWeb.with(this)//
-                .setAgentWebParent(content, -1, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))//传入AgentWeb的父控件。
+                .setAgentWebParent(mWebContainer, -1, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))//传入AgentWeb的父控件。
                 .useDefaultIndicator(-1, 3)//设置进度条颜色与高度，-1为默认值，高度为2，单位为dp。
                 .setAgentWebWebSettings(getSettings())//设置 IAgentWebSettings。
                 .setWebViewClient(mWebViewClient)//WebViewClient ， 与 WebView 使用一致 ，但是请勿获取WebView调用setWebViewClient(xx)方法了,会覆盖AgentWeb DefaultWebClient,同时相应的中间件也会失效。
@@ -113,21 +114,18 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
         long n = System.currentTimeMillis();
         Log.i("Info", "init used time:" + (n - p));
 
+    }
+
+    @Override
+    protected void setListener() {
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main,menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
-
-    public int getDefaultTitleBarLayout() {
-        return R.layout.titlebar_normal;
-    }
-
-
-
 
 
     protected PermissionInterceptor mPermissionInterceptor = new PermissionInterceptor() {
@@ -258,7 +256,7 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
              * @return WebListenerManager
              */
             @Override
-            public WebListenerManager setDownloader(WebView webView, android.webkit.DownloadListener downloadListener) {
+            public WebListenerManager setDownloader(WebView webView, DownloadListener downloadListener) {
                 return super.setDownloader(webView,
                         DefaultDownloadImpl
                                 .create((Activity) webView.getContext(),
@@ -295,12 +293,7 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
-//            if (mTitleTextView != null && !TextUtils.isEmpty(title)) {
-//                if (title.length() > 10) {
-//                    title = title.substring(0, 10).concat("...");
-//                }
-//            }
-//            mTitleTextView.setText(title);
+            setTitle(title);
         }
     };
 
@@ -402,35 +395,6 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
 //        mAgentWeb.uploadFileResult(requestCode, resultCode, data);
     }
 
-
-
-
-
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-
-            switch (v.getId()) {
-                case R.id.title_left:
-                    // true表示AgentWeb处理了该事件
-                    if (!mAgentWeb.back()) {
-                       finish();
-                    }
-                    break;
-//                case R.id.iv_finish:
-//                    finish();
-//                    break;
-                case R.id.title_right:
-                    showPoPup(v);
-                    break;
-                default:
-                    break;
-
-            }
-        }
-
-    };
 
     /**
      * 打开浏览器
@@ -569,7 +533,6 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
     }
 
 
-
     /**
      * MiddlewareWebClientBase 是 AgentWeb 3.0.0 提供一个强大的功能，
      * 如果用户需要使用 AgentWeb 提供的功能， 不想重写 WebClientView方
@@ -612,4 +575,6 @@ public  class WebTitleBarActivity<T extends BasePresenter> extends AutoLayoutAct
         return this.mMiddleWareWebChrome = new MiddlewareChromeClient() {
         };
     }
+
+
 }

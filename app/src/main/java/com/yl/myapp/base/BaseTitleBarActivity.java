@@ -32,8 +32,6 @@ public abstract class BaseTitleBarActivity<T extends BasePresenter> extends Base
                 finish();
             }
         });
-        TextView titleview = (TextView) superContentView.findViewById(R.id.toolbar_title);
-
         RelativeLayout content = (RelativeLayout) superContentView.findViewById(R.id.content);
         content.addView(contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 

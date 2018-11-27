@@ -1,12 +1,7 @@
 package com.yl.myapp.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.TextView;
-
 
 import com.yl.myapp.R;
 import com.yl.myapp.base.BaseTitleBarActivity;
@@ -15,7 +10,7 @@ import java.util.Random;
 
 import rx.functions.Action1;
 
-public class TestActivity extends BaseTitleBarActivity {
+public class OneTextMenuActivity extends BaseTitleBarActivity {
 
 
     private Button mButton;
@@ -44,7 +39,7 @@ public class TestActivity extends BaseTitleBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        getMenuInflater().inflate(R.menu.one, menu);
         return true;
     }
 }

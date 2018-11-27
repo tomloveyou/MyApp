@@ -3,6 +3,7 @@ package com.yl.myapp.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.github.mmin18.layoutcast.LayoutCast;
 import com.standards.library.app.AppContext;
 import com.standards.library.app.ReturnCode;
 import com.standards.library.app.ReturnCodeConfig;
@@ -29,6 +30,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        LayoutCast.init(this);
         AppContext.getInstance().init(this);
         sContext = getContext();
         LogUtil.init(true, "lucky");

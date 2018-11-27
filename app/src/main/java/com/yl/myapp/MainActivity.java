@@ -14,11 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.yl.myapp.base.BaseTitleBar;
-import com.yl.myapp.base.BaseTitleBarActivity;
+import com.yl.myapp.ui.OneImgMenuActivity;
+import com.yl.myapp.ui.OneTextMenuActivity;
 import com.yl.myapp.ui.TestActivity;
+import com.yl.myapp.ui.TwoImgMenuActivity;
+import com.yl.myapp.ui.TwoTextMenuActivity;
 import com.yl.myapp.ui.web.WebTitleBarActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -97,13 +98,17 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(this, WebTitleBarActivity.class));
         } else if (id == R.id.nav_slideshow) {
-
+            startActivity(new Intent(this, OneTextMenuActivity.class));
         } else if (id == R.id.nav_manage) {
-
+            startActivity(new Intent(this, TwoTextMenuActivity.class));
         } else if (id == R.id.nav_share) {
-
+            startActivity(new Intent(this, TwoTextMenuActivity.class));
         } else if (id == R.id.nav_send) {
-
+            startActivity(new Intent(this, TwoTextMenuActivity.class));
+        } else if (id == R.id.nav_oneimg) {
+            startActivity(new Intent(this, OneImgMenuActivity.class));
+        } else if (id == R.id.nav_twoimg) {
+            startActivity(new Intent(this, TwoImgMenuActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
