@@ -37,6 +37,9 @@ public class UserinfoBean extends BmobUser {
     }
 
     public String getNickname() {
+        if (nickname==null||"".equals(nickname)){
+            return "用户"+getUsername()+"(默认)";
+        }
         return nickname;
     }
 
@@ -45,6 +48,9 @@ public class UserinfoBean extends BmobUser {
     }
 
     public String getPersonal_sign() {
+        if (personal_sign==null||"".equals(personal_sign)){
+            return "您还没有签名哦（点击添加）";
+        }
         return personal_sign;
     }
 

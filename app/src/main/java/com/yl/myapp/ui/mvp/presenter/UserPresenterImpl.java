@@ -32,8 +32,6 @@ public class UserPresenterImpl extends BasePresenter<UserContract.UserLoginView>
         UserinfoBean bmobUser = new UserinfoBean();
         bmobUser.setUsername(userAcount);
         bmobUser.setPassword(password);
-        bmobUser.setHead_bg_url("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=360422528,3968251122&fm=27&gp=0.jpg");
-        bmobUser.setAvator_url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559209993055&di=40a122c11f88825fb201c2183cb48e67&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01786557e4a6fa0000018c1bf080ca.png");
         bmobUser.login(mActivity.get(), new SaveListener() {
             @Override
             public void onSuccess() {
@@ -52,6 +50,10 @@ public class UserPresenterImpl extends BasePresenter<UserContract.UserLoginView>
         UserinfoBean bmobUser = new UserinfoBean();
         bmobUser.setUsername(userAcount);
         bmobUser.setPassword(password);
+        bmobUser.setNickname("用户"+userAcount+"(默认)");
+        bmobUser.setPersonal_sign("您还没有签名哦（点击添加）");
+        bmobUser.setHead_bg_url("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=360422528,3968251122&fm=27&gp=0.jpg");
+        bmobUser.setAvator_url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559209993055&di=40a122c11f88825fb201c2183cb48e67&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01786557e4a6fa0000018c1bf080ca.png");
         bmobUser.signUp(mActivity.get(), new SaveListener() {
             @Override
             public void onSuccess() {

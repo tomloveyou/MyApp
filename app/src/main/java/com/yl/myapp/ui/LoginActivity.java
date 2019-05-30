@@ -37,6 +37,7 @@ import java.util.List;
 
 import com.ns.yc.ycutilslib.switchButton.SwitchButton;
 import com.standards.library.base.BaseFuncActivity;
+import com.standards.library.base.BaseTitleBarActivity;
 import com.yl.myapp.MainActivity;
 import com.yl.myapp.R;
 
@@ -50,7 +51,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseFuncActivity<UserPresenterImpl> implements UserContract.UserLoginView {
+public class LoginActivity extends BaseTitleBarActivity<UserPresenterImpl> implements UserContract.UserLoginView {
 
 
     private EditText email;
@@ -70,6 +71,7 @@ public class LoginActivity extends BaseFuncActivity<UserPresenterImpl> implement
 
     @Override
     protected void init() {
+        setTitle("登录");
         initView();
     }
 
@@ -80,6 +82,7 @@ public class LoginActivity extends BaseFuncActivity<UserPresenterImpl> implement
             @Override
             public void call(Object o) {
                 if (switchButton.isChecked()){
+
                     mPresenter.regist(email.getText().toString(), password.getText().toString());
                 }else {
                     mPresenter.login(email.getText().toString(), password.getText().toString());
@@ -91,6 +94,7 @@ public class LoginActivity extends BaseFuncActivity<UserPresenterImpl> implement
             @Override
             public void onCheckedChanged(SwitchButton view, boolean isChecked) {
                 emailSignInButton.setText(isChecked?"注册":"登录");
+                setTitle(isChecked?"注册":"登录");
             }
         });
 
