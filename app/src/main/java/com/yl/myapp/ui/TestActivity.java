@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.standards.library.base.BaseTitleBarActivity;
 import com.yl.myapp.R;
-import com.yl.myapp.base.BaseTitleBarActivity;
+
 
 import java.util.Random;
 

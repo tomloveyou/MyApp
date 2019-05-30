@@ -12,4 +12,5 @@ public interface IGroupManager<T> {
     Observable<List<T>> loadMoreData(Context context);
 
     int getTotalCount();
+    int getCurrentPage();
 }

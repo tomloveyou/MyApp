@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/devlib" />
             <option value="$PROJECT_DIR$/picture_library" />
             <option value="$PROJECT_DIR$/ucrop" />
+            <option value="$PROJECT_DIR$/userlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

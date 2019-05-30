@@ -15,6 +15,7 @@ import com.standards.library.listview.listview.IGroupListView;
 import com.standards.library.listview.loading.IGroupLoadingHelp;
 import com.standards.library.listview.loading.OnFailClickListener;
 import com.standards.library.listview.manager.IGroupManager;
+import com.standards.library.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,6 @@ public class ListGroupPresenter<T> implements IGroupPresenter<T> {
 
     private void onCreateView() {
         mListView.initView(mContext, mAdapter);
-
         mListView.initListener().subscribe(new Action1<Integer>() {
             @Override
             public void call(Integer type) {
@@ -86,9 +86,7 @@ public class ListGroupPresenter<T> implements IGroupPresenter<T> {
         FrameLayout relativeLayout = new FrameLayout(mContext);
         relativeLayout.setLayoutParams(lp);
         relativeLayout.addView(mListView.getRootView(), lp);
-
         mRootView = relativeLayout;
-
         mLoadingHelp.createLoadingPage(mRootView);
         mLoadingHelp.setOnFailClickListener(new OnFailClickListener() {
             @Override
@@ -109,7 +107,11 @@ public class ListGroupPresenter<T> implements IGroupPresenter<T> {
         if (!mShouldLoadMoreFlag || mIsLoadingMoreFlag) {
             return;
         }
-        if (mNoMoreDataFlag || !canLoadMoreData()) {
+//        if (mNoMoreDataFlag || !canLoadMoreData()) {
+//            mAdapter.noMoreDataCallback();//（如需要,解除注释@link BaseGroupListManager.class）
+//            return;
+//        }
+        if (mNoMoreDataFlag ) {
             mAdapter.noMoreDataCallback();
             return;
         }
@@ -173,7 +175,7 @@ public class ListGroupPresenter<T> implements IGroupPresenter<T> {
                         mIsLoadingFlag = false;
                         refreshDataFail(throwable);
 
-                        mAdapter.setItems(new ArrayList<T>());
+                       // mAdapter.setItems(new ArrayList<T>());//刷新报错时不删除数据
                         mListView.onRefreshComplete();
                     }
 
@@ -201,7 +203,8 @@ public class ListGroupPresenter<T> implements IGroupPresenter<T> {
         if (ReturnCodeConfig.getInstance().isEmptyCode(throwable.code)) {
             mLoadingHelp.showEmptyLoadingPage();
         } else {
-            mLoadingHelp.showFailPage(throwable.code);
+            ToastUtil.showToast(throwable.getMessage());
+          //  mLoadingHelp.showFailPage(throwable.code);//列表页面报错时不显示错误页只做提示处理
         }
 
     }

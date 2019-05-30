@@ -116,7 +116,9 @@ public abstract class RecyclerAdapter<T, VH extends RecyclerView.ViewHolder> ext
     public void addHeaderView(int type, VH headerView) {
         ExtraItem item = new ExtraItem(type, headerView);
         headers.add(item);
+
         notifyItemInserted(headers.size());
+
     }
 
     public void removeHeaderView(int type) {

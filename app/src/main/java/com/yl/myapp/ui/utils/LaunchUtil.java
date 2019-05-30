@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.yl.myapp.base.BaseActivity;
+import com.standards.library.base.BaseActivity;
+
 import com.yl.myapp.ui.web.WebActivity;
 import com.yl.myapp.ui.web.WebConfig;
 

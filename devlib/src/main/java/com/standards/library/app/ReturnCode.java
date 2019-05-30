@@ -16,7 +16,7 @@ public interface ReturnCode {
 
 
     //成功
-    int CODE_SUCCESS = 10000;
+    int CODE_SUCCESS = 200;
 
     //失败
     int CODE_ERROR = -1;

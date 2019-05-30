@@ -1,6 +1,6 @@
 package com.yl.myapp.ui.mvp.contract;
 
-import com.yl.myapp.base.ILoadingView;
+import com.standards.library.base.ILoadingView;
 
 public interface UserContract {
     interface UserAddView extends ILoadingView{

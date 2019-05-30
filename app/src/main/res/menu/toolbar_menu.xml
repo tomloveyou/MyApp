@@ -32,6 +32,10 @@
         android:visible="true"
         app:showAsAction="never"/>
 
-
+    <item
+        android:id="@+id/default_reset"
+        android:title="重置"
+        android:visible="true"
+        app:showAsAction="never"/>
 
 </menu>

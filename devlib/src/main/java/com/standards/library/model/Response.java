@@ -15,10 +15,10 @@ public class Response<T> {
     @SerializedName("code")
     public int code;
 
-    @SerializedName("msg")
+    @SerializedName("message")
     public String msg;
 
-    @SerializedName("data")
+    @SerializedName("result")
     public T data;
 
     public Response(int rsCode) {

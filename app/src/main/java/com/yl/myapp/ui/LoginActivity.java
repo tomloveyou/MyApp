@@ -34,9 +34,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import com.ns.yc.ycutilslib.switchButton.SwitchButton;
+import com.standards.library.base.BaseFuncActivity;
 import com.yl.myapp.MainActivity;
 import com.yl.myapp.R;
-import com.yl.myapp.base.BaseFuncActivity;
+
 import com.yl.myapp.ui.mvp.contract.UserContract;
 import com.yl.myapp.ui.mvp.presenter.UserPresenterImpl;
 
@@ -53,6 +56,7 @@ public class LoginActivity extends BaseFuncActivity<UserPresenterImpl> implement
     private EditText email;
     private EditText password;
     private Button emailSignInButton;
+    private SwitchButton switchButton;
 
     @Override
     protected int getLayoutId() {
@@ -71,16 +75,29 @@ public class LoginActivity extends BaseFuncActivity<UserPresenterImpl> implement
 
     @Override
     protected void setListener() {
+        emailSignInButton.setText(switchButton.isChecked()?"注册":"登录");
         ClickView(emailSignInButton).subscribe(new Action1() {
             @Override
             public void call(Object o) {
-                mPresenter.login(email.getText().toString(), password.getText().toString());
+                if (switchButton.isChecked()){
+                    mPresenter.regist(email.getText().toString(), password.getText().toString());
+                }else {
+                    mPresenter.login(email.getText().toString(), password.getText().toString());
+                }
+
             }
         });
+        switchButton.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(SwitchButton view, boolean isChecked) {
+                emailSignInButton.setText(isChecked?"注册":"登录");
+            }
+        });
+
     }
 
     private void initView() {
-
+        switchButton = findView(R.id.btn_login_or_regist);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         emailSignInButton = (Button) findViewById(R.id.email_sign_in_button);

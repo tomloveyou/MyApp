@@ -9,7 +9,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
+        buildConfigField("int", "TIME_CLICK_IGNORE", TIME_CLICK_IGNORE)
         buildConfigField("int", "CONNECT_TIMEOUT", CONNECT_TIMEOUT)
         buildConfigField("int", "WRITE_TIMEOUT", WRITE_TIMEOUT)
         buildConfigField("int", "READ_TIMEOUT", READ_TIMEOUT)
@@ -24,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
@@ -32,13 +36,13 @@ dependencies {
     //控件
     implementation 'com.zhy:autolayout:1.4.5'
     // Rx
-    api 'io.reactivex:rxjava:1.2.1'
-    api 'io.reactivex:rxandroid:1.1.0'
+    implementation "io.reactivex.rxjava2:rxjava:2.1.0"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     // Retrofit网络请求
     api 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    api 'com.google.code.gson:gson:2.6.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
     api 'com.pnikosis:materialish-progress:1.7'
     //ptr
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
@@ -47,16 +51,21 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
     //eventpost
     api 'org.greenrobot:eventbus:3.0.0'
+    api 'com.zhy:base-rvadapter:3.0.3'
     //okhttp
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     //log
-    implementation 'com.orhanobut:logger:1.15'
+    api 'com.orhanobut:logger:1.15'
     //lifeManager
     api 'com.trello:rxlifecycle-components:1.0'
+
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:support-v4:25.2.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
-    api 'com.github.mmin18.layoutcast:library:1.+@aar'
+    /*使用介绍地址https://juejin.im/repo/59ed7f45bb941b1e74a5acdc*/
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+
+    api 'cn.yc:YCUtilsLib:1.6.2'
 }

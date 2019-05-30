@@ -10,6 +10,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.URLDecoder;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import okhttp3.Request;
@@ -35,6 +36,7 @@ public final class MyRxJavaCallAdapterFactory extends CallAdapter.Factory {
     private static final String TAG = MyRxJavaCallAdapterFactory.class.getSimpleName();
 
     private static boolean isCache = false;
+
 
     /**
      * Returns an instance which creates synchronous observables that do not operate on any scheduler

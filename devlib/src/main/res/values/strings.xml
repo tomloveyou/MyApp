@@ -58,7 +58,20 @@
     <string name="update_version_marker">V</string>
     <string name="update_version">版本更新</string>
     <string name="update_button_update">更新</string>
-
+    <!-- 请求状态-->
+    <string name="load_system_busy">一不留神，页面走丢啦~</string>
+    <string name="load_loading_dialog_text">加载中</string>
+    <string name="load_empty">暂无数据</string>
+    <string name="load_no_network">好像断网啦~</string>
+    <string name="load_try_again">点击重试</string>
+    <string name="load_net_ungeliable">网络不给力，请稍后再试</string>
+    <string name="load_empty_search">抱歉未找到相关结果</string>
+    <string name="load_loading">正在加载中...</string>
+    <string name="load_time_out">连接超时...</string>
+    <string name="load_unknow_error">未知错误</string>
+    <string name="load_jsonpaser_error">数据解析异常</string>
+    <string name="load_user_invalid">当前用户已过期</string>
+    <string name="service_conn_fail">无法连接服务器</string>
 
     <string name="permission_get_accounts_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_GET_ACCOUNTS</string>
     <string name="permission_read_phone_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_READ_PHONE_STATE</string>

@@ -26,7 +26,7 @@ public abstract class BaseGroupListManager<T> implements IGroupManager<T> {
                     List<T> list = listData.list;
                 currentPage = 2;
                 if (list != null && list.size() > 0) {
-                    setTotalCount(listData.size);
+                    //setTotalCount(listData.size);//暂不做分页总数限制（如需要,解除注释@link XListGroupPresenter.class,ListGroupPresenter.class）
                     return Observable.just(list);
                 } else {
                     return Observable.error(new ErrorThrowable(ReturnCodeConfig.CODE_LOCAL_EMPTY, "暂无数据"));
@@ -44,7 +44,7 @@ public abstract class BaseGroupListManager<T> implements IGroupManager<T> {
                     return Observable.error(new ErrorThrowable(ReturnCodeConfig.CODE_LOCAL_EMPTY, "暂无数据"));
                 } else {
                     ++currentPage;
-                    setTotalCount(listData.size);
+                   // setTotalCount(listData.size);//暂不做分页总数限制（如需要,解除注释@link XListGroupPresenter.class,ListGroupPresenter.class）
                     return Observable.just(listData.list);
                 }
             }
@@ -58,6 +58,11 @@ public abstract class BaseGroupListManager<T> implements IGroupManager<T> {
     @Override
     public int getTotalCount() {
         return totalCount;
+    }
+
+    @Override
+    public int getCurrentPage() {
+        return currentPage;
     }
 
     protected abstract Observable<ListData<T>> getData(Context context);

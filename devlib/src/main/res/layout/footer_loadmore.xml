@@ -13,6 +13,9 @@
         android:src="@drawable/default_ptr_rotate" />
     
     <TextView
+        android:textColor="@color/black"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:id="@+id/tvMore"
         android:layout_width="wrap_content"
         android:layout_height="70dp"

@@ -11,5 +11,7 @@ public class ErrorThrowable extends Throwable {
         this.msg = msg;
     }
 
-
+    public String getMsg() {
+        return msg;
+    }
 }

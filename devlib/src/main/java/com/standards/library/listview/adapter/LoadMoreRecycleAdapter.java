@@ -120,6 +120,7 @@ public abstract class LoadMoreRecycleAdapter<T,VH extends RecyclerView.ViewHolde
 
                 rotateImage.setAnimation(animation);
                 tvLoadMore.setText(tvLoadMore.getContext().getString(R.string.load_more_ing));
+               // stopAnimate(false);//开启动画
             }
         }
 

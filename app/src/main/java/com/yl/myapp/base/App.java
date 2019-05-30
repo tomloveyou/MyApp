@@ -2,8 +2,9 @@ package com.yl.myapp.base;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
-import com.github.mmin18.layoutcast.LayoutCast;
+
 import com.standards.library.app.AppContext;
 import com.standards.library.app.ReturnCode;
 import com.standards.library.app.ReturnCodeConfig;
@@ -12,6 +13,10 @@ import com.standards.library.network.NetworkConfig;
 import com.standards.library.util.LogUtil;
 import com.yl.myapp.BuildConfig;
 
+import org.litepal.LitePal;
+
+import cn.bmob.v3.Bmob;
+
 
 /**
  * <请描述这个类是干什么的>
@@ -19,8 +24,7 @@ import com.yl.myapp.BuildConfig;
  * @data: 16/9/19 下午2:40
  * @version: V1.0
  */
-public class App extends Application {
-
+public class App extends com.standards.library.base.App {
     private static Context sContext;
 
     public static Context getContext() {
@@ -30,13 +34,12 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LayoutCast.init(this);
-        AppContext.getInstance().init(this);
-        sContext = getContext();
-        LogUtil.init(true, "lucky");
-        DataProvider.init(this);
+
+        LitePal.initialize(this);
+        MultiDex.install(this);
+        Bmob.initialize(this, "e05a803219f6136261f562ed0fd4dadd");
         NetworkConfig.setBaseUrl(BuildConfig.HOST_URL);
-        ReturnCodeConfig.getInstance().initReturnCode(ReturnCode.CODE_SUCCESS, ReturnCode.CODE_EMPTY);
+
     }
 
 }
