@@ -40,6 +40,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.luck.picture.lib.PictureSelector;
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity
         usersign = navigationView.getHeaderView(0).findViewById(R.id.user_sign);
         setSupportActionBar(toolbar);
          bmobUser = BmobUser.getCurrentUser(UserinfoBean.class);
+
         Glide.with(this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
@@ -157,7 +159,8 @@ public class MainActivity extends AppCompatActivity
                 });
             }
         });
-        Glide.with(this).load(bmobUser.getAvator_url()).into(imageView);
+        RequestOptions requestOptions=new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
+        Glide.with(this).load(bmobUser.getAvator_url()).apply(requestOptions).into(imageView);
         usernickname.setText(bmobUser.getNickname());
         usersign.setText(bmobUser.getPersonal_sign());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -261,7 +264,8 @@ public class MainActivity extends AppCompatActivity
                                                 }
                                             });
                                         }else {
-                                            Glide.with(MainActivity.this).load(bmobUser.getAvator_url()).into(imageView);
+                                            RequestOptions requestOptions=new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
+                                            Glide.with(MainActivity.this).load(bmobUser.getAvator_url()).apply(requestOptions).into(imageView);
                                         }
                                     }
                                 }
