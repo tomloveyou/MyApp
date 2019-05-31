@@ -1,6 +1,6 @@
 package com.standards.library.listview.listview;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Custom Scroll listener for RecyclerView.

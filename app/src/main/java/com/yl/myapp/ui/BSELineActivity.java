@@ -1,8 +1,5 @@
 package com.yl.myapp.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.standards.library.base.BaseTitleBarActivity;
 import com.yl.myapp.R;
 

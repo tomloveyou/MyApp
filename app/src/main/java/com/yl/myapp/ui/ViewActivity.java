@@ -1,7 +1,5 @@
 package com.yl.myapp.ui;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 
 import com.standards.library.base.BaseTitleBarActivity;

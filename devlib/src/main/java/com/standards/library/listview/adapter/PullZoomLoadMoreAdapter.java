@@ -1,7 +1,7 @@
 package com.standards.library.listview.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.standards.library.R;
-import com.standards.library.listview.adapter.RecyclerAdapter;
 
 public abstract class PullZoomLoadMoreAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerAdapter<T, VH> {
     private LoadMoreHolder footerViewHolder;

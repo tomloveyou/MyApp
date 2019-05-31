@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
         buildConfigField("int", "TIME_CLICK_IGNORE", TIME_CLICK_IGNORE)
         buildConfigField("int", "CONNECT_TIMEOUT", CONNECT_TIMEOUT)
         buildConfigField("int", "WRITE_TIMEOUT", WRITE_TIMEOUT)
@@ -34,20 +34,25 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     //控件
-    implementation 'com.zhy:autolayout:1.4.5'
+    implementation rootProject.ext.dependencies["autolayout"]
+    implementation rootProject.ext.dependencies["xrecyclerview"]
+
     // Rx
-    api "io.reactivex.rxjava2:rxjava:2.1.0"
-    api "io.reactivex.rxjava2:rxandroid:2.0.1"
+    api rootProject.ext.dependencies["rxandroid2"]
+    api rootProject.ext.dependencies["rxjava2"]
     // Retrofit网络请求
-    api 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    api rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["retrofit-converter-gson"]
+    implementation rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
     implementation 'com.google.code.gson:gson:2.8.5'
     api 'com.pnikosis:materialish-progress:1.7'
     //ptr
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
     //glide
-    api "com.github.bumptech.glide:glide:4.5.0"
+    api rootProject.ext.dependencies["glide"]
+    api (rootProject.ext.dependencies["glide-transformations"]){
+        exclude module: 'glide'
+    }
     //eventpost
     api 'org.greenrobot:eventbus:3.0.0'
     api 'com.zhy:base-rvadapter:3.0.3'
@@ -57,14 +62,21 @@ dependencies {
     api 'com.orhanobut:logger:1.15'
     //lifeManager
     api 'com.trello:rxlifecycle-components:1.0'
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["cardview-v7"]
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["constraint-layout"]
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    /*使用介绍地址https://juejin.im/repo/59ed7f45bb941b1e74a5acdc*/
-    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    api rootProject.ext.dependencies["logging-interceptor"]
+    api rootProject.ext.dependencies["okhttp"]
 
-    api 'cn.yc:YCUtilsLib:1.6.2'
+    api rootProject.ext.dependencies["rxrelay"]
+
+    api rootProject.ext.dependencies["router"]
+
+    //由于项目在早期用rx 1.x版本，后期组件化更改内容太多，固后期将rx2替换rx1
+
+    api rootProject.ext.dependencies["YCUtilsLib"]
 }

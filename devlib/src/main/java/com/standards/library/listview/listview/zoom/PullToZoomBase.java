@@ -2,7 +2,7 @@ package com.standards.library.listview.listview.zoom;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
+
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
 
 public abstract class PullToZoomBase<T extends View> extends LinearLayout implements IPullToZoom<T> {
     private static final float FRICTION = 2.0f;

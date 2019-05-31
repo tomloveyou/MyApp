@@ -2,8 +2,10 @@ package com.yl.myapp.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
 
+
+
+import androidx.multidex.MultiDex;
 
 import com.standards.library.app.AppContext;
 import com.standards.library.app.ReturnCode;

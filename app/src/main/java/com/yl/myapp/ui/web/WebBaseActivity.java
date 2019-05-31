@@ -7,11 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.PopupMenu;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -293,13 +289,13 @@ public abstract class WebBaseActivity<T extends BasePresenter> extends BaseTitle
             super.onReceivedError(view, request, error);
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             return shouldOverrideUrlLoading(view, request.getUrl() + "");
         }
 
-        @Nullable
+
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
             return super.shouldInterceptRequest(view, request);

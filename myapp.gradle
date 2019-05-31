@@ -1,0 +1,80 @@
+ext {
+
+    isApplication = false  //false:作为Lib组件存在， true:作为application存在，这个不建议改
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 17,
+            targetSdkVersion : 28,
+            versionCode      : 22,
+            versionName      : "1.8.2"    //必须是int或者float，否则影响线上升级
+    ]
+
+    version = [
+            androidSupportSdkVersion: "1.0.0",
+            retrofitSdkVersion      : "2.4.0",
+            glideSdkVersion         : "4.5.0",
+            canarySdkVersion        : "1.5.4",
+            constraintVersion       : "1.0.2",
+            okhttp                  : "3.8.1"
+    ]
+
+    dependencies = [
+            //support
+            "appcompat-v7"            : "androidx.appcompat:appcompat:${version["androidSupportSdkVersion"]}",
+            "design"                  : "com.google.android.material:material:${version["androidSupportSdkVersion"]}",
+            "palette"                 : 'androidx.palette:palette:1.0.0',
+            "support-v4"              : "androidx.legacy:legacy-support-v4:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"             : 'androidx.cardview:cardview:1.0.0',
+            "recyclerview-v7"         : "androidx.recyclerview:recyclerview:1.0.0",
+            "constraint-layout"       : "androidx.constraintlayout:constraintlayout:1.1.2",
+            "percent"                 : "com.android.support:percent:${version["androidSupportSdkVersion"]}",
+            "multidex"                : "com.android.support:multidex:1.0.2",
+
+            //network
+            "retrofit"                : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
+            "retrofit-converter-gson" : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
+            "okhttp"                  : "com.squareup.okhttp3:okhttp:${version["okhttp"]}",
+            "logging-interceptor"     : "com.squareup.okhttp3:logging-interceptor:${version["okhttp"]}",
+            "rxandroid2"              : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            "rxjava2"                 : "io.reactivex.rxjava2:rxjava:2.1.11",
+            "rxrelay"                 : "com.jakewharton.rxrelay2:rxrelay:2.0.0",
+
+            //由于项目在早期用rx 1.x版本，后期组件化更改内容太多，固后期将rx2替换rx1
+            "rxandroid"               : "io.reactivex.rxjava2:rxandroid:1.2.1",
+            "rxjava"                  : "io.reactivex.rxjava2:rxjava:1.2.1",
+
+
+            //router
+            "router"                  : "com.alibaba:arouter-api:1.4.1",
+            "router-compiler"         : "com.alibaba:arouter-compiler:1.2.2",
+
+            //image
+            "glide"                   : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
+            "glide-compiler"          : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
+            "glide-transformations"   : "jp.wasabeef:glide-transformations:3.3.0",
+
+
+            //view
+            "tablayout"               : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "flowlayout"              : "com.zhy:flowlayout-lib:1.0.3",
+
+            //yc
+
+            "YCUtilsLib"              : "cn.yc:YCUtilsLib:1.6.2",
+
+            "YCStatusBarLib"          : "cn.yc:YCStatusBarLib:1.4.0",
+            "notificationLib"         : "cn.yc:notificationLib:1.0.3",
+            'xrecyclerview'           : "com.jcodecraeer:xrecyclerview:1.5.9",
+            'autolayout'           : "com.zhy:autolayout:1.4.5",
+            //tools
+            "eventbus"                : "org.greenrobot:eventbus:3.0.0",
+            "dagger"                  : "com.google.dagger:dagger:2.13",
+            "utilcode"                : "com.blankj:utilcode:1.12.5",
+            "easypermissions"         : "pub.devrel:easypermissions:1.0.1",
+    ]
+
+
+}

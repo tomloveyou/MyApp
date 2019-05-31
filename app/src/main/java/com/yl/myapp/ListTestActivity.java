@@ -1,8 +1,8 @@
 package com.yl.myapp;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +14,6 @@ import com.standards.library.listview.listview.XRecycleListViewImpl;
 import com.standards.library.listview.manager.BaseGroupListManager;
 
 import com.yl.myapp.bean.ContentBean;
-import com.standards.library.group.LoadingPage;
-import com.standards.library.group.Scene;
 import com.yl.myapp.manager.TesManager;
 
 public class ListTestActivity extends BaseListActivity {
