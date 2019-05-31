@@ -1,5 +1,6 @@
 package com.yl.myapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,11 +42,16 @@ import com.bumptech.glide.Glide;
 
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.standards.library.cache.SPHelp;
 import com.standards.library.listview.ListGroupPresenter;
 import com.standards.library.listview.adapter.LoadMoreRecycleAdapter;
 import com.standards.library.listview.listview.RecycleListViewImpl;
 
+import com.standards.library.rx.ErrorThrowable;
 import com.standards.library.util.ToastUtil;
 import com.yl.myapp.bean.ControlBean;
 import com.standards.library.group.LoadingPage;
@@ -66,10 +72,16 @@ import com.zhy.adapter.recyclerview.CommonAdapter;
 import org.litepal.LitePal;
 import org.litepal.crud.callback.SaveCallback;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadFileListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -79,11 +91,17 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout header_bg_ll;
     private NavigationView navigationView;
     private ImageView imageView;
-    private TextView usernickname,usersign;
-    private  Bitmap bgBitmap=null;
-    private Canvas mCanvas=null;
-    private  Paint mPaint=null;
+    private TextView usernickname, usersign;
+    private Bitmap bgBitmap = null;
+    private Canvas mCanvas = null;
+    private Paint mPaint = null;
     private List<ControlBean> datas = new ArrayList();
+    private List<LocalMedia> selectList = new ArrayList<>();
+    private   UserinfoBean bmobUser;
+    /**
+     * 图片上传类型
+     */
+    private int type=0;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -116,17 +134,17 @@ public class MainActivity extends AppCompatActivity
         usernickname = navigationView.getHeaderView(0).findViewById(R.id.user_nickname);
         usersign = navigationView.getHeaderView(0).findViewById(R.id.user_sign);
         setSupportActionBar(toolbar);
-        UserinfoBean bmobUser = BmobUser.getCurrentUser(this, UserinfoBean.class);
+         bmobUser = BmobUser.getCurrentUser(UserinfoBean.class);
         Glide.with(this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                 header_bg_ll.setBackground(resource);
-                BitmapDrawable bitmapDrawable= (BitmapDrawable) resource;
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) resource;
                 Palette.from(bitmapDrawable.getBitmap()).generate(new Palette.PaletteAsyncListener() {
                     @Override
                     public void onGenerated(Palette palette) {
                         //记得判空
-                        if(palette==null)return;
+                        if (palette == null) return;
                         //palette取色不一定取得到某些特定的颜色，这里通过取多种颜色来避免取不到颜色的情况
                         if (palette.getDarkVibrantColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
                             createLinearGradientBitmap(palette.getDarkVibrantColor(Color.TRANSPARENT), palette.getVibrantColor(Color.TRANSPARENT));
@@ -147,7 +165,20 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        header_bg_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type=0;
+                getImgPicture(false);
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type=1;
+                getImgPicture(true);
+            }
+        });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         initView();
@@ -157,31 +188,93 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void createLinearGradientBitmap(int darkColor,int color) {
+    private void createLinearGradientBitmap(int darkColor, int color) {
 
         int bgColors[] = new int[2];
         bgColors[0] = darkColor;
         bgColors[1] = color;
 
-        if(bgBitmap==null){
-            bgBitmap= Bitmap.createBitmap(navigationView.getWidth(),navigationView.getHeight(), Bitmap.Config.ARGB_4444);
+        if (bgBitmap == null) {
+            bgBitmap = Bitmap.createBitmap(navigationView.getWidth(), navigationView.getHeight(), Bitmap.Config.ARGB_4444);
         }
-        if(mCanvas==null){
-            mCanvas=new Canvas();
+        if (mCanvas == null) {
+            mCanvas = new Canvas();
         }
-        if(mPaint==null){
-            mPaint=new Paint();
+        if (mPaint == null) {
+            mPaint = new Paint();
         }
         mCanvas.setBitmap(bgBitmap);
         mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        LinearGradient gradient=new LinearGradient(0, 0, 0, bgBitmap.getHeight(),bgColors[0],bgColors[1], Shader.TileMode.CLAMP);
+        LinearGradient gradient = new LinearGradient(0, 0, 0, bgBitmap.getHeight(), bgColors[0], bgColors[1], Shader.TileMode.CLAMP);
         mPaint.setShader(gradient);
-        RectF rectF=new RectF(0,0,bgBitmap.getWidth(),bgBitmap.getHeight());
+        RectF rectF = new RectF(0, 0, bgBitmap.getWidth(), bgBitmap.getHeight());
         // mCanvas.drawRoundRect(rectF,16,16,mPaint); 这个用来绘制圆角的哈
-        mCanvas.drawRect(rectF,mPaint);
+        mCanvas.drawRect(rectF, mPaint);
         navigationView.setBackground(new BitmapDrawable(bgBitmap));
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case PictureConfig.CHOOSE_REQUEST:
+                    // 图片选择
+                    selectList = PictureSelector.obtainMultipleResult(data);
+                    BmobFile bmobFile = new BmobFile(new File(selectList.get(0).getCompressPath()));
+                    bmobFile.upload(new UploadFileListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (type==0){
+                                bmobUser.setHead_bg_url(bmobFile.getUrl());
+                            }else {
+                                bmobUser.setAvator_url(bmobFile.getUrl());
+                            }
+                            bmobUser.update(new UpdateListener() {
+                                @Override
+                                public void done(BmobException e) {
+                                    if (e==null){
+                                        ToastUtil.showToast(e.getMessage());
+                                    }else {
+                                        if (type==0){
+                                            Glide.with(MainActivity.this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
+                                                @Override
+                                                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                                    header_bg_ll.setBackground(resource);
+                                                    BitmapDrawable bitmapDrawable = (BitmapDrawable) resource;
+                                                    Palette.from(bitmapDrawable.getBitmap()).generate(new Palette.PaletteAsyncListener() {
+                                                        @Override
+                                                        public void onGenerated(Palette palette) {
+                                                            //记得判空
+                                                            if (palette == null) return;
+                                                            //palette取色不一定取得到某些特定的颜色，这里通过取多种颜色来避免取不到颜色的情况
+                                                            if (palette.getDarkVibrantColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
+                                                                createLinearGradientBitmap(palette.getDarkVibrantColor(Color.TRANSPARENT), palette.getVibrantColor(Color.TRANSPARENT));
+                                                            } else if (palette.getDarkMutedColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
+                                                                createLinearGradientBitmap(palette.getDarkMutedColor(Color.TRANSPARENT), palette.getMutedColor(Color.TRANSPARENT));
+                                                            } else {
+                                                                createLinearGradientBitmap(palette.getLightMutedColor(Color.TRANSPARENT), palette.getLightVibrantColor(Color.TRANSPARENT));
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }else {
+                                            Glide.with(MainActivity.this).load(bmobUser.getAvator_url()).into(imageView);
+                                        }
+                                    }
+                                }
+                            });
+
+
+                        }
+                    });
+                    break;
+            }
+        }
+    }
+
     private Runnable runnable = () -> {
         List<ControlBean> data = FileUtils.TxtToBean(MainActivity.this);
         if (data != null) {
@@ -192,6 +285,34 @@ public class MainActivity extends AppCompatActivity
         }
 
     };
+
+    private void getImgPicture(boolean crop) {
+        selectList.clear();
+        PictureSelector.create(this)
+                .openGallery(PictureMimeType.ofAll())
+                .theme(R.style.picture_default_style)
+                .maxSelectNum(1)
+                .minSelectNum(1)
+                .selectionMode(PictureConfig.SINGLE)
+                .previewImage(true)
+                .previewVideo(false)
+                .enablePreviewAudio(false) // 是否可播放音频
+                .isCamera(false)
+                .enableCrop(crop)
+                .compress(true)
+                .glideOverride(160, 160)
+                .previewEggs(true)
+                .withAspectRatio(1, 1)
+                .hideBottomControls(false)
+                .isGif(false)
+                .freeStyleCropEnabled(true)
+                .circleDimmedLayer(true)
+                .showCropFrame(true)
+                .showCropGrid(false)
+                .openClickSound(false)
+                .selectionMedia(selectList)
+                .forResult(PictureConfig.CHOOSE_REQUEST);
+    }
 
 
     @Override
@@ -251,7 +372,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, MenuActivity.class));
         } else if (id == R.id.nav_twoimg) {
             startActivity(new Intent(this, MenuActivity.class).putExtra("menuType", 3));
-        }else if (id==R.id.nav_send){
+        } else if (id == R.id.nav_send) {
             startActivity(new Intent(this, LoginActivity.class));
         }
 

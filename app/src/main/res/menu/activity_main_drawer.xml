@@ -30,16 +30,16 @@
             android:title="TwoImgMenuTitle" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="安全中心">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:icon="@drawable/ic_menu_manage"
+                android:title="设置" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:icon="@drawable/ic_menu_exit"
+                android:title="退出登录" />
         </menu>
     </item>
 

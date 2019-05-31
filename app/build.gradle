@@ -31,6 +31,11 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -78,11 +83,7 @@ dependencies {
 
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'org.litepal.android:java:3.0.0'
-   // implementation 'com.github.mmin18.layoutcast:library:1.+@aar'//暂时弃用
-    implementation 'cn.bmob.android:bmob-sdk:3.4.6'
-//        //glide
-//        implementation 'com.github.bumptech.glide:glide:3.7.0'
-//        implementation 'jp.wasabeef:glide-transformations:2.0.1'
+    implementation 'com.squareup.okio:okio:2.1.0'
     implementation 'cn.bmob.android:http-legacy:1.0'
     implementation 'com.android.support:palette-v7:26.1.0'
 

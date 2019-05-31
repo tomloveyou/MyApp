@@ -181,6 +181,7 @@
     <color name="lime">#00FF00</color>
     <color name="limegreen">#32CD32</color>
     <color name="linen">#FAF0E6</color>
+    <color name="main_black_color_999999">#999999</color>
     <color name="main_red">#e20000</color>
     <color name="maroon">#800000</color>
     <color name="mediumaquamarine">#66CDAA</color>
@@ -256,30 +257,113 @@
     <color name="white">#FFffffff</color>
     <color name="white_smoke">#F5F5F5</color>
     <color name="yellow">#FFD600</color>
-    <declare-styleable name="CircleProgress"><attr format="integer" name="max"/><attr format="dimension" name="round_width"/><attr format="color" name="round_color"/><attr format="color" name="progress_color"/><attr format="dimension" name="text_size"/><attr format="color" name="text_color"/><attr name="style">
+    <declare-styleable name="CircleProgress">
+        <attr format="integer" name="max"/>
+        <attr format="dimension" name="round_width"/>
+        <attr format="color" name="round_color"/>
+        <attr format="color" name="progress_color"/>
+        <attr format="dimension" name="text_size"/>
+        <attr format="color" name="text_color"/>
+        <attr name="style">
             <enum name="STROKE" value="1"/>
             <enum name="FILL" value="2"/>
-        </attr></declare-styleable>
-    <declare-styleable name="PullToRefresh"><attr format="reference|color" name="ptrRefreshableViewBackground"/><attr format="reference|color" name="ptrHeaderBackground"/><attr format="reference|color" name="ptrHeaderTextColor"/><attr format="reference|color" name="ptrHeaderSubTextColor"/><attr name="ptrMode">
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="PullToRefresh">
+        
+        <!-- A drawable to use as the background of the Refreshable View -->
+        <attr format="reference|color" name="ptrRefreshableViewBackground"/>
+
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
+        <attr format="reference|color" name="ptrHeaderBackground"/>
+
+        <!-- Text Color of the Header and Footer Loading Views -->
+        <attr format="reference|color" name="ptrHeaderTextColor"/>
+
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
+        <attr format="reference|color" name="ptrHeaderSubTextColor"/>
+
+        <!-- Mode of Pull-to-Refresh that should be used -->
+        <attr name="ptrMode">
             <flag name="disabled" value="0x0"/>
             <flag name="pullFromStart" value="0x1"/>
             <flag name="pullFromEnd" value="0x2"/>
             <flag name="both" value="0x3"/>
             <flag name="manualOnly" value="0x4"/>
 
-            
+            <!-- These last two are depreacted -->
             <flag name="pullDownFromTop" value="0x1"/>
             <flag name="pullUpFromBottom" value="0x2"/>
-        </attr><attr format="reference|boolean" name="ptrShowIndicator"/><attr format="reference" name="ptrDrawable"/><attr format="reference" name="ptrDrawableStart"/><attr format="reference" name="ptrDrawableEnd"/><attr format="reference|boolean" name="ptrOverScroll"/><attr format="reference" name="ptrHeaderTextAppearance"/><attr format="reference" name="ptrSubHeaderTextAppearance"/><attr name="ptrAnimationStyle">
+        </attr>
+
+        <!-- Whether the Indicator overlay(s) should be used -->
+        <attr format="reference|boolean" name="ptrShowIndicator"/>
+
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
+        <attr format="reference" name="ptrDrawable"/>
+
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
+        <attr format="reference" name="ptrDrawableStart"/>
+
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
+        <attr format="reference" name="ptrDrawableEnd"/>
+
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
+        <attr format="reference|boolean" name="ptrOverScroll"/>
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
+        <attr format="reference" name="ptrHeaderTextAppearance"/>
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
+        <attr format="reference" name="ptrSubHeaderTextAppearance"/>
+
+        <!-- Style of Animation should be used displayed when pulling. -->
+        <attr name="ptrAnimationStyle">
             <flag name="rotate" value="0x0"/>
             <flag name="flip" value="0x1"/>
-        </attr><attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/><attr format="reference|boolean" name="ptrListViewExtrasEnabled"/><attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/><attr format="reference|color" name="ptrAdapterViewBackground"/><attr format="reference" name="ptrDrawableTop"/><attr format="reference" name="ptrDrawableBottom"/></declare-styleable>
-    <declare-styleable name="TagFlowLayout"><attr format="boolean" name="auto_select_effect"/><attr format="integer" name="max_select"/><attr name="gravity">
+        </attr>
+
+        <!-- Whether the user can scroll while the View is Refreshing -->
+        <attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/>
+
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
+        <attr format="reference|boolean" name="ptrListViewExtrasEnabled"/>
+
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
+        <attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/>
+
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
+        <attr format="reference|color" name="ptrAdapterViewBackground"/>
+        <attr format="reference" name="ptrDrawableTop"/>
+        <attr format="reference" name="ptrDrawableBottom"/>
+    </declare-styleable>
+    <declare-styleable name="TagFlowLayout">
+        <attr format="boolean" name="auto_select_effect"/>
+        <attr format="integer" name="max_select"/>
+        <attr name="gravity">
             <enum name="left" value="-1"/>
             <enum name="center" value="0"/>
             <enum name="right" value="1"/>
-        </attr></declare-styleable>
-    <declare-styleable name="innerrect"><attr format="dimension" name="inner_width"/><attr format="dimension" name="inner_height"/><attr format="dimension" name="inner_margintop"/><attr format="color" name="inner_corner_color"/><attr format="dimension" name="inner_corner_length"/><attr format="dimension" name="inner_corner_width"/><attr format="reference" name="inner_scan_bitmap"/><attr format="integer" name="inner_scan_speed"/><attr format="boolean" name="inner_scan_iscircle"/></declare-styleable>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="innerrect">
+        <attr format="dimension" name="inner_width"/>
+        <attr format="dimension" name="inner_height"/>
+        <attr format="dimension" name="inner_margintop"/>
+        <attr format="color" name="inner_corner_color"/>
+        <attr format="dimension" name="inner_corner_length"/>
+        <attr format="dimension" name="inner_corner_width"/>
+        <attr format="reference" name="inner_scan_bitmap"/>
+        <attr format="integer" name="inner_scan_speed"/>
+        <attr format="boolean" name="inner_scan_iscircle"/>
+    </declare-styleable>
     <dimen name="divider_decoration">1px</dimen>
     <dimen name="header_footer_left_right_padding">24dp</dimen>
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
@@ -321,9 +405,21 @@
     <string name="format_date_year">yyyy年MM月dd日</string>
     <string name="format_year">yyyy</string>
     <string name="hour_ago">小时前</string>
+    <string name="load_empty">暂无数据</string>
+    <string name="load_empty_search">抱歉未找到相关结果</string>
+    <string name="load_jsonpaser_error">数据解析异常</string>
+    <string name="load_loading">正在加载中...</string>
+    <string name="load_loading_dialog_text">加载中</string>
     <string name="load_more_error">加载失败[%d]</string>
     <string name="load_more_ing">正在加载数据</string>
     <string name="load_more_over">已经全部加载完毕</string>
+    <string name="load_net_ungeliable">网络不给力，请稍后再试</string>
+    <string name="load_no_network">好像断网啦~</string>
+    <string name="load_system_busy">一不留神，页面走丢啦~</string>
+    <string name="load_time_out">连接超时...</string>
+    <string name="load_try_again">点击重试</string>
+    <string name="load_unknow_error">未知错误</string>
+    <string name="load_user_invalid">当前用户已过期</string>
     <string name="midday">中午</string>
     <string name="minute_ago">分钟前</string>
     <string name="moment_ago">刚刚</string>
@@ -347,6 +443,7 @@
     <string name="pull_to_refresh_release_label" translatable="false">松开可以刷新</string>
     <string name="pull_to_refresh_tap_label" translatable="false">点击刷新</string>
     <string name="seconds_ago">秒前</string>
+    <string name="service_conn_fail">无法连接服务器</string>
     <string name="str_hoursago">小时前</string>
     <string name="str_minsago">分钟前</string>
     <string name="str_secondago">秒前</string>

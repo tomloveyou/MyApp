@@ -15,5 +15,6 @@ public final class BuildConfig {
   // Fields from default config.
   public static final int CONNECT_TIMEOUT = 30;
   public static final int READ_TIMEOUT = 30;
+  public static final int TIME_CLICK_IGNORE = 500;
   public static final int WRITE_TIMEOUT = 30;
 }
