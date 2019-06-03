@@ -11,6 +11,7 @@ public class PersonActivity extends BaseTitleBarActivity {
 
     @Override
     protected void init() {
+        setTitle("个人中心");
 
     }
 
