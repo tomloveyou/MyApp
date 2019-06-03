@@ -10,8 +10,14 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         buildConfigField("String", "HOST_URL", HOST_URL)
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
         multiDexEnabled true
         ndk {
             //设置支持的SO库架构
@@ -66,14 +72,10 @@ dependencies {
 
     implementation project(':picture_library')
     implementation project(':devlib')
-    implementation 'com.just.agentweb:agentweb:4.0.2'
-    implementation 'com.just.agentweb:download:4.0.2'
-    implementation 'com.just.agentweb:filechooser:4.0.2'
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
-    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
-    implementation 'com.tencent.sonic:sdk:2.0.0'
-    implementation 'com.coolindicator.sdk:coolindicator:1.0.0-beta'
+    if (!rootProject.ext.isUserModuleApplication){
+        implementation project(':userlibrary')
+    }
+
     implementation 'com.google.code.gson:gson:2.8.5'
 
     //java注解

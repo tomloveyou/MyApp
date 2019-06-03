@@ -6,8 +6,8 @@ import android.os.Bundle;
 
 import com.standards.library.base.BaseActivity;
 
-import com.yl.myapp.ui.web.WebActivity;
-import com.yl.myapp.ui.web.WebConfig;
+import com.standards.library.web.WebActivity;
+import com.standards.library.web.WebConfig;
 
 
 /**

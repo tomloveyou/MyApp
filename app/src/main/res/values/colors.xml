@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0b0b0b</color>
-    <color name="colorPrimaryDark">#292626</color>
-    <color name="colorAccent">#4b4141</color>
+
     <color name="accent">#e20000</color>
     <color name="textColorPrimary">#333333</color>
-    <color name="windowBackground">#f2f4f5</color>
+
     <!--主色调-->
     <color name="main_red_color">#e20000</color>
     <color name="main_gray_color">#888888</color>
@@ -17,8 +15,7 @@
     <color name="main_black_color_333333">#333333</color>
     <!-- 普通级导航名称和提示-->
     <color name="main_normal_black_color">#666666</color>
-    <!-- 背景底色-->
-    <color name="main_content_color">#F2F3F5</color>
+
     <!-- 辅助信息-->
     <color name="main_hint_color">#cccccc</color>
     <!-- 辅助信息-->

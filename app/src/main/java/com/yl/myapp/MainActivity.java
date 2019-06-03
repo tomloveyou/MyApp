@@ -25,10 +25,15 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,12 +49,18 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.google.android.material.navigation.NavigationView;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.standards.library.arounter.ARouterConstant;
+import com.standards.library.arounter.ARouterUtils;
 import com.standards.library.cache.SPHelp;
+import com.standards.library.entry.TabEntity;
 import com.standards.library.listview.ListGroupPresenter;
 import com.standards.library.listview.adapter.LoadMoreRecycleAdapter;
 import com.standards.library.listview.listview.RecycleListViewImpl;
@@ -60,6 +71,7 @@ import com.standards.library.group.LoadingPage;
 import com.standards.library.group.Scene;
 import com.yl.myapp.bean.UserinfoBean;
 import com.yl.myapp.manager.ClassManager;
+import com.yl.myapp.ui.HomeFragment;
 import com.yl.myapp.ui.ListStyleActivity;
 import com.yl.myapp.ui.LoginActivity;
 import com.yl.myapp.ui.MenuActivity;
@@ -67,8 +79,9 @@ import com.yl.myapp.ui.MenuActivity;
 import com.yl.myapp.ui.TestActivity;
 
 import com.yl.myapp.ui.utils.FileUtils;
-import com.yl.myapp.ui.web.WebActivity;
+import com.standards.library.web.WebActivity;
 import com.standards.library.widget.RecycleViewDivider;
+import com.yl.userlibrary.MineFragment;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 
 import org.litepal.LitePal;
@@ -86,9 +99,7 @@ import cn.bmob.v3.listener.UploadFileListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private CommonAdapter<ControlBean> adapter;
-    private ListGroupPresenter presenter;
-    private RecycleListViewImpl recycleListView;
+
     private LinearLayout header_bg_ll;
     private NavigationView navigationView;
     private ImageView imageView;
@@ -96,8 +107,13 @@ public class MainActivity extends AppCompatActivity
     private Bitmap bgBitmap = null;
     private Canvas mCanvas = null;
     private Paint mPaint = null;
-    private List<ControlBean> datas = new ArrayList();
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+private CommonTabLayout tabLayout;
+private ViewPager viewPager;
+    private String[] mTitles = {"首页", "消息", "联系人", "更多"};
+
     private List<LocalMedia> selectList = new ArrayList<>();
+    private ArrayList<CustomTabEntity>tabsDatas=new ArrayList<>();
     private   UserinfoBean bmobUser;
     /**
      * 图片上传类型
@@ -128,8 +144,17 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nav_view);
+        tabLayout=findViewById(R.id.tab_layout);
+        viewPager=findViewById(R.id.tab_viewpager);
+        mFragments.add(new HomeFragment());
+        mFragments.add(new MineFragment());
+        tabsDatas.add(new TabEntity("首页",R.mipmap.tab_home_select,R.mipmap.tab_home_unselect));
+        tabsDatas.add(new TabEntity("我的",R.mipmap.tab_contact_select,R.mipmap.tab_contact_unselect));
+        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        tabLayout.setTabData(tabsDatas);
         header_bg_ll = navigationView.getHeaderView(0).findViewById(R.id.header_bg_ll);
         imageView = navigationView.getHeaderView(0).findViewById(R.id.imageView);
         usernickname = navigationView.getHeaderView(0).findViewById(R.id.user_nickname);
@@ -179,7 +204,19 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 type=1;
-                getImgPicture(true);
+               // getImgPicture(true);
+                ARouterUtils.navigation(ARouterConstant.ACTIVITY_USER_INFO);
+            }
+        });
+        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                viewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
             }
         });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -189,6 +226,10 @@ public class MainActivity extends AppCompatActivity
         if (!exit) {
             handler.post(runnable);
         }
+    }
+
+    private void initView() {
+
     }
 
     private void createLinearGradientBitmap(int darkColor, int color) {
@@ -386,62 +427,25 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void initView() {
-        recycleListView = new RecycleListViewImpl(false, false, false);
-        LinearLayout rlContent = findViewById(R.id.activity_container);
-        LoadingPage loadingPage = new LoadingPage(this, Scene.DEFAULT);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        presenter = ListGroupPresenter.create(MainActivity.this, recycleListView, new ClassManager(), new Ad(this), loadingPage);
-        recycleListView.getRecyclerView().addItemDecoration(new RecycleViewDivider(this,
-                LinearLayoutManager.HORIZONTAL, 1, getResources().getColor(R.color.main_black_color_999999)));
-        rlContent.addView(presenter.getRootView(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-
-    }
-
-    class Ad extends LoadMoreRecycleAdapter<Class, Ad.ViewHolder> {
-
-        public Ad(Context mContext) {
-            super(mContext);
-            removeHeaderView(0X666);
-            removeFooterView(0X11);
-
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
-        public ViewHolder onCreateContentView(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(MainActivity.this).inflate(android.R.layout.simple_expandable_list_item_1, parent, false));
+        public int getCount() {
+            return mFragments.size();
         }
 
         @Override
-        public void onBindView(ViewHolder viewHolder, int realPosition) {
-            viewHolder.setData(mData.get(realPosition), realPosition);
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
         }
 
-
-        class ViewHolder extends RecyclerView.ViewHolder {
-            private TextView title;
-
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                title = itemView.findViewById(android.R.id.text1);
-            }
-
-            public void setData(Class data, int position) {
-                title.setText(data.getName());
-                title.setTextColor(getResources().getColor(R.color.black));
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(MainActivity.this, data);
-//                        Bundle bundle = new Bundle();
-//                        bundle.putSerializable("data", data);
-//                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                });
-            }
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
         }
     }
 }

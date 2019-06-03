@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#0b0b0b</color>
+    <color name="colorPrimaryDark">#292626</color>
+    <color name="colorAccent">#4b4141</color>
+    <color name="colorTitle">#ffffff</color>
+    <color name="windowBackground">#f2f4f5</color>
+    <!-- 背景底色-->
+    <color name="main_content_color">#F2F3F5</color>
     <color name="progressColor">#e20000</color>
     <color name="main_red">#e20000</color>
     <color name="dialog_bg">#a6000000</color>

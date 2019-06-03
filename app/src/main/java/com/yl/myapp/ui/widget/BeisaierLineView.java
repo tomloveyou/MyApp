@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.OverScroller;
 
 import com.luck.picture.lib.tools.ScreenUtils;
-import com.scwang.smartrefresh.header.waveswipe.DisplayUtil;
+
 import com.standards.library.util.Util;
 import com.standards.library.util.Utils;
 import com.yl.myapp.R;

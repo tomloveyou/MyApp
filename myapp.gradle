@@ -1,6 +1,6 @@
 ext {
 
-    isApplication = false  //false:作为Lib组件存在， true:作为application存在，这个不建议改
+    isUserModuleApplication = false  //false:作为Lib组件存在， true:作为application存在，这个不建议改
 
     android = [
             compileSdkVersion: 28,
@@ -17,7 +17,8 @@ ext {
             glideSdkVersion         : "4.5.0",
             canarySdkVersion        : "1.5.4",
             constraintVersion       : "1.0.2",
-            okhttp                  : "3.8.1"
+            okhttp                  : "3.8.1",
+            agentweb                  : "4.0.2"
     ]
 
     dependencies = [
@@ -69,6 +70,11 @@ ext {
             "dagger"                  : "com.google.dagger:dagger:2.13",
             "utilcode"                : "com.blankj:utilcode:1.12.5",
             "easypermissions"         : "pub.devrel:easypermissions:1.0.1",
+            //agentweb
+            "agentweb"                   : "com.just.agentweb:agentweb:${version["agentweb"]}",
+            "agentweb-download"          : "com.just.agentweb:download:${version["agentweb"]}",
+            "agentweb-filechooser"                   : "com.just.agentweb:filechooser:${version["agentweb"]}",
+
     ]
 
 

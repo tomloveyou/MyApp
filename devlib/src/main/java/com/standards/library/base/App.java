@@ -2,11 +2,14 @@ package com.standards.library.base;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.standards.library.app.AppContext;
 import com.standards.library.app.ReturnCode;
 import com.standards.library.app.ReturnCodeConfig;
+import com.standards.library.arounter.ARouterUtils;
 import com.standards.library.cache.DataProvider;
 import com.standards.library.network.NetworkConfig;
 import com.standards.library.util.LogUtil;
@@ -32,7 +35,19 @@ public class App extends Application {
         sContext = getContext();
         LogUtil.init(true, "lucky");
         DataProvider.init(this);
+        ARouter.openLog();     // 打印日志
+        ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        ARouter.init(this);
         ReturnCodeConfig.getInstance().initReturnCode(ReturnCode.CODE_SUCCESS, ReturnCode.CODE_EMPTY);
     }
 
+    /**
+     * 程序终止的时候执行
+     */
+    @Override
+    public void onTerminate() {
+        Log.d("Application", "onTerminate");
+        super.onTerminate();
+        ARouterUtils.destroy();
+    }
 }

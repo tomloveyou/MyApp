@@ -1,7 +1,11 @@
 package com.yl.userlibrary;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.standards.library.arounter.ARouterConstant;
+import com.standards.library.arounter.ARouterUtils;
 import com.standards.library.base.BaseTitleBarActivity;
 
+@Route(path = ARouterConstant.ACTIVITY_USER_INFO)
 public class PersonActivity extends BaseTitleBarActivity {
 
     @Override

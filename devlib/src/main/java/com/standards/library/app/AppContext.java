@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.standards.library.R;
 import com.standards.library.BuildConfig;
 import com.standards.library.cache.DirContext;
@@ -47,6 +49,7 @@ public class AppContext {
         AppContext.context = context;
         APP_VERSION_CODE = String.valueOf(Utils.getAppVersionCode(context));
         APP_VERSION_NAME = Utils.getAppVersionName(context);
+
 //        try {
 //            DEVICE_ID = DeviceUidGenerator.generate(context);
 //        } catch (Exception e) {

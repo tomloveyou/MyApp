@@ -37,7 +37,7 @@
         </activity>
         <activity android:name=".ui.ViewActivity" />
         <activity
-            android:name=".ui.web.WebActivity"
+            android:name="com.standards.library.web.WebActivity"
             android:exported="true" />
 
         <meta-data

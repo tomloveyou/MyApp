@@ -7,6 +7,7 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.standards.library.app.AppContext;
 import com.standards.library.app.ReturnCode;
 import com.standards.library.app.ReturnCodeConfig;
@@ -35,6 +36,7 @@ public class App extends com.standards.library.base.App {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
 
         LitePal.initialize(this);

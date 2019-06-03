@@ -13,6 +13,11 @@ android {
         buildConfigField("int", "CONNECT_TIMEOUT", CONNECT_TIMEOUT)
         buildConfigField("int", "WRITE_TIMEOUT", WRITE_TIMEOUT)
         buildConfigField("int", "READ_TIMEOUT", READ_TIMEOUT)
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     buildTypes {
         debug {
@@ -70,10 +75,20 @@ dependencies {
     api rootProject.ext.dependencies["constraint-layout"]
     api rootProject.ext.dependencies["logging-interceptor"]
     api rootProject.ext.dependencies["okhttp"]
-
+    implementation rootProject.ext.dependencies["agentweb"]
+    implementation rootProject.ext.dependencies["agentweb-download"]
+    implementation rootProject.ext.dependencies["agentweb-filechooser"]
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    api 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation 'com.coolindicator.sdk:coolindicator:1.0.0-beta'
+    implementation 'com.tencent.sonic:sdk:2.0.0'
     api rootProject.ext.dependencies["rxrelay"]
-
-    api rootProject.ext.dependencies["router"]
+    annotationProcessor  rootProject.ext.dependencies["router-compiler"]
+    api (rootProject.ext.dependencies["router"]){
+        exclude group: 'com.android.support'
+    }
 
     //由于项目在早期用rx 1.x版本，后期组件化更改内容太多，固后期将rx2替换rx1
 
