@@ -4,7 +4,7 @@ import com.standards.library.BuildConfig;
 import com.standards.library.network.NetworkConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.standards.library.network.rxframework.LiveDataCallAdapter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
-import com.standards.library.network.rxframework.LiveDataCallAdapterFactory;
+
+
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -75,7 +77,7 @@ public class RetrofitDao {
             mRetrofit = new Retrofit.Builder()
                     .baseUrl(NetworkConfig.getBaseUrl())
                     .addConverterFactory(GsonConverterFactory.create(gson))
-                    .addCallAdapterFactory(new LiveDataCallAdapterFactory())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(okHttpClient)
                     .build();
         }

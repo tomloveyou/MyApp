@@ -13,7 +13,7 @@ ext {
 
     version = [
             androidSupportSdkVersion: "1.0.0",
-            retrofitSdkVersion      : "2.4.0",
+            retrofitSdkVersion      : "2.1.0",
             glideSdkVersion         : "4.5.0",
             canarySdkVersion        : "1.5.4",
             constraintVersion       : "1.0.2",
@@ -35,17 +35,12 @@ ext {
             //network
             "retrofit"                : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
             "retrofit-converter-gson" : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
-            "retrofit-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
             "okhttp"                  : "com.squareup.okhttp3:okhttp:${version["okhttp"]}",
             "logging-interceptor"     : "com.squareup.okhttp3:logging-interceptor:${version["okhttp"]}",
             "rxandroid2"              : "io.reactivex.rxjava2:rxandroid:2.1.0",
             "rxjava2"                 : "io.reactivex.rxjava2:rxjava:2.1.11",
             "rxrelay"                 : "com.jakewharton.rxrelay2:rxrelay:2.0.0",
-
-            //由于项目在早期用rx 1.x版本，后期组件化更改内容太多，固后期将rx2替换rx1
-            "rxandroid"               : "io.reactivex.rxjava2:rxandroid:1.2.1",
-            "rxjava"                  : "io.reactivex.rxjava2:rxjava:1.2.1",
-
 
             //router
             "router"                  : "com.alibaba:arouter-api:1.4.1",

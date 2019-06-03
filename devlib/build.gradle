@@ -68,7 +68,6 @@ dependencies {
     api rootProject.ext.dependencies["support-v4"]
     api rootProject.ext.dependencies["recyclerview-v7"]
     api rootProject.ext.dependencies["constraint-layout"]
-
     api rootProject.ext.dependencies["logging-interceptor"]
     api rootProject.ext.dependencies["okhttp"]
 
