@@ -13,7 +13,18 @@
         </attr>
     </declare-styleable>
 
-
+    <declare-styleable name="EaseImageView">
+        <attr name="ease_border_color" format="color" />
+        <attr name="ease_border_width" format="dimension" />
+        <attr name="ease_press_alpha" format="integer" />
+        <attr name="ease_press_color" format="color" />
+        <attr name="ease_radius" format="dimension" />
+        <attr name="ease_shape_type" format="enum">
+            <enum name="none" value="0" />
+            <enum name="round" value="1" />
+            <enum name="rectangle" value="2" />
+        </attr>
+    </declare-styleable>
     <declare-styleable name="TagFlowLayout">
         <attr name="auto_select_effect" format="boolean"></attr>
         <attr name="max_select" format="integer"></attr>

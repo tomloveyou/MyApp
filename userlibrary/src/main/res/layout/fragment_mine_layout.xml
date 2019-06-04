@@ -8,18 +8,24 @@
     tools:context=".PersonActivity">
 
     <LinearLayout
+        android:id="@+id/fragment_user_head_ll"
+        android:gravity="center"
         android:padding="8dp"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <com.standards.library.widget.EaseImageView
+            android:id="@+id/fragment_user_head_avator_img"
+            app:ease_shape_type="rectangle"
+            app:ease_radius="10dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@color/unenable_color" />
 
         <LinearLayout
+            android:padding="8dp"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,6 +33,8 @@
             android:orientation="vertical">
 
             <TextView
+                android:visibility="gone"
+                android:id="@+id/fragment_user_head_nickname_tv"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
@@ -34,21 +42,33 @@
                 android:text="昵称" />
 
             <TextView
+                android:visibility="gone"
+                android:id="@+id/fragment_user_head_info_tv"
+                android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="账户信息" />
+            <TextView
+
+                android:id="@+id/fragment_user_head_unlogin"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="未登录（点击登录）" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+        <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
 
 
 
     <LinearLayout
+        android:id="@+id/fragment_user_record_ll"
+        android:gravity="center_vertical"
         android:padding="8dp"
         android:background="@color/white"
         android:layout_marginTop="10dp"
@@ -56,6 +76,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:padding="8dp"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -63,12 +84,12 @@
             android:layout_weight="1"
             android:text="功能使用记录" />
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+        <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fragment_user_resource_manager_ll"
+        android:gravity="center_vertical"
         android:layout_marginTop="@dimen/divider_decoration"
         android:padding="8dp"
         android:background="@color/white"
@@ -76,6 +97,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:padding="8dp"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -83,12 +105,12 @@
             android:layout_weight="1"
             android:text="资源管理" />
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+        <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fragment_user_setting_ll"
+        android:gravity="center_vertical"
         android:layout_marginTop="10dp"
         android:padding="8dp"
         android:background="@color/white"
@@ -96,6 +118,8 @@
         android:layout_height="wrap_content">
 
         <TextView
+
+            android:padding="8dp"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -103,8 +127,6 @@
             android:layout_weight="1"
             android:text="设置" />
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+        <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
 </LinearLayout>

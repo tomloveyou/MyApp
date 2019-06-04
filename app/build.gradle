@@ -85,7 +85,7 @@ dependencies {
     implementation 'com.squareup.okio:okio:2.1.0'
     implementation 'cn.bmob.android:http-legacy:1.0'
     implementation rootProject.ext.dependencies["palette"]
-
+    annotationProcessor rootProject.ext.dependencies["router-compiler"]
 
 
 }

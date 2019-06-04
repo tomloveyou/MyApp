@@ -1,4 +1,4 @@
-package com.yl.myapp.ui;
+package com.yl.userlibrary;
 
 import android.content.Intent;
 import androidx.annotation.NonNull;
@@ -7,19 +7,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ns.yc.ycutilslib.switchButton.SwitchButton;
+import com.standards.library.arounter.ARouterConstant;
+import com.standards.library.arounter.ARouterUtils;
 import com.standards.library.base.BaseTitleBarActivity;
-import com.yl.myapp.MainActivity;
-import com.yl.myapp.R;
+import com.yl.userlibrary.mvp.contract.UserContract;
+import com.yl.userlibrary.mvp.presenter.UserPresenterImpl;
 
-import com.yl.myapp.ui.mvp.contract.UserContract;
-import com.yl.myapp.ui.mvp.presenter.UserPresenterImpl;
 
 import rx.functions.Action1;
 
-/**
- * A login screen that offers login via email/password.
- */
+@Route(path = ARouterConstant.ACTIVITY_USER_LOGIN_ACTIVITY)
 public class LoginActivity extends BaseTitleBarActivity<UserPresenterImpl> implements UserContract.UserLoginView {
 
 
@@ -78,7 +77,7 @@ public class LoginActivity extends BaseTitleBarActivity<UserPresenterImpl> imple
 
     @Override
     public void loginSuccess() {
-        startActivity(new Intent(this, MainActivity.class));
+        ARouterUtils.navigation(ARouterConstant.ACTIVITY_MAIN_ACTIVITY);
         finish();
     }
 }

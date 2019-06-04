@@ -6,11 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@mipmap/login_bg"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.LoginActivity">
+    tools:context="com.yl.userlibrary.LoginActivity">
 
     <com.ns.yc.ycutilslib.switchButton.SwitchButton
         android:id="@+id/btn_login_or_regist"
@@ -47,7 +43,6 @@
             android:layout_height="wrap_content"
             android:hint="密码"
             android:imeActionId="6"
-            android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
@@ -61,7 +56,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/action_sign_in"
         android:textStyle="bold" />
 
 

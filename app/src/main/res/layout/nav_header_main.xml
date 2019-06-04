@@ -13,7 +13,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <com.yl.myapp.ui.widget.EaseImageView
+    <com.standards.library.widget.EaseImageView
         app:ease_shape_type="round"
         android:id="@+id/imageView"
         android:layout_width="60dp"

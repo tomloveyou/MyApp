@@ -41,7 +41,7 @@ public class App extends com.standards.library.base.App {
 
         LitePal.initialize(this);
         MultiDex.install(this);
-        Bmob.initialize(this, "e05a803219f6136261f562ed0fd4dadd");
+
         NetworkConfig.setBaseUrl(BuildConfig.HOST_URL);
 
     }

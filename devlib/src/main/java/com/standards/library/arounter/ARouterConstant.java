@@ -14,7 +14,9 @@ package com.standards.library.arounter;
 public class ARouterConstant {
 
 
-    //跳转到视频页面
-    public static final String ACTIVITY_VIDEO_VIDEO = "/video/VideoActivity";
+    //跳转到主页面页面
+    public static final String ACTIVITY_MAIN_ACTIVITY = "/main/MainActivity";
     public static final String ACTIVITY_USER_INFO = "/user/PersonActivity";
+    public static final String ACTIVITY_USER_MINE_ACTIVITY = "/user/MineActivity";
+    public static final String ACTIVITY_USER_LOGIN_ACTIVITY= "/user/Loginctivity";
 }

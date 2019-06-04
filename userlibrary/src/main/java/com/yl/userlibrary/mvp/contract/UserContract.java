@@ -1,4 +1,4 @@
-package com.yl.myapp.ui.mvp.contract;
+package com.yl.userlibrary.mvp.contract;
 
 import com.standards.library.base.ILoadingView;
 

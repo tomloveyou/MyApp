@@ -1,27 +1,15 @@
-package com.yl.myapp.ui.mvp.presenter;
+package com.yl.userlibrary.mvp.presenter;
 
 import android.app.Activity;
-import android.app.Service;
 
 import com.standards.library.base.BasePresenter;
 import com.standards.library.rx.ErrorThrowable;
-import com.yl.myapp.api.DataManager;
 
-import com.standards.library.base.ILoadingView;
-import com.yl.myapp.bean.UserinfoBean;
-import com.yl.myapp.ui.mvp.contract.UserContract;
+import com.yl.userlibrary.mvp.contract.UserContract;
+import com.yl.userlibrary.mvp.module.UserinfoBean;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
-import okhttp3.RequestBody;
 
 public class UserPresenterImpl extends BasePresenter<UserContract.UserLoginView> {
     public UserPresenterImpl(Activity activity) {

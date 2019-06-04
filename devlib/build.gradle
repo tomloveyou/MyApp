@@ -29,6 +29,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -93,4 +98,5 @@ dependencies {
     //由于项目在早期用rx 1.x版本，后期组件化更改内容太多，固后期将rx2替换rx1
 
     api rootProject.ext.dependencies["YCUtilsLib"]
+    api files('libs\\BmobSDK_3.7.4_20190523.jar')
 }

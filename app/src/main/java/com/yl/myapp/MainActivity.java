@@ -1,7 +1,6 @@
 package com.yl.myapp;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -16,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -29,21 +29,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.palette.graphics.Palette;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -61,28 +58,20 @@ import com.standards.library.arounter.ARouterConstant;
 import com.standards.library.arounter.ARouterUtils;
 import com.standards.library.cache.SPHelp;
 import com.standards.library.entry.TabEntity;
-import com.standards.library.listview.ListGroupPresenter;
-import com.standards.library.listview.adapter.LoadMoreRecycleAdapter;
-import com.standards.library.listview.listview.RecycleListViewImpl;
 
 import com.standards.library.util.ToastUtil;
 import com.yl.myapp.bean.ControlBean;
-import com.standards.library.group.LoadingPage;
-import com.standards.library.group.Scene;
-import com.yl.myapp.bean.UserinfoBean;
-import com.yl.myapp.manager.ClassManager;
+import com.yl.userlibrary.mvp.module.UserinfoBean;
 import com.yl.myapp.ui.HomeFragment;
 import com.yl.myapp.ui.ListStyleActivity;
-import com.yl.myapp.ui.LoginActivity;
+import com.yl.userlibrary.LoginActivity;
 import com.yl.myapp.ui.MenuActivity;
 
 import com.yl.myapp.ui.TestActivity;
 
 import com.yl.myapp.ui.utils.FileUtils;
 import com.standards.library.web.WebActivity;
-import com.standards.library.widget.RecycleViewDivider;
 import com.yl.userlibrary.MineFragment;
-import com.zhy.adapter.recyclerview.CommonAdapter;
 
 import org.litepal.LitePal;
 import org.litepal.crud.callback.SaveCallback;
@@ -96,7 +85,7 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
-
+@Route(path = ARouterConstant.ACTIVITY_MAIN_ACTIVITY)
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -108,17 +97,17 @@ public class MainActivity extends AppCompatActivity
     private Canvas mCanvas = null;
     private Paint mPaint = null;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-private CommonTabLayout tabLayout;
-private ViewPager viewPager;
+    private CommonTabLayout tabLayout;
+    private ViewPager viewPager;
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
 
     private List<LocalMedia> selectList = new ArrayList<>();
-    private ArrayList<CustomTabEntity>tabsDatas=new ArrayList<>();
-    private   UserinfoBean bmobUser;
+    private ArrayList<CustomTabEntity> tabsDatas = new ArrayList<>();
+    private UserinfoBean bmobUser;
     /**
      * 图片上传类型
      */
-    private int type=0;
+    private int type = 0;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -147,12 +136,12 @@ private ViewPager viewPager;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nav_view);
-        tabLayout=findViewById(R.id.tab_layout);
-        viewPager=findViewById(R.id.tab_viewpager);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.tab_viewpager);
         mFragments.add(new HomeFragment());
         mFragments.add(new MineFragment());
-        tabsDatas.add(new TabEntity("首页",R.mipmap.tab_home_select,R.mipmap.tab_home_unselect));
-        tabsDatas.add(new TabEntity("我的",R.mipmap.tab_contact_select,R.mipmap.tab_contact_unselect));
+        tabsDatas.add(new TabEntity("首页", R.mipmap.tab_home_select, R.mipmap.tab_home_unselect));
+        tabsDatas.add(new TabEntity("我的", R.mipmap.tab_contact_select, R.mipmap.tab_contact_unselect));
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         tabLayout.setTabData(tabsDatas);
         header_bg_ll = navigationView.getHeaderView(0).findViewById(R.id.header_bg_ll);
@@ -160,7 +149,7 @@ private ViewPager viewPager;
         usernickname = navigationView.getHeaderView(0).findViewById(R.id.user_nickname);
         usersign = navigationView.getHeaderView(0).findViewById(R.id.user_sign);
         setSupportActionBar(toolbar);
-         bmobUser = BmobUser.getCurrentUser(UserinfoBean.class);
+        bmobUser = BmobUser.getCurrentUser(UserinfoBean.class);
 
         Glide.with(this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
             @Override
@@ -184,7 +173,7 @@ private ViewPager viewPager;
                 });
             }
         });
-        RequestOptions requestOptions=new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
+        RequestOptions requestOptions = new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
         Glide.with(this).load(bmobUser.getAvator_url()).apply(requestOptions).into(imageView);
         usernickname.setText(bmobUser.getNickname());
         usersign.setText(bmobUser.getPersonal_sign());
@@ -196,15 +185,15 @@ private ViewPager viewPager;
         header_bg_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type=0;
+                type = 0;
                 getImgPicture(false);
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type=1;
-               // getImgPicture(true);
+                type = 1;
+                // getImgPicture(true);
                 ARouterUtils.navigation(ARouterConstant.ACTIVITY_USER_INFO);
             }
         });
@@ -270,18 +259,18 @@ private ViewPager viewPager;
                     bmobFile.upload(new UploadFileListener() {
                         @Override
                         public void done(BmobException e) {
-                            if (type==0){
+                            if (type == 0) {
                                 bmobUser.setHead_bg_url(bmobFile.getUrl());
-                            }else {
+                            } else {
                                 bmobUser.setAvator_url(bmobFile.getUrl());
                             }
                             bmobUser.update(new UpdateListener() {
                                 @Override
                                 public void done(BmobException e) {
-                                    if (e==null){
+                                    if (e == null) {
                                         ToastUtil.showToast(e.getMessage());
-                                    }else {
-                                        if (type==0){
+                                    } else {
+                                        if (type == 0) {
                                             Glide.with(MainActivity.this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
                                                 @Override
                                                 public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
@@ -304,8 +293,8 @@ private ViewPager viewPager;
                                                     });
                                                 }
                                             });
-                                        }else {
-                                            RequestOptions requestOptions=new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
+                                        } else {
+                                            RequestOptions requestOptions = new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
                                             Glide.with(MainActivity.this).load(bmobUser.getAvator_url()).apply(requestOptions).into(imageView);
                                         }
                                     }
@@ -425,7 +414,6 @@ private ViewPager viewPager;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 
     private class MyPagerAdapter extends FragmentPagerAdapter {

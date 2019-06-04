@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".PersonActivity">
-
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
-        android:id="@+id/activity_user_head_ll"
+
+        android:gravity="center_vertical"
         android:background="@color/white"
         android:padding="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <TextView
             android:padding="8dp"
@@ -22,31 +16,17 @@
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="头像" />
-
-        <LinearLayout
+            android:layout_weight="1"
+            android:text="是否允许收集使用记录" />
+        <com.ns.yc.ycutilslib.switchButton.SwitchButton
+            android:id="@+id/activity_user_record_get_switchbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:orientation="vertical">
-
-            <com.standards.library.widget.EaseImageView
-                android:id="@+id/activity_user_head_avator"
-                app:ease_shape_type="rectangle"
-                app:ease_radius="10dp"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@color/unenable_color" />
-        </LinearLayout>
-
+            />
         <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
-
-
-
     <LinearLayout
-        android:id="@+id/activity_user_nickname_ll"
+        android:id="@+id/activity_user_feedback_ll"
         android:gravity="center_vertical"
         android:background="@color/white"
         android:padding="8dp"
@@ -61,20 +41,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="昵称" />
+            android:text="用户反馈" />
         <TextView
-            android:id="@+id/activity_user_nickname"
             android:padding="8dp"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-          />
+            />
         <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
-
     <LinearLayout
-        android:id="@+id/activity_user_sign_ll"
+        android:id="@+id/activity_user_about_ll"
         android:gravity="center_vertical"
         android:background="@color/white"
         android:padding="8dp"
@@ -89,9 +67,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="签名" />
+            android:text="关于我们" />
         <TextView
-            android:id="@+id/activity_user_sign"
+
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <include layout="@layout/widget_arrow_right_layout"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/activity_user_change_acount_ll"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="切换账号" />
+        <TextView
+
             android:padding="8dp"
             android:textSize="14sp"
             android:textColor="@color/black"
@@ -101,52 +106,4 @@
         <include layout="@layout/widget_arrow_right_layout"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/activity_user_acount_ll"
-        android:gravity="center_vertical"
-        android:background="@color/white"
-        android:padding="8dp"
-        android:layout_marginTop="@dimen/divider_decoration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:padding="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="当前账号" />
-        <TextView
-            android:id="@+id/activity_user_acount"
-            android:padding="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <include layout="@layout/widget_arrow_right_layout"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activity_user_more_ll"
-        android:gravity="center_vertical"
-        android:background="@color/white"
-        android:padding="8dp"
-        android:layout_marginTop="@dimen/divider_decoration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:padding="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="更多" />
-
-        <include layout="@layout/widget_arrow_right_layout"/>
-    </LinearLayout>
 </LinearLayout>

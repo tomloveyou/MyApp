@@ -14,6 +14,8 @@ import com.standards.library.cache.DataProvider;
 import com.standards.library.network.NetworkConfig;
 import com.standards.library.util.LogUtil;
 
+import cn.bmob.v3.Bmob;
+
 
 /**
  * <请描述这个类是干什么的>
@@ -35,6 +37,7 @@ public class App extends Application {
         sContext = getContext();
         LogUtil.init(true, "lucky");
         DataProvider.init(this);
+        Bmob.initialize(this, "e05a803219f6136261f562ed0fd4dadd");
         ARouter.openLog();     // 打印日志
         ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         ARouter.init(this);

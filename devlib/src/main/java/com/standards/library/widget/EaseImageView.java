@@ -1,4 +1,4 @@
-package com.yl.myapp.ui.widget;
+package com.standards.library.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-import com.yl.myapp.R;
+import com.standards.library.R;
 
 
 public class EaseImageView extends ImageView {

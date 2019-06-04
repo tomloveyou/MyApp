@@ -1,4 +1,4 @@
-package com.yl.myapp.bean;
+package com.yl.userlibrary.mvp.module;
 
 import cn.bmob.v3.BmobUser;
 

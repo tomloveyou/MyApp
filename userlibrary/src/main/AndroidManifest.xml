@@ -3,10 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yl.userlibrary">
 
-    <application
-     >
-        <activity android:name=".PersonActivity"></activity>
-        <activity android:name=".MineAcitvity"></activity>
+    <application>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".PersonActivity"/>
+        <activity android:name=".MineAcitvity"/>
+        <activity android:name=".UserInfoEditActivity"/>
+        <activity android:name=".UserinfoMoreActivity"/>
+        <activity android:name=".SettingActivity"/>
+        <activity android:name=".FeedBackActivity"/>
+        <activity android:name=".AboutActivity"/>
     </application>
 
 </manifest>
