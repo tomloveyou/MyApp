@@ -62,6 +62,11 @@ public class CountyLoadingPage extends BaseLoadingPage {
     }
 
     @Override
+    public boolean isLoading() {
+        return mLoadingHelp.isLoading();
+    }
+
+    @Override
     public void showEmptyLoadingPage() {
     }
 

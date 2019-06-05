@@ -19,4 +19,5 @@ public class ARouterConstant {
     public static final String ACTIVITY_USER_INFO = "/user/PersonActivity";
     public static final String ACTIVITY_USER_MINE_ACTIVITY = "/user/MineActivity";
     public static final String ACTIVITY_USER_LOGIN_ACTIVITY= "/user/Loginctivity";
+    public static final String ACTIVITY_USER_UPDATE_INFO_ACTIVITY= "/user/UserInfoEditActivity";
 }

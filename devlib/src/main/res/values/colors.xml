@@ -3,8 +3,10 @@
     <color name="colorPrimary">#0b0b0b</color>
     <color name="colorPrimaryDark">#292626</color>
     <color name="colorAccent">#4b4141</color>
-    <color name="colorTitle">#ffffff</color>
+    <color name="colorTitle">@color/white</color>
     <color name="windowBackground">#f2f4f5</color>
+    <!-- 重要级文字信息标题-->
+    <color name="main_black_color_333333">#333333</color>
     <!-- 背景底色-->
     <color name="main_content_color">#F2F3F5</color>
     <color name="progressColor">#e20000</color>

@@ -66,8 +66,7 @@ dependencies {
     //eventpost
     api 'org.greenrobot:eventbus:3.0.0'
     api 'com.zhy:base-rvadapter:3.0.3'
-    //okhttp
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
     //log
     api 'com.orhanobut:logger:1.15'
     //lifeManager
@@ -94,9 +93,11 @@ dependencies {
     api (rootProject.ext.dependencies["router"]){
         exclude group: 'com.android.support'
     }
-
+    implementation 'androidx.multidex:multidex:2.0.0'
     //由于项目在早期用rx 1.x版本，后期组件化更改内容太多，固后期将rx2替换rx1
 
     api rootProject.ext.dependencies["YCUtilsLib"]
     api files('libs\\BmobSDK_3.7.4_20190523.jar')
+    api 'cn.bmob.android:http-legacy:1.0'
+    api 'com.squareup.okio:okio:2.1.0'
 }

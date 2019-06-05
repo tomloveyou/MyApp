@@ -407,6 +407,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_twoimg) {
             startActivity(new Intent(this, MenuActivity.class).putExtra("menuType", 3));
         } else if (id == R.id.nav_send) {
+            BmobUser.logOut();
             startActivity(new Intent(this, LoginActivity.class));
         }
 

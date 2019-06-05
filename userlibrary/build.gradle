@@ -16,6 +16,7 @@ android {
             //组件模式下设置applicationId
             applicationId "com.yl.user"
         }
+        multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -47,5 +48,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     implementation project(':devlib')
+    implementation project(':picture_library')
+    implementation "com.github.akarnokd:rxjava2-interop:0.13.5"
     annotationProcessor rootProject.ext.dependencies["router-compiler"]
 }

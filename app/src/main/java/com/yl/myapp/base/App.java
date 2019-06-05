@@ -40,8 +40,6 @@ public class App extends com.standards.library.base.App {
         super.onCreate();
 
         LitePal.initialize(this);
-        MultiDex.install(this);
-
         NetworkConfig.setBaseUrl(BuildConfig.HOST_URL);
 
     }

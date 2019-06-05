@@ -5,6 +5,8 @@ import android.content.Context;
 import android.util.Log;
 
 
+import androidx.multidex.MultiDex;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.standards.library.app.AppContext;
 import com.standards.library.app.ReturnCode;
@@ -36,6 +38,7 @@ public class App extends Application {
         AppContext.getInstance().init(this);
         sContext = getContext();
         LogUtil.init(true, "lucky");
+        MultiDex.install(this);
         DataProvider.init(this);
         Bmob.initialize(this, "e05a803219f6136261f562ed0fd4dadd");
         ARouter.openLog();     // 打印日志

@@ -13,7 +13,6 @@ import com.standards.library.app.AppContext;
 import com.standards.library.listview.loading.OnFailClickListener;
 
 
-
 public class LoadingHelp {
     private View loadingView;
     private RelativeLayout rlLoading;
@@ -48,6 +47,10 @@ public class LoadingHelp {
 
         rlLoading.setVisibility(View.GONE);
         rlFailed.setVisibility(View.GONE);
+    }
+
+    public boolean isLoading() {
+        return rlLoading.getVisibility() == View.VISIBLE;
     }
 
     public void showLoading() {

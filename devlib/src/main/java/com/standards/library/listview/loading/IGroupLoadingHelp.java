@@ -16,6 +16,7 @@ public interface IGroupLoadingHelp {
     void showEmptyLoadingPage();
 
     void setOnFailClickListener(OnFailClickListener onFailClickListener);
+    boolean isLoading();
 
 
     void hideLoading();
