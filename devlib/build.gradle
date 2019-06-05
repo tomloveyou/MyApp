@@ -63,6 +63,7 @@ dependencies {
     api (rootProject.ext.dependencies["glide-transformations"]){
         exclude module: 'glide'
     }
+    api rootProject.ext.dependencies["notificationLib"]
     //eventpost
     api 'org.greenrobot:eventbus:3.0.0'
     api 'com.zhy:base-rvadapter:3.0.3'
