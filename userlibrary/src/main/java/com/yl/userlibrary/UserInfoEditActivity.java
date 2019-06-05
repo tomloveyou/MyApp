@@ -1,5 +1,8 @@
 package com.yl.userlibrary;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +16,7 @@ import com.standards.library.arounter.ARouterConstant;
 import com.standards.library.arounter.ARouterUtils;
 import com.standards.library.base.BaseTitleBarActivity;
 import com.standards.library.util.ToastUtil;
+import com.ycbjie.notificationlib.NotificationUtils;
 import com.yl.userlibrary.mvp.module.UsedLogBean;
 
 import cn.bmob.v3.BmobACL;
@@ -96,6 +100,7 @@ public class UserInfoEditActivity extends BaseUserInfoActivity {
                     usedLogBean.save(new SaveListener<String>() {
                         @Override
                         public void done(String s, BmobException e) {
+                            seet();
                             finish();
 
                         }
@@ -105,6 +110,34 @@ public class UserInfoEditActivity extends BaseUserInfoActivity {
             });
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void seet(){
+        long[] vibrate = new long[]{0, 500, 1000, 1500};
+//处理点击Notification的逻辑
+//创建intent
+        Intent resultIntent = new Intent(this, UserInfoEditActivity.class);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);           //添加为栈顶Activity
+        resultIntent.putExtra("what",3);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this,3,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+//发送pendingIntent
+
+        NotificationUtils notificationUtils = new NotificationUtils(this);
+        notificationUtils
+                //让通知左右滑的时候是否可以取消通知
+                .setOngoing(true)
+                //设置内容点击处理intent
+                .setContentIntent(resultPendingIntent)
+                //设置状态栏的标题
+                .setTicker("来通知消息啦")
+                //设置自定义view通知栏布局
+                //设置sound
+                .setSound(android.provider.Settings.System.DEFAULT_NOTIFICATION_URI)
+                //设置优先级
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                //自定义震动效果
+                .setVibrate(vibrate)
+                //必须设置的属性，发送通知
+                .sendNotification(3,"这个是标题3", "这个是内容3", R.drawable.ic_launcher);
     }
 
     private void initView() {

@@ -86,6 +86,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             fragmentUserHeadUnlogin.setVisibility(View.VISIBLE);
             fragmentUserHeadNicknameTv.setVisibility(View.GONE);
             fragmentUserHeadInfoTv.setVisibility(View.GONE);
+            Glide.with(this).load(R.mipmap.user_defaul_avator).into(fragmentUserHeadAvatorImg);
         }
 
     }
