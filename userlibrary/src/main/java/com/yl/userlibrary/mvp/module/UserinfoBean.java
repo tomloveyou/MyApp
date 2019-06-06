@@ -10,7 +10,7 @@ public class UserinfoBean extends BmobUser {
     /**
      * 个人用户url
      */
-    private String head_bg_url;
+    private String head_bg_url="";
     /**
      * 用户昵称
      */

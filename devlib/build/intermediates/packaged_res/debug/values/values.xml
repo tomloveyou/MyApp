@@ -102,6 +102,10 @@
     <color name="cadetblue">#5F9EA0</color>
     <color name="chartreuse">#7FFF00</color>
     <color name="chocolate">#D2691E</color>
+    <color name="colorAccent">#4b4141</color>
+    <color name="colorPrimary">#0b0b0b</color>
+    <color name="colorPrimaryDark">#292626</color>
+    <color name="colorTitle">@color/white</color>
     <color name="contents_text">#ff000000</color>
     <color name="coral">#FF7F50</color>
     <color name="cornflowerblue">#6495ED</color>
@@ -181,7 +185,9 @@
     <color name="lime">#00FF00</color>
     <color name="limegreen">#32CD32</color>
     <color name="linen">#FAF0E6</color>
+    <color name="main_black_color_333333">#333333</color>
     <color name="main_black_color_999999">#999999</color>
+    <color name="main_content_color">#F2F3F5</color>
     <color name="main_red">#e20000</color>
     <color name="maroon">#800000</color>
     <color name="mediumaquamarine">#66CDAA</color>
@@ -256,114 +262,8 @@
     <color name="wheat">#F5DEB3</color>
     <color name="white">#FFffffff</color>
     <color name="white_smoke">#F5F5F5</color>
+    <color name="windowBackground">#f2f4f5</color>
     <color name="yellow">#FFD600</color>
-    <declare-styleable name="CircleProgress">
-        <attr format="integer" name="max"/>
-        <attr format="dimension" name="round_width"/>
-        <attr format="color" name="round_color"/>
-        <attr format="color" name="progress_color"/>
-        <attr format="dimension" name="text_size"/>
-        <attr format="color" name="text_color"/>
-        <attr name="style">
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL" value="2"/>
-        </attr>
-    </declare-styleable>
-    <declare-styleable name="PullToRefresh">
-        
-        <!-- A drawable to use as the background of the Refreshable View -->
-        <attr format="reference|color" name="ptrRefreshableViewBackground"/>
-
-        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
-        <attr format="reference|color" name="ptrHeaderBackground"/>
-
-        <!-- Text Color of the Header and Footer Loading Views -->
-        <attr format="reference|color" name="ptrHeaderTextColor"/>
-
-        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
-        <attr format="reference|color" name="ptrHeaderSubTextColor"/>
-
-        <!-- Mode of Pull-to-Refresh that should be used -->
-        <attr name="ptrMode">
-            <flag name="disabled" value="0x0"/>
-            <flag name="pullFromStart" value="0x1"/>
-            <flag name="pullFromEnd" value="0x2"/>
-            <flag name="both" value="0x3"/>
-            <flag name="manualOnly" value="0x4"/>
-
-            <!-- These last two are depreacted -->
-            <flag name="pullDownFromTop" value="0x1"/>
-            <flag name="pullUpFromBottom" value="0x2"/>
-        </attr>
-
-        <!-- Whether the Indicator overlay(s) should be used -->
-        <attr format="reference|boolean" name="ptrShowIndicator"/>
-
-        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
-        <attr format="reference" name="ptrDrawable"/>
-
-        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
-        <attr format="reference" name="ptrDrawableStart"/>
-
-        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
-        <attr format="reference" name="ptrDrawableEnd"/>
-
-        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
-        <attr format="reference|boolean" name="ptrOverScroll"/>
-
-        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
-        <attr format="reference" name="ptrHeaderTextAppearance"/>
-
-        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
-        <attr format="reference" name="ptrSubHeaderTextAppearance"/>
-
-        <!-- Style of Animation should be used displayed when pulling. -->
-        <attr name="ptrAnimationStyle">
-            <flag name="rotate" value="0x0"/>
-            <flag name="flip" value="0x1"/>
-        </attr>
-
-        <!-- Whether the user can scroll while the View is Refreshing -->
-        <attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/>
-
-        <!--
-        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
-        	able to scroll while refreshing, and behaves better. It acheives this by adding
-        	Header and/or Footer Views to the ListView.
-        -->
-        <attr format="reference|boolean" name="ptrListViewExtrasEnabled"/>
-
-        <!--
-        	Whether the Drawable should be continually rotated as you pull. This only
-        	takes effect when using the 'Rotate' Animation Style.
-        -->
-        <attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/>
-
-        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
-        <attr format="reference|color" name="ptrAdapterViewBackground"/>
-        <attr format="reference" name="ptrDrawableTop"/>
-        <attr format="reference" name="ptrDrawableBottom"/>
-    </declare-styleable>
-    <declare-styleable name="TagFlowLayout">
-        <attr format="boolean" name="auto_select_effect"/>
-        <attr format="integer" name="max_select"/>
-        <attr name="gravity">
-            <enum name="left" value="-1"/>
-            <enum name="center" value="0"/>
-            <enum name="right" value="1"/>
-        </attr>
-    </declare-styleable>
-    <declare-styleable name="innerrect">
-        <attr format="dimension" name="inner_width"/>
-        <attr format="dimension" name="inner_height"/>
-        <attr format="dimension" name="inner_margintop"/>
-        <attr format="color" name="inner_corner_color"/>
-        <attr format="dimension" name="inner_corner_length"/>
-        <attr format="dimension" name="inner_corner_width"/>
-        <attr format="reference" name="inner_scan_bitmap"/>
-        <attr format="integer" name="inner_scan_speed"/>
-        <attr format="boolean" name="inner_scan_iscircle"/>
-    </declare-styleable>
     <dimen name="divider_decoration">1px</dimen>
     <dimen name="header_footer_left_right_padding">24dp</dimen>
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
@@ -484,18 +384,32 @@
         <!-- Dialog进入及退出动画 -->
         <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
     </style>
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
     </style>
     <style name="CnCnScrollView">
         <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
+    </style>
+    <style name="MyAppTheme" parent="@style/AppTheme">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="windowActionBar">false</item>
+        <!--防止使用默认主题-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <!--<item name="android:windowAnimationStyle">@style/Bright.Activity.Animation.Right</item>-->
+    </style>
+    <style name="OverflowMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <!-- 修改竖直方向上与屏幕顶端的距离为50dp -->
+        <item name="android:dropDownVerticalOffset">50dp</item>
+        <!-- 修改水平方向上与屏幕右端的距离为10dp -->
+        <item name="android:dropDownHorizontalOffset">30dp</item>
     </style>
     <style name="ProgressDialogTheme" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -505,6 +419,11 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="Toolbar.TitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">15sp</item><!--子标题字体大小-->
+        <item name="android:textColor">@color/colorTitle</item><!--子标题字体颜色-->
+        <!--<item name="actionMenuTextAppearance">@style/AppTheme.ActionBar.MenuTextStyle</item>-->
     </style>
     <style mce_bogus="1" name="dialogWindowAnim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/dialog_in</item>
@@ -518,4 +437,116 @@
         <item name="android:windowBackground">@color/dialog_bg</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+    <declare-styleable name="CircleProgress">
+        <attr format="integer" name="max"/>
+        <attr format="dimension" name="round_width"/>
+        <attr format="color" name="round_color"/>
+        <attr format="color" name="progress_color"/>
+        <attr format="dimension" name="text_size"/>
+        <attr format="color" name="text_color"/>
+        <attr name="style">
+            <enum name="STROKE" value="1"/>
+            <enum name="FILL" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="EaseImageView">
+        <attr format="color" name="ease_border_color"/>
+        <attr format="dimension" name="ease_border_width"/>
+        <attr format="integer" name="ease_press_alpha"/>
+        <attr format="color" name="ease_press_color"/>
+        <attr format="dimension" name="ease_radius"/>
+        <attr format="enum" name="ease_shape_type">
+            <enum name="none" value="0"/>
+            <enum name="round" value="1"/>
+            <enum name="rectangle" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="PullToRefresh">
+        
+        
+        <attr format="reference|color" name="ptrRefreshableViewBackground"/>
+
+        
+        <attr format="reference|color" name="ptrHeaderBackground"/>
+
+        
+        <attr format="reference|color" name="ptrHeaderTextColor"/>
+
+        
+        <attr format="reference|color" name="ptrHeaderSubTextColor"/>
+
+        
+        <attr name="ptrMode">
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
+
+            
+            <flag name="pullDownFromTop" value="0x1"/>
+            <flag name="pullUpFromBottom" value="0x2"/>
+        </attr>
+
+        
+        <attr format="reference|boolean" name="ptrShowIndicator"/>
+
+        
+        <attr format="reference" name="ptrDrawable"/>
+
+        
+        <attr format="reference" name="ptrDrawableStart"/>
+
+        
+        <attr format="reference" name="ptrDrawableEnd"/>
+
+        
+        <attr format="reference|boolean" name="ptrOverScroll"/>
+
+        
+        <attr format="reference" name="ptrHeaderTextAppearance"/>
+
+        
+        <attr format="reference" name="ptrSubHeaderTextAppearance"/>
+
+        
+        <attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0"/>
+            <flag name="flip" value="0x1"/>
+        </attr>
+
+        
+        <attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/>
+
+        
+        <attr format="reference|boolean" name="ptrListViewExtrasEnabled"/>
+
+        
+        <attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/>
+
+        
+        <attr format="reference|color" name="ptrAdapterViewBackground"/>
+        <attr format="reference" name="ptrDrawableTop"/>
+        <attr format="reference" name="ptrDrawableBottom"/>
+    </declare-styleable>
+    <declare-styleable name="TagFlowLayout">
+        <attr format="boolean" name="auto_select_effect"/>
+        <attr format="integer" name="max_select"/>
+        <attr name="gravity">
+            <enum name="left" value="-1"/>
+            <enum name="center" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="innerrect">
+        <attr format="dimension" name="inner_width"/>
+        <attr format="dimension" name="inner_height"/>
+        <attr format="dimension" name="inner_margintop"/>
+        <attr format="color" name="inner_corner_color"/>
+        <attr format="dimension" name="inner_corner_length"/>
+        <attr format="dimension" name="inner_corner_width"/>
+        <attr format="reference" name="inner_scan_bitmap"/>
+        <attr format="integer" name="inner_scan_speed"/>
+        <attr format="boolean" name="inner_scan_iscircle"/>
+    </declare-styleable>
 </resources>

@@ -1,7 +1,7 @@
 <resources>
 
     <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
-    <style name="AppTheme" parent="@style/Theme.Design.NoActionBar">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
@@ -9,6 +9,7 @@
     </style>
 
     <style name="MyAppTheme" parent="@style/AppTheme">
+        <item name="android:textColorPrimary">@color/white</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="windowActionBar">false</item>
         <!--防止使用默认主题-->
@@ -27,6 +28,7 @@
     <style name="Toolbar.TitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">15sp</item><!--子标题字体大小-->
         <item name="android:textColor">@color/colorTitle</item><!--子标题字体颜色-->
+        <!--<item name="actionMenuTextAppearance">@style/AppTheme.ActionBar.MenuTextStyle</item>-->
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">

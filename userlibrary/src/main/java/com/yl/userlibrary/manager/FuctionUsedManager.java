@@ -50,8 +50,14 @@ public class FuctionUsedManager extends BaseGroupListManager<UsedLogBean> {
             query.findObjects(new FindListener<UsedLogBean>() {
                 @Override
                 public void done(List<UsedLogBean> list, BmobException e) {
-                    da.addAll(list);
-                    subscriber.onNext(da);
+                    if (list==null){
+                        subscriber.onError(new Throwable("未知错误"));
+                    }else {
+                        da.addAll(list);
+                        subscriber.onNext(list);
+                    }
+
+
                     subscriber.onCompleted();
                 }
             });

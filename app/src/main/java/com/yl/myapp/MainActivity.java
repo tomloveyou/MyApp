@@ -83,6 +83,7 @@ import java.util.List;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FetchUserInfoListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 @Route(path = ARouterConstant.ACTIVITY_MAIN_ACTIVITY)
@@ -149,34 +150,42 @@ public class MainActivity extends AppCompatActivity
         usernickname = navigationView.getHeaderView(0).findViewById(R.id.user_nickname);
         usersign = navigationView.getHeaderView(0).findViewById(R.id.user_sign);
         setSupportActionBar(toolbar);
-        bmobUser = BmobUser.getCurrentUser(UserinfoBean.class);
 
-        Glide.with(this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
-            @Override
-            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                header_bg_ll.setBackground(resource);
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) resource;
-                Palette.from(bitmapDrawable.getBitmap()).generate(new Palette.PaletteAsyncListener() {
-                    @Override
-                    public void onGenerated(Palette palette) {
-                        //记得判空
-                        if (palette == null) return;
-                        //palette取色不一定取得到某些特定的颜色，这里通过取多种颜色来避免取不到颜色的情况
-                        if (palette.getDarkVibrantColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
-                            createLinearGradientBitmap(palette.getDarkVibrantColor(Color.TRANSPARENT), palette.getVibrantColor(Color.TRANSPARENT));
-                        } else if (palette.getDarkMutedColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
-                            createLinearGradientBitmap(palette.getDarkMutedColor(Color.TRANSPARENT), palette.getMutedColor(Color.TRANSPARENT));
-                        } else {
-                            createLinearGradientBitmap(palette.getLightMutedColor(Color.TRANSPARENT), palette.getLightVibrantColor(Color.TRANSPARENT));
+    BmobUser.fetchUserInfo(new FetchUserInfoListener<BmobUser>() {
+        @Override
+        public void done(BmobUser dd, BmobException e) {
+            bmobUser = UserinfoBean.getCurrentUser(UserinfoBean.class);
+            if (bmobUser==null)return;
+            Glide.with(MainActivity.this).load(bmobUser.getHead_bg_url()).into(new SimpleTarget<Drawable>() {
+                @Override
+                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                    header_bg_ll.setBackground(resource);
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) resource;
+                    Palette.from(bitmapDrawable.getBitmap()).generate(new Palette.PaletteAsyncListener() {
+                        @Override
+                        public void onGenerated(Palette palette) {
+                            //记得判空
+                            if (palette == null) return;
+                            //palette取色不一定取得到某些特定的颜色，这里通过取多种颜色来避免取不到颜色的情况
+                            if (palette.getDarkVibrantColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
+                                createLinearGradientBitmap(palette.getDarkVibrantColor(Color.TRANSPARENT), palette.getVibrantColor(Color.TRANSPARENT));
+                            } else if (palette.getDarkMutedColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
+                                createLinearGradientBitmap(palette.getDarkMutedColor(Color.TRANSPARENT), palette.getMutedColor(Color.TRANSPARENT));
+                            } else {
+                                createLinearGradientBitmap(palette.getLightMutedColor(Color.TRANSPARENT), palette.getLightVibrantColor(Color.TRANSPARENT));
+                            }
                         }
-                    }
-                });
-            }
-        });
-        RequestOptions requestOptions = new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
-        Glide.with(this).load(bmobUser.getAvator_url()).apply(requestOptions).into(imageView);
-        usernickname.setText(bmobUser.getNickname());
-        usersign.setText(bmobUser.getPersonal_sign());
+                    });
+                }
+            });
+            RequestOptions requestOptions = new RequestOptions().placeholder(R.mipmap.user_defaul_avator);
+            Glide.with(MainActivity.this).load(bmobUser.getAvator_url()).apply(requestOptions).into(imageView);
+            usernickname.setText(bmobUser.getNickname());
+            usersign.setText(bmobUser.getPersonal_sign());
+        }
+    });
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

@@ -22,6 +22,7 @@ public abstract class BaseTitleBarActivity<T extends BasePresenter> extends Base
         ViewGroup superContentView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_base, (ViewGroup) contentView, false);
         mToolbar = (Toolbar) superContentView.findViewById(R.id.toolbar);
         mToolbar.setTitle("");//先置空后面设置title才有用
+        mToolbar.setNavigationIcon(R.drawable.back);
         mToolbar.setTitleTextColor(getResources().getColor(R.color.colorTitle));
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

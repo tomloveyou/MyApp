@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <EditText
+        android:background="@android:drawable/edit_text"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:id="@+id/activity_user_change_info_edit"

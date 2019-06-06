@@ -1,23 +1,23 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
+ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
 	package
 		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:2:11-42
 		INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
 		INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
-		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
+		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
 		INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
-		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-13:12
+		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:1-8:12
 		INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:1:11-69
@@ -29,14 +29,6 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:5:5-75
 	android:name
 		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:5:22-73
-application
-ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:7:5-11:19
-	android:supportsRtl
-		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:10:9-35
-	android:label
-		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:9:9-41
-	android:allowBackup
-		ADDED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml:8:9-35
 uses-sdk
 INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\AndroidProject\MyApp\devlib\src\main\AndroidManifest.xml
