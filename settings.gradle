@@ -1,1 +1,1 @@
-include ':app',':devlib',':picture_library',':ucrop', ':userlibrary'
+include ':app',':devlib',':picture_library',':ucrop', ':userlibrary', ':triplibrary'

@@ -1,7 +1,7 @@
 ext {
 
     isUserModuleApplication = false  //false:作为Lib组件存在， true:作为application存在，这个不建议改
-
+    isTripModuleApplication= true//false:作为Lib组件存在， true:作为application存在，这个不建议改
     android = [
             compileSdkVersion: 28,
             buildToolsVersion: "28.0.3",

@@ -75,7 +75,9 @@ dependencies {
     if (!rootProject.ext.isUserModuleApplication){
         implementation project(':userlibrary')
     }
-
+    if (!rootProject.ext.isTripModuleApplication){
+        implementation project(':triplibrary')
+    }
     implementation 'com.google.code.gson:gson:2.8.5'
 
     //java注解
