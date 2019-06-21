@@ -24,7 +24,7 @@ public abstract class BaseGroupListManager<T> implements IGroupManager<T> {
             @Override
             public Observable<List<T>> call(ListData<T> listData) {
                     List<T> list = listData.list;
-                currentPage = 2;
+                currentPage=1;
                 if (list != null && list.size() > 0) {
                     //setTotalCount(listData.size);//暂不做分页总数限制（如需要,解除注释@link XListGroupPresenter.class,ListGroupPresenter.class）
                     return Observable.just(list);

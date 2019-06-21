@@ -1,5 +1,6 @@
 package com.standards.library.base;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,6 +31,19 @@ public abstract class BaseFragment extends RxFragment {
     private LinearLayout superView;
     private View view;
     private ProgressDialog progressDialog;
+    protected Context mContext;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext=context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mContext=null;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

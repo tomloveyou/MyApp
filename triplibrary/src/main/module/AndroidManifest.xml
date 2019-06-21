@@ -30,6 +30,7 @@
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="${applicationId}.BmobContentProvider"/>
+        <activity android:name=".ui.activity.LanscadeDetailActivity"/>
     </application>
 
 </manifest>

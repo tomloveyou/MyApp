@@ -7,7 +7,9 @@
     <string name="load_more_error">加载失败[%d]</string>
 
     <string name="load_more_ing">正在加载数据</string>
-
+    <string name="brvah_loading">@string/load_more_ing</string>
+    <string name="brvah_load_failed">加载失败，请点我重试</string>
+    <string name="brvah_load_end">没有更多数据</string>
     <!--时间格式化-->
     <string name="str_yesterday">昨天</string>
     <string name="str_hoursago">小时前</string>

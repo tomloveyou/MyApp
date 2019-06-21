@@ -141,13 +141,13 @@ public class ListGroupPresenter<T> implements IGroupPresenter<T> {
                 });
     }
 
-    private boolean canLoadMoreData() {
-        if (mManager.getTotalCount() > mAdapter.getDataCount()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    private boolean canLoadMoreData() {
+//        if (mManager.getTotalCount() > mAdapter.getDataCount()) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     private void loadMoreDataFail(ErrorThrowable throwable) {
         if (ReturnCodeConfig.getInstance().isEmptyCode(throwable.code)) {

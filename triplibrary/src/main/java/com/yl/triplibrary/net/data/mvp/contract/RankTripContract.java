@@ -14,5 +14,6 @@ public interface RankTripContract {
 
     interface RankTripPresenter extends IPresenter {
         void getData();
+        void getData(String url);
     }
 }

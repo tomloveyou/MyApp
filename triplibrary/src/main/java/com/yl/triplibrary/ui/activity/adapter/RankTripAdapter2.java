@@ -49,5 +49,4 @@ public class RankTripAdapter2 extends BaseQuickAdapter<RankTripZone, BaseViewHol
         Glide.with(mContext).load(cookie).into(itemRankImg);
     }
 
-
 }

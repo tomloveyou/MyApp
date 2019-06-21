@@ -2,6 +2,8 @@ package com.standards.library.base;
 
 import android.app.Activity;
 
+import androidx.fragment.app.Fragment;
+
 import com.standards.library.rx.CSubscriber;
 import com.standards.library.rx.ErrorThrowable;
 
@@ -26,7 +28,10 @@ public abstract class BasePresenter<T extends ILoadingView> implements IPresente
         this.mView = (T) activity;
         this.mActivity = new WeakReference<>(activity);
     }
-
+    public BasePresenter(Fragment fragment) {
+        this.mView = (T) fragment;
+        this.mActivity = new WeakReference<>(fragment.getActivity());
+    }
     public BasePresenter(T view, Activity activity) {
         mView = view;
         this.mActivity = new WeakReference<>(activity);

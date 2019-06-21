@@ -112,15 +112,15 @@ public class XListGroupPresenter<T> implements IGroupPresenter<T> {
         if (!mShouldLoadMoreFlag || mIsLoadingMoreFlag) {
             return;
         }
-//        if (mNoMoreDataFlag || !canLoadMoreData()) {//暂不做分页总数限制（如需要,解除注释@link BaseGroupListManager.class）
-//            mAdapter.noMoreDataCallback();
-//            return;
-//        }
-        if (mNoMoreDataFlag || mManager.getCurrentPage() > 2) {//页数大约2时
-            mListView.setNoMore(true);
+        if (mNoMoreDataFlag || !canLoadMoreData()) {//暂不做分页总数限制（如需要,解除注释@link BaseGroupListManager.class）
             mAdapter.noMoreDataCallback();
             return;
         }
+//        if (mNoMoreDataFlag || mManager.getCurrentPage() > 2) {//页数大约2时
+//            mListView.setNoMore(true);
+//            mAdapter.noMoreDataCallback();
+//            return;
+//        }
         mManager.loadMoreData(mContext)
                 .subscribe(new CSubscriber<List<T>>() {
                     @Override
