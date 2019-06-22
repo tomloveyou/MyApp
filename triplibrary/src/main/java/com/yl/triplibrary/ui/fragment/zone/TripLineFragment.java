@@ -1,6 +1,8 @@
 package com.yl.triplibrary.ui.fragment.zone;
 
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +22,8 @@ import com.yl.triplibrary.net.data.mvp.contract.TripLineContract;
 import com.yl.triplibrary.net.data.mvp.module.TripLineEntity;
 import com.yl.triplibrary.net.data.mvp.presenter.RankTripPresenter;
 import com.yl.triplibrary.net.data.mvp.presenter.TripLinePresenter;
+import com.yl.triplibrary.ui.activity.TripFootPrintDetailAcitivity;
+import com.yl.triplibrary.ui.activity.TripLineDetailAcitivity;
 import com.yl.triplibrary.ui.activity.adapter.RankTripAdapter2;
 import com.yl.triplibrary.ui.activity.adapter.TripLineAdapter;
 
@@ -82,7 +86,15 @@ public class TripLineFragment extends BaseFuncFragment<TripLinePresenter> implem
         tripAdapter2.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                Intent intent = new Intent(mContext, TripLineDetailAcitivity.class);
+                try {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("url", tripAdapter2.getItem(position).getGoto_ur());
+                    intent.putExtras(bundle);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                startActivity(intent);
             }
         });
     }

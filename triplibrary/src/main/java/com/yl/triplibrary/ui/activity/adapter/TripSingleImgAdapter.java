@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,26 +17,23 @@ import com.bumptech.glide.load.model.Headers;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.module.ImgInfoEntity;
-import com.yl.triplibrary.net.data.mvp.module.LanScadeDetailHeadEntity;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanScadeDetailBodyImgAdapter.RecyclerViewItemHolder> {
+public class TripSingleImgAdapter extends DelegateAdapter.Adapter<TripSingleImgAdapter.RecyclerViewItemHolder> {
 
     private Context mContext;
     private LayoutHelper mHelper;
-    private List<ImgInfoEntity> mDatas;
+    private ImgInfoEntity mDatas;
 
-
-    public LanScadeDetailBodyImgAdapter(Context mContext, LayoutHelper mHelper, List<ImgInfoEntity> mDatas) {
+    public TripSingleImgAdapter(Context mContext, LayoutHelper mHelper, ImgInfoEntity mDatas) {
         this.mContext = mContext;
         this.mHelper = mHelper;
         this.mDatas = mDatas;
     }
-
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
@@ -54,12 +50,12 @@ public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanSca
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewItemHolder holder, final int position) {
-        if (mDatas.get(position).getImg_url()!=null&&!"".equals(mDatas.get(position).getImg_url())){
-            GlideUrl cookie = new GlideUrl(mDatas.get(position).getImg_url(), new Headers() {
+        if (mDatas.getImg_url()!=null&&!"".equals(mDatas.getImg_url())){
+            GlideUrl cookie = new GlideUrl(mDatas.getImg_url(), new Headers() {
                 @Override
                 public Map<String, String> getHeaders() {
                     Map<String, String> head=new HashMap<>();
-                    head.put("Referer", mDatas.get(position).getSource_url());
+                    head.put("Referer", mDatas.getSource_url());
                     return head;
                 }
             });
@@ -75,7 +71,7 @@ public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanSca
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return 1;
     }
 
 

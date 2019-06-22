@@ -1,4 +1,4 @@
-package com.yl.triplibrary.ui.activity.adapter;
+package com.yl.triplibrary.ui.activity.adapter.line;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,27 +17,35 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.Headers;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
-import com.yl.triplibrary.net.data.mvp.module.ImgInfoEntity;
+import com.yl.triplibrary.net.data.mvp.module.ImaInfoTitleEntity;
 import com.yl.triplibrary.net.data.mvp.module.LanScadeDetailHeadEntity;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
-public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanScadeDetailBodyImgAdapter.RecyclerViewItemHolder> {
+public class TripLinelDetailHeadAdapter extends DelegateAdapter.Adapter<TripLinelDetailHeadAdapter.RecyclerViewItemHolder> {
 
     private Context mContext;
     private LayoutHelper mHelper;
-    private List<ImgInfoEntity> mDatas;
+    private ImaInfoTitleEntity headEntity;
 
 
-    public LanScadeDetailBodyImgAdapter(Context mContext, LayoutHelper mHelper, List<ImgInfoEntity> mDatas) {
+    public TripLinelDetailHeadAdapter(Context mContext, LayoutHelper mHelper) {
         this.mContext = mContext;
         this.mHelper = mHelper;
-        this.mDatas = mDatas;
+
     }
 
+    public TripLinelDetailHeadAdapter(Context mContext, LayoutHelper mHelper, ImaInfoTitleEntity headEntity) {
+        this.mContext = mContext;
+        this.mHelper = mHelper;
+        this.headEntity = headEntity;
+    }
+
+    public void setHeadEntity(ImaInfoTitleEntity headEntity) {
+        this.headEntity = headEntity;
+    }
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
@@ -48,18 +56,19 @@ public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanSca
     @Override
     public RecyclerViewItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_lanscade_head_img_layout, parent, false);
+                .inflate(R.layout.item_trip_line_detail_head_layout, parent, false);
         return new RecyclerViewItemHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewItemHolder holder, final int position) {
-        if (mDatas.get(position).getImg_url()!=null&&!"".equals(mDatas.get(position).getImg_url())){
-            GlideUrl cookie = new GlideUrl(mDatas.get(position).getImg_url(), new Headers() {
+        if (headEntity!=null){
+            holder.headTitle.setText(headEntity.getTitle());
+            GlideUrl cookie = new GlideUrl(headEntity.getImg_url(), new Headers() {
                 @Override
                 public Map<String, String> getHeaders() {
                     Map<String, String> head=new HashMap<>();
-                    head.put("Referer", mDatas.get(position).getSource_url());
+                    head.put("Referer", headEntity.getSource_url());
                     return head;
                 }
             });
@@ -75,9 +84,8 @@ public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanSca
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return 1;
     }
-
 
 
     /**
@@ -85,11 +93,13 @@ public class LanScadeDetailBodyImgAdapter extends DelegateAdapter.Adapter<LanSca
      */
     class RecyclerViewItemHolder extends RecyclerView.ViewHolder {
         private ImageView headImg;
+        private TextView headTitle;
 
 
         public RecyclerViewItemHolder(View itemView) {
             super(itemView);
             headImg = (ImageView)itemView. findViewById(R.id.head_img);
+            headTitle = (TextView) itemView. findViewById(R.id.head_title);
 
         }
     }

@@ -47,7 +47,6 @@ public class TripStrategyFragment extends BaseFuncFragment<TripStrategyPresenter
     private RecyclerView myRecyclerView;
     private SmartRefreshLayout smartRefreshLayout;
     private DelegateAdapter adapters;
-    private List<TripStrategyEntity> da = new ArrayList<>();
 
     @Override
     protected TripStrategyPresenter getPresenter() {

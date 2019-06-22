@@ -1,4 +1,4 @@
-package com.yl.triplibrary.ui.activity.adapter;
+package com.yl.triplibrary.ui.activity.adapter.line;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,14 +15,14 @@ import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
 
 
-public class TripStrategyTitleAdapter extends DelegateAdapter.Adapter<TripStrategyTitleAdapter.RecyclerViewItemHolder> {
+public class TripDashLineUnderTitleAdapter extends DelegateAdapter.Adapter<TripDashLineUnderTitleAdapter.RecyclerViewItemHolder> {
 
     private Context mContext;
     private LayoutHelper mHelper;
     private String title;
 
 
-    public TripStrategyTitleAdapter(Context mContext, LayoutHelper mHelper, String title) {
+    public TripDashLineUnderTitleAdapter(Context mContext, LayoutHelper mHelper, String title) {
         this.mContext = mContext;
         this.mHelper = mHelper;
         this.title = title;
@@ -41,7 +41,7 @@ public class TripStrategyTitleAdapter extends DelegateAdapter.Adapter<TripStrate
     @Override
     public RecyclerViewItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_lanscade_hasbackground_title_layout, parent, false);
+                .inflate(R.layout.item_dashline_under_title_layout, parent, false);
         return new RecyclerViewItemHolder(view);
     }
 

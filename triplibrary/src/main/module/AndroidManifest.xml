@@ -31,6 +31,8 @@
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="${applicationId}.BmobContentProvider"/>
         <activity android:name=".ui.activity.LanscadeDetailActivity"/>
+        <activity android:name=".ui.activity.TripFootPrintDetailAcitivity"/>
+        <activity android:name=".ui.activity.TripLineDetailAcitivity"/>
     </application>
 
 </manifest>

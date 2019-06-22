@@ -1,4 +1,4 @@
-package com.yl.triplibrary.ui.activity.adapter;
+package com.yl.triplibrary.ui.activity.adapter.line;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,23 +13,25 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
+import com.yl.triplibrary.net.data.mvp.module.PreBookInfoEntity;
+import com.yl.triplibrary.net.data.mvp.module.TripProfileEntity;
+
+import java.util.List;
 
 
-public class TripStrategyTitleAdapter extends DelegateAdapter.Adapter<TripStrategyTitleAdapter.RecyclerViewItemHolder> {
+public class TripProfileAdapter extends DelegateAdapter.Adapter<TripProfileAdapter.RecyclerViewItemHolder> {
 
     private Context mContext;
     private LayoutHelper mHelper;
-    private String title;
+    private List<TripProfileEntity> preBookInfoEntityList;
 
 
-    public TripStrategyTitleAdapter(Context mContext, LayoutHelper mHelper, String title) {
+
+    public TripProfileAdapter(Context mContext, LayoutHelper mHelper, List<TripProfileEntity> preBookInfoEntityList) {
         this.mContext = mContext;
         this.mHelper = mHelper;
-        this.title = title;
-    }
+        this.preBookInfoEntityList = preBookInfoEntityList;
 
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     @Override
@@ -41,16 +43,16 @@ public class TripStrategyTitleAdapter extends DelegateAdapter.Adapter<TripStrate
     @Override
     public RecyclerViewItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_lanscade_hasbackground_title_layout, parent, false);
+                .inflate(R.layout.item_trip_profile_layout, parent, false);
         return new RecyclerViewItemHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewItemHolder holder, final int position) {
-        if (title!=null){
-            holder.headTitle.setText(title);
+        if (preBookInfoEntityList != null) {
+            holder.itemTripLinePrebookName.setText(preBookInfoEntityList.get(position).getLeft_text());
+            holder.itemTripLinePrebookValue.setText(preBookInfoEntityList.get(position).getRight_text());
         }
-
 
     }
 
@@ -61,22 +63,23 @@ public class TripStrategyTitleAdapter extends DelegateAdapter.Adapter<TripStrate
 
     @Override
     public int getItemCount() {
-        return 1;
+        return preBookInfoEntityList.size();
     }
+
 
 
     /**
      * 正常条目的item的ViewHolder
      */
     class RecyclerViewItemHolder extends RecyclerView.ViewHolder {
-
-        private TextView headTitle;
+        private TextView itemTripLinePrebookName;
+        private TextView itemTripLinePrebookValue;
 
 
         public RecyclerViewItemHolder(View itemView) {
             super(itemView);
-
-            headTitle = (TextView) itemView. findViewById(R.id.lanscade_detail_title);
+            itemTripLinePrebookName = (TextView) itemView.findViewById(R.id.item_tripprofile_name);
+            itemTripLinePrebookValue = (TextView) itemView.findViewById(R.id.item_tripprofilek_value);
 
         }
     }
