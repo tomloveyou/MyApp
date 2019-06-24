@@ -4,11 +4,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.ColumnLayoutHelper;
+import com.alibaba.android.vlayout.layout.FixLayoutHelper;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
+import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.standards.library.base.BaseFuncFragment;
 import com.yl.triplibrary.R;
+import com.yl.triplibrary.net.data.mvp.contract.TripHomeMainContract;
+import com.yl.triplibrary.net.data.mvp.module.TripHomeMainEntity;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeBannerAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeGvAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeRecomentAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeSortSeachAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripSearchAdapter;
 
-public class TripHomeFragment extends BaseFuncFragment {
+public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainContract.TripHomeMainView {
     private RecyclerView myRecyclerView;
     private SmartRefreshLayout smartRefreshLayout;
     private DelegateAdapter adapters;
@@ -30,6 +42,9 @@ public class TripHomeFragment extends BaseFuncFragment {
         myRecyclerView.setLayoutManager(layoutManager);
 
         adapters = new DelegateAdapter(layoutManager, false);
+        ColumnLayoutHelper searchHelp = new ColumnLayoutHelper();
+        TripSearchAdapter searchAdapter=new TripSearchAdapter(mContext,searchHelp);
+        adapters.addAdapter(searchAdapter);
         myRecyclerView.setAdapter(adapters);
        // mPresenter.getLanScadeDeailData(true);
     }
@@ -37,5 +52,33 @@ public class TripHomeFragment extends BaseFuncFragment {
     @Override
     public void setListener() {
 
+    }
+
+    @Override
+    public void getTripHomeMain(TripHomeMainEntity data) {
+        /*banner*/
+        if (data.getBanners_list()!=null&&data.getBanners_list().size()>0){
+            SingleLayoutHelper bannerHelp = new SingleLayoutHelper();
+            TripHomeBannerAdapter bannerAdapter=new TripHomeBannerAdapter(mContext,bannerHelp,data.getBanners_list());
+            adapters.addAdapter(bannerAdapter);
+        }
+        /*设置九宫格数据*/
+        if (data.getGrid_buttons_list()!=null&&data.getGrid_buttons_list().size()>0){
+            GridLayoutHelper gvHelp = new GridLayoutHelper(4);
+            TripHomeGvAdapter gvAdapter=new TripHomeGvAdapter(mContext,gvHelp,data.getGrid_buttons_list());
+            adapters.addAdapter(gvAdapter);
+        }
+        /*设置分类搜索数据*/
+        if (data.getConoditionEntity()!=null){
+            SingleLayoutHelper sortSearchHelp = new SingleLayoutHelper();
+            TripHomeSortSeachAdapter sortSearchAdapter=new TripHomeSortSeachAdapter(mContext,sortSearchHelp,data.getConoditionEntity());
+            adapters.addAdapter(sortSearchAdapter);
+        }
+        /*设置推荐数据*/
+        if (data.getRecomment_list()!=null&&data.getRecomment_list().size()>0){
+            GridLayoutHelper bannerHelp = new GridLayoutHelper(4);
+            TripHomeRecomentAdapter bannerAdapter=new TripHomeRecomentAdapter(mContext,bannerHelp,data.getRecomment_list());
+            adapters.addAdapter(bannerAdapter);
+        }
     }
 }

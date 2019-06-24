@@ -52,6 +52,7 @@ public class Constant {
         int typeSticky = 8;         //指示器
         int typeFooter = 9;         //底部
         int typeGvSecond = 10;      //九宫格
+        int typeSearch = 1;         //搜索
     }
 
     public class status{

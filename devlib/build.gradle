@@ -99,6 +99,7 @@ dependencies {
     api('com.alibaba.android:vlayout:1.2.8@aar') {
         transitive = true
     }
+    api 'com.ms:Banner-androidx:2.3.15'
     api rootProject.ext.dependencies["YCUtilsLib"]
     api files('libs\\BmobSDK_3.7.4_20190523.jar')
     api 'cn.bmob.android:http-legacy:1.0'

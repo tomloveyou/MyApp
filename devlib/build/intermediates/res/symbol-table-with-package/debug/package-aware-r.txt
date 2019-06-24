@@ -1578,6 +1578,10 @@ id BallSpinFadeLoader
 id BallTrianglePath
 id BallZigZag
 id BallZigZagDeflect
+id BaseQuickAdapter_databinding_support
+id BaseQuickAdapter_dragging_support
+id BaseQuickAdapter_swiping_support
+id BaseQuickAdapter_viewholder_support
 id CTRL
 id CubeTransition
 id FILL
@@ -1755,6 +1759,10 @@ id listview_header_content
 id listview_header_progressbar
 id listview_header_text
 id ll_tap
+id load_more_load_end_view
+id load_more_load_fail_view
+id load_more_loading_view
+id loading_progress
 id loading_text
 id lv_ring
 id mainframe_error_container_id
@@ -1874,6 +1882,7 @@ id stretch
 id submenuarrow
 id submit_area
 id tabMode
+id tag_layout_helper_bg
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
@@ -1906,6 +1915,7 @@ id tvLoadHint
 id tvLoadMsg
 id tvMore
 id tv_msg
+id tv_prompt
 id tv_tab_title
 id uniform
 id unlabeled
@@ -1975,6 +1985,7 @@ layout activity_base
 layout activity_base_web
 layout activity_list_style
 layout agentweb_error_page
+layout brvah_quick_view_load_more
 layout cube_ptr_classic_default_header
 layout cube_ptr_simple_loading
 layout design_bottom_navigation_item
@@ -2131,6 +2142,9 @@ string agentweb_trickter
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
+string brvah_load_end
+string brvah_load_failed
+string brvah_loading
 string character_counter_content_description
 string character_counter_pattern
 string cube_ptr_hours_ago
