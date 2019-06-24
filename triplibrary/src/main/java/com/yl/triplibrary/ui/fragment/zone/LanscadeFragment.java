@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -22,16 +20,8 @@ import com.yl.triplibrary.net.data.mvp.presenter.RankTripPresenter;
 import com.yl.triplibrary.ui.activity.LanscadeDetailActivity;
 import com.yl.triplibrary.ui.activity.adapter.RankTripAdapter2;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.util.V;
 
 /**
  * 热门景点
@@ -53,7 +43,7 @@ public class LanscadeFragment extends BaseFuncFragment<RankTripPresenter> implem
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_lanscade;
+        return R.layout.fragment_refresh_recycleview;
     }
 
     @Override

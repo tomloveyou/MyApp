@@ -1,38 +1,23 @@
 package com.yl.triplibrary.ui.fragment.zone;
 
 
-import android.view.View;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-import com.standards.library.adapter.BaseQuickAdapter;
 import com.standards.library.base.BaseFuncFragment;
 import com.yl.triplibrary.R;
-import com.yl.triplibrary.net.data.manager.entity.RankTripZone;
-import com.yl.triplibrary.net.data.mvp.contract.RankTripContract;
 import com.yl.triplibrary.net.data.mvp.contract.TripStrategyContract;
 import com.yl.triplibrary.net.data.mvp.module.TripStrategyEntity;
-import com.yl.triplibrary.net.data.mvp.presenter.RankTripPresenter;
 import com.yl.triplibrary.net.data.mvp.presenter.TripStrategyPresenter;
-import com.yl.triplibrary.ui.activity.adapter.RankTripAdapter2;
 import com.yl.triplibrary.ui.activity.adapter.TipStratygyImgAdapter;
 import com.yl.triplibrary.ui.activity.adapter.TripStrategyTitleAdapter;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,7 +40,7 @@ public class TripStrategyFragment extends BaseFuncFragment<TripStrategyPresenter
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_lanscade;
+        return R.layout.fragment_refresh_recycleview;
     }
 
     @Override

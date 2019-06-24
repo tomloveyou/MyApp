@@ -6,26 +6,17 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.standards.library.adapter.BaseQuickAdapter;
 import com.standards.library.base.BaseFuncFragment;
 import com.yl.triplibrary.R;
-import com.yl.triplibrary.net.data.manager.entity.RankTripZone;
-import com.yl.triplibrary.net.data.mvp.contract.RankTripContract;
 import com.yl.triplibrary.net.data.mvp.contract.TripWenDaContract;
 import com.yl.triplibrary.net.data.mvp.module.TripWenDaEntity;
-import com.yl.triplibrary.net.data.mvp.presenter.RankTripPresenter;
 import com.yl.triplibrary.net.data.mvp.presenter.TripWenDaPresenter;
-import com.yl.triplibrary.ui.activity.adapter.RankTripAdapter2;
 import com.yl.triplibrary.ui.activity.adapter.TripWenDaAdapter;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +40,7 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_lanscade;
+        return R.layout.fragment_refresh_recycleview;
     }
 
     @Override
