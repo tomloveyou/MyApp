@@ -27,6 +27,7 @@ import com.yl.triplibrary.net.data.mvp.module.ImaInfoTitleEntity;
 import com.yl.triplibrary.ui.activity.TripLineDetailAcitivity;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +37,8 @@ public class TripHomeBannerAdapter extends DelegateAdapter.Adapter<TripHomeBanne
 
     private Context mContext;
     private LayoutHelper mHelper;
-    private List<ImaInfoTitleEntity> mDatas;
-    private List<String> mTitles;
+    private List<ImaInfoTitleEntity> mDatas=new ArrayList<>();
+    private List<String> mTitles=new ArrayList<>();
     public TripHomeBannerAdapter(Context mContext, LayoutHelper mHelper, List<ImaInfoTitleEntity> mDatas) {
         this.mContext = mContext;
         this.mHelper = mHelper;
@@ -75,6 +76,7 @@ public class TripHomeBannerAdapter extends DelegateAdapter.Adapter<TripHomeBanne
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewItemHolder holder, final int position) {
+
         holder.banenr.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         holder.banenr.setIndicatorGravity(BannerConfig.CIRCLE_INDICATOR_TITLE);
         holder.banenr.setAutoPlay(true);

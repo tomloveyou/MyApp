@@ -34,8 +34,6 @@ public class TripHomeRecomentAdapter extends DelegateAdapter.Adapter<TripHomeRec
     private LayoutHelper mHelper;
     private List<TripHomeRecommnetEntity> mDatas;
 
-
-
     public TripHomeRecomentAdapter(Context mContext, LayoutHelper mHelper, List<TripHomeRecommnetEntity> mDatas) {
         this.mContext = mContext;
         this.mHelper = mHelper;
@@ -51,7 +49,7 @@ public class TripHomeRecomentAdapter extends DelegateAdapter.Adapter<TripHomeRec
     @Override
     public RecyclerViewItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_rank_trip_layout, parent, false);
+                .inflate(R.layout.item_landscade_recomment_layout, parent, false);
         return new RecyclerViewItemHolder(view);
     }
 
@@ -60,13 +58,12 @@ public class TripHomeRecomentAdapter extends DelegateAdapter.Adapter<TripHomeRec
         TripHomeRecommnetEntity rankTripZone=mDatas.get(position);
         if (rankTripZone!=null){
             holder.itemRankTitle.setText(mDatas.get(position).getTitle());
-            holder.itemRankDesc.setText(mDatas.get(position).getContent());
-            if (rankTripZone.getImgInfoEntity().getImg_url()!=null&!"".equals(rankTripZone.getImgInfoEntity().getImg_url())){//注意：头像url为空时会崩溃
-                GlideUrl cookie = new GlideUrl(rankTripZone.getImgInfoEntity().getImg_url(), new Headers() {
+            if (rankTripZone.getImg_url()!=null&!"".equals(rankTripZone.getImg_url())){//注意：头像url为空时会崩溃
+                GlideUrl cookie = new GlideUrl(rankTripZone.getImg_url(), new Headers() {
                     @Override
                     public Map<String, String> getHeaders() {
                         Map<String, String> head=new HashMap<>();
-                        head.put("Referer", rankTripZone.getImgInfoEntity().getSource_url());
+                        head.put("Referer", rankTripZone.getSource_url());
                         return head;
                     }
                 });
@@ -79,7 +76,7 @@ public class TripHomeRecomentAdapter extends DelegateAdapter.Adapter<TripHomeRec
                 Intent intent = new Intent(mContext, TripLineDetailAcitivity.class);
                 try {
                     Bundle bundle = new Bundle();
-                    bundle.putString("url", mDatas.get(position).getImgInfoEntity().getGoto_ur());
+                    bundle.putString("url", mDatas.get(position).getGoto_ur());
                     intent.putExtras(bundle);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -108,14 +105,12 @@ public class TripHomeRecomentAdapter extends DelegateAdapter.Adapter<TripHomeRec
      */
     class RecyclerViewItemHolder extends RecyclerView.ViewHolder {
         private TextView itemRankTitle;
-        private TextView itemRankDesc;
         private ImageView itemRankImg;
 
         public RecyclerViewItemHolder(View itemView) {
             super(itemView);
-            itemRankTitle = (TextView)itemView. findViewById(R.id.item_rank_title);
-            itemRankDesc = (TextView)itemView. findViewById(R.id.item_rank_desc);
-            itemRankImg = (ImageView) itemView.findViewById(R.id.item_rank_img);
+            itemRankTitle = (TextView)itemView. findViewById(R.id.recomment_title);
+            itemRankImg = (ImageView) itemView.findViewById(R.id.recomment_img);
         }
     }
 }

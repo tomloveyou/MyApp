@@ -18,7 +18,7 @@ import com.bumptech.glide.load.model.Headers;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.module.ImaInfoTitleEntity;
-import com.yl.triplibrary.net.data.mvp.module.TripHomeRecommnetEntity;
+
 
 import java.util.HashMap;
 import java.util.List;

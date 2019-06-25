@@ -6,6 +6,12 @@ public class ImaInfoTitleEntity extends ImgInfoEntity {
 
     public ImaInfoTitleEntity() {
     }
+    public ImaInfoTitleEntity(String title, String goto_ur) {
+        super(null,null,goto_ur);
+        this.title = title;
+
+
+    }
     public ImaInfoTitleEntity(String title, String img_url, String source_url) {
         super(img_url,source_url,null);
         this.title = title;

@@ -7,6 +7,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.ColumnLayoutHelper;
 import com.alibaba.android.vlayout.layout.FixLayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -14,6 +15,8 @@ import com.standards.library.base.BaseFuncFragment;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.contract.TripHomeMainContract;
 import com.yl.triplibrary.net.data.mvp.module.TripHomeMainEntity;
+import com.yl.triplibrary.net.data.mvp.presenter.TripHomeMainPresenter;
+import com.yl.triplibrary.ui.activity.adapter.LanScadeDetailBodyTitleAdapter;
 import com.yl.triplibrary.ui.activity.adapter.home.TripHomeBannerAdapter;
 import com.yl.triplibrary.ui.activity.adapter.home.TripHomeGvAdapter;
 import com.yl.triplibrary.ui.activity.adapter.home.TripHomeRecomentAdapter;
@@ -24,6 +27,7 @@ public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainCo
     private RecyclerView myRecyclerView;
     private SmartRefreshLayout smartRefreshLayout;
     private DelegateAdapter adapters;
+    private TripHomeMainPresenter tripHomeMainPresenter;
     @Override
     public int getLayoutId() {
         return R.layout.fragment_refresh_recycleview;
@@ -31,6 +35,7 @@ public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainCo
 
     @Override
     public void init() {
+        tripHomeMainPresenter=new TripHomeMainPresenter(this);
         myRecyclerView = (RecyclerView) findView(R.id.my_recycler_view);
         smartRefreshLayout = findView(R.id.refreshLayout);
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
@@ -46,6 +51,7 @@ public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainCo
         TripSearchAdapter searchAdapter=new TripSearchAdapter(mContext,searchHelp);
         adapters.addAdapter(searchAdapter);
         myRecyclerView.setAdapter(adapters);
+        tripHomeMainPresenter.getHomeTripData();
        // mPresenter.getLanScadeDeailData(true);
     }
 
@@ -74,11 +80,15 @@ public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainCo
             TripHomeSortSeachAdapter sortSearchAdapter=new TripHomeSortSeachAdapter(mContext,sortSearchHelp,data.getConoditionEntity());
             adapters.addAdapter(sortSearchAdapter);
         }
+        /*设置热门推荐title*/
+        SingleLayoutHelper hotTitleHelp = new SingleLayoutHelper();
+        LanScadeDetailBodyTitleAdapter hotTitleAdapter=new LanScadeDetailBodyTitleAdapter(mContext,hotTitleHelp,"热门推荐自驾游");
+        adapters.addAdapter(hotTitleAdapter);
         /*设置推荐数据*/
         if (data.getRecomment_list()!=null&&data.getRecomment_list().size()>0){
-            GridLayoutHelper bannerHelp = new GridLayoutHelper(4);
-            TripHomeRecomentAdapter bannerAdapter=new TripHomeRecomentAdapter(mContext,bannerHelp,data.getRecomment_list());
-            adapters.addAdapter(bannerAdapter);
+            LinearLayoutHelper recommntrHelp = new LinearLayoutHelper();
+            TripHomeRecomentAdapter recommntAdapter=new TripHomeRecomentAdapter(mContext,recommntrHelp,data.getRecomment_list());
+            adapters.addAdapter(recommntAdapter);
         }
     }
 }
