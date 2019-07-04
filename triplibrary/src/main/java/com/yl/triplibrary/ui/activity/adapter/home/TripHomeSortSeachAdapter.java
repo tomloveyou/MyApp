@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
+import com.standards.library.adapter.BaseQuickAdapter;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.module.TripHomeSortConoditionEntity;
@@ -33,6 +34,10 @@ public class TripHomeSortSeachAdapter extends DelegateAdapter.Adapter<TripHomeSo
     public TripHomeSortSeachAdapter(Context mContext, LayoutHelper mHelper, TripHomeSortConoditionEntity mDatas) {
         this.mContext = mContext;
         this.mHelper = mHelper;
+        this.mDatas = mDatas;
+    }
+
+    public void setmDatas(TripHomeSortConoditionEntity mDatas) {
         this.mDatas = mDatas;
     }
 
@@ -55,6 +60,12 @@ public class TripHomeSortSeachAdapter extends DelegateAdapter.Adapter<TripHomeSo
         holder.gvFilterName.setLayoutManager(gridLayoutManager);
         TripHomeSortSearchByTypeAdapter typeAdapter = new TripHomeSortSearchByTypeAdapter(new ArrayList<>());
         holder.gvFilterName.setAdapter(typeAdapter);
+        typeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                typeAdapter.setNewData(new ArrayList<>());
+            }
+        });
         holder.llCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

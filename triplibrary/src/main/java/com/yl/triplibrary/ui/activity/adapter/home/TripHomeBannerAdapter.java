@@ -77,8 +77,8 @@ public class TripHomeBannerAdapter extends DelegateAdapter.Adapter<TripHomeBanne
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewItemHolder holder, final int position) {
 
-        holder.banenr.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
-        holder.banenr.setIndicatorGravity(BannerConfig.CIRCLE_INDICATOR_TITLE);
+        holder.banenr.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+        holder.banenr.setIndicatorGravity(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         holder.banenr.setAutoPlay(true);
         holder.banenr.setPages(mDatas, new BannerViewHolder<ImaInfoTitleEntity>() {
             private ImageView imageView;
@@ -89,6 +89,7 @@ public class TripHomeBannerAdapter extends DelegateAdapter.Adapter<TripHomeBanne
 
             @Override
             public void onBind(Context context, int position, ImaInfoTitleEntity data) {
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 if (data.getImg_url()!=null&!"".equals(data.getImg_url())){//注意：头像url为空时会崩溃
                     GlideUrl cookie = new GlideUrl(data.getImg_url(), new Headers() {
                         @Override

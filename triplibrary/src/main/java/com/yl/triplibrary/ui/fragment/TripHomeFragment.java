@@ -10,8 +10,11 @@ import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
+import com.lcodecore.tkrefreshlayout.utils.DensityUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.standards.library.base.BaseFuncFragment;
+import com.standards.library.util.Util;
+import com.standards.library.util.Utils;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.contract.TripHomeMainContract;
 import com.yl.triplibrary.net.data.mvp.module.TripHomeMainEntity;
@@ -47,7 +50,7 @@ public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainCo
         myRecyclerView.setLayoutManager(layoutManager);
 
         adapters = new DelegateAdapter(layoutManager, false);
-        ColumnLayoutHelper searchHelp = new ColumnLayoutHelper();
+        FixLayoutHelper searchHelp = new FixLayoutHelper(FixLayoutHelper.TOP_LEFT,0,50);
         TripSearchAdapter searchAdapter=new TripSearchAdapter(mContext,searchHelp);
         adapters.addAdapter(searchAdapter);
         myRecyclerView.setAdapter(adapters);
@@ -71,12 +74,16 @@ public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainCo
         /*设置九宫格数据*/
         if (data.getGrid_buttons_list()!=null&&data.getGrid_buttons_list().size()>0){
             GridLayoutHelper gvHelp = new GridLayoutHelper(4);
+            int dp= DensityUtil.dp2px(mContext, 20);
+            gvHelp.setMargin(dp, dp, dp, dp);
+            gvHelp.setVGap(dp);
+            gvHelp.setHGap(dp);
             TripHomeGvAdapter gvAdapter=new TripHomeGvAdapter(mContext,gvHelp,data.getGrid_buttons_list());
             adapters.addAdapter(gvAdapter);
         }
         /*设置分类搜索数据*/
         if (data.getConoditionEntity()!=null){
-            SingleLayoutHelper sortSearchHelp = new SingleLayoutHelper();
+            StickyLayoutHelper sortSearchHelp = new StickyLayoutHelper();
             TripHomeSortSeachAdapter sortSearchAdapter=new TripHomeSortSeachAdapter(mContext,sortSearchHelp,data.getConoditionEntity());
             adapters.addAdapter(sortSearchAdapter);
         }

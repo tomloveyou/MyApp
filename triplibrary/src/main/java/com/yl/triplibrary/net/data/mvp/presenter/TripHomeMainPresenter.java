@@ -84,7 +84,7 @@ public class TripHomeMainPresenter extends BasePresenter<TripHomeMainContract.Tr
                 Elements menu_elements = doc.select(".web980").select(".menu_home").select("ul").select("li");
                 List<ImaInfoTitleEntity> grid_buttons_list = new ArrayList<>();
                 for (Element element : menu_elements) {
-                    String title = element.select("a").select(".title").text();
+                    String title = element.select("a").text();
                     String goto_url = element.select("a").attr("abs:href");
                     String img_url = element.select("a").select("img").attr("abs:src");
                     ImaInfoTitleEntity imaInfoTitleEntity = new ImaInfoTitleEntity(title, img_url, url_head, goto_url);

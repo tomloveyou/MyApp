@@ -28,7 +28,7 @@ public class TripHomeSortSearchByTypeAdapter extends BaseQuickAdapter<ImaInfoTit
     @Override
     protected void convert(BaseViewHolder helper, ImaInfoTitleEntity item) {
         helper.setText(android.R.id.text1, item.getTitle());
-
+        helper.setTextColor(android.R.id.text1,mContext.getResources().getColor(R.color.black));
     }
 
 }

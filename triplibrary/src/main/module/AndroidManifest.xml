@@ -13,7 +13,9 @@
         android:theme="@style/MyAppTheme"
         tools:replace="android:theme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.MytripActivity">
+        <activity android:name=".ui.activity.MytripActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

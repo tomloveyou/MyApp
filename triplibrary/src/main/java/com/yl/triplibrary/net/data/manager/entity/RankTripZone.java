@@ -3,11 +3,11 @@ package com.yl.triplibrary.net.data.manager.entity;
 import java.io.Serializable;
 
 public class RankTripZone implements Serializable {
- private    String title;
-    private   String content ;
-    private  String thumb_img;
-    private  String original_img ;
-    private String url ;
+    private String title;
+    private String content;
+    private String thumb_img;
+    private String original_img;
+    private String url;
     private String img_head;
 
     public RankTripZone() {
