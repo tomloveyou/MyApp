@@ -44,7 +44,24 @@ public class TripFootPrintFragment extends BaseFuncFragment<TripFootPrintPresent
     private DelegateAdapter adapters;
     private GestureDetector mGestureDetector;
     private List<TripFootPrintEntity> mDatas = new ArrayList<>();
+    private String area_code="taiguo";
 
+    public TripFootPrintFragment getInstance(String url) {
+        TripFootPrintFragment baseFuncFragment = new TripFootPrintFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("area_code", url);
+        baseFuncFragment.setArguments(bundle);
+        return baseFuncFragment;
+
+    }
+    @Override
+    public void getExtra() {
+        super.getExtra();
+        Bundle bundle=getArguments();
+        if (bundle!=null){
+            area_code=bundle.getString("area_code");
+        }
+    }
 
     @Override
     protected TripFootPrintPresenter getPresenter() {
@@ -70,7 +87,7 @@ public class TripFootPrintFragment extends BaseFuncFragment<TripFootPrintPresent
 
         adapters = new DelegateAdapter(layoutManager, false);
         myRecyclerView.setAdapter(adapters);
-        mPresenter.getLanScadeDeailData(true);
+        mPresenter.getLanScadeDeailData(area_code,true);
 
 
     }
@@ -80,13 +97,13 @@ public class TripFootPrintFragment extends BaseFuncFragment<TripFootPrintPresent
         smartRefreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 mPresenter.setCurrent_page(0);
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
         });
         //调用RecyclerView#addOnItemTouchListener方法能添加一个RecyclerView.OnItemTouchListener对象

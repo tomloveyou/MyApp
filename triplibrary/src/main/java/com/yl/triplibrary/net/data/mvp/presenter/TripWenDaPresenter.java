@@ -48,8 +48,9 @@ public class TripWenDaPresenter extends BasePresenter<TripWenDaContract.TripWenD
         super(fragment);
     }
 
-    public void getLanScadeDeailData(boolean showloading) {
-        String url_head = "http://m.dazijia.com/wenda/taiguo.html?p=" + current_page;
+    public void getLanScadeDeailData(String area_code,boolean showloading) {
+        String url_head = "http://m.dazijia.com/wenda/" +area_code+
+                "?p=" + current_page;
         addSubscribe(getData(url_head).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new CSubscriber<List<TripWenDaEntity>>() {
                     @Override

@@ -1,6 +1,7 @@
 package com.yl.triplibrary.ui.fragment.zone;
 
 
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +33,24 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
     private SmartRefreshLayout smartRefreshLayout;
     private TripWenDaAdapter tripAdapter2;
     private  List<TripWenDaEntity> da = new ArrayList<>();
+    private String area_code="taiguo";
+
+    public TripWenDaFragment getInstance(String url) {
+        TripWenDaFragment baseFuncFragment = new TripWenDaFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("area_code", url);
+        baseFuncFragment.setArguments(bundle);
+        return baseFuncFragment;
+
+    }
+    @Override
+    public void getExtra() {
+        super.getExtra();
+        Bundle bundle=getArguments();
+        if (bundle!=null){
+            area_code=bundle.getString("area_code");
+        }
+    }
 
     @Override
     protected TripWenDaPresenter getPresenter() {
@@ -52,7 +71,7 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
         manager.setOrientation(RecyclerView.VERTICAL);
         myRecyclerView.setLayoutManager(manager);
         tripAdapter2.bindToRecyclerView(myRecyclerView);
-        mPresenter.getLanScadeDeailData(true);
+        mPresenter.getLanScadeDeailData(area_code,true);
     }
 
     @Override
@@ -60,13 +79,13 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
         smartRefreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 mPresenter.setCurrent_page(0);
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
         });
         tripAdapter2.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

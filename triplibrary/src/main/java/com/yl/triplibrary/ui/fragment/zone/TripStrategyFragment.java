@@ -1,6 +1,8 @@
 package com.yl.triplibrary.ui.fragment.zone;
 
 
+import android.os.Bundle;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -32,12 +34,27 @@ public class TripStrategyFragment extends BaseFuncFragment<TripStrategyPresenter
     private RecyclerView myRecyclerView;
     private SmartRefreshLayout smartRefreshLayout;
     private DelegateAdapter adapters;
-
+    private String area_code="taiguo";
     @Override
     protected TripStrategyPresenter getPresenter() {
         return new TripStrategyPresenter(this);
     }
+    public TripStrategyFragment getInstance(String url) {
+        TripStrategyFragment baseFuncFragment = new TripStrategyFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("area_code", url);
+        baseFuncFragment.setArguments(bundle);
+        return baseFuncFragment;
 
+    }
+    @Override
+    public void getExtra() {
+        super.getExtra();
+        Bundle bundle=getArguments();
+        if (bundle!=null){
+            area_code=bundle.getString("area_code");
+        }
+    }
     @Override
     public int getLayoutId() {
         return R.layout.fragment_refresh_recycleview;
@@ -57,7 +74,7 @@ public class TripStrategyFragment extends BaseFuncFragment<TripStrategyPresenter
 
         adapters = new DelegateAdapter(layoutManager, false);
         myRecyclerView.setAdapter(adapters);
-        mPresenter.getLanScadeDeailData(true);
+        mPresenter.getLanScadeDeailData(area_code,true);
     }
 
     @Override
@@ -65,13 +82,13 @@ public class TripStrategyFragment extends BaseFuncFragment<TripStrategyPresenter
         smartRefreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 mPresenter.setCurrent_page(0);
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
         });
 

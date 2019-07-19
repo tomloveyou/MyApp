@@ -1,6 +1,7 @@
 package com.yl.triplibrary.ui.activity.adapter.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.bumptech.glide.load.model.Headers;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.module.ImaInfoTitleEntity;
+import com.yl.triplibrary.ui.activity.SearchByMonthActivity;
+import com.yl.triplibrary.ui.activity.TripAareTedianActivity;
 
 
 import java.util.HashMap;
@@ -72,6 +75,23 @@ public class TripHomeGvAdapter extends DelegateAdapter.Adapter<TripHomeGvAdapter
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (position!=mDatas.size()-1){
+                    String area=rankTripZone.getGoto_ur();
+                    int lastIndex=area.lastIndexOf("/");
+                    String kk=area.substring(lastIndex+1,area.length());
+                    Intent intent=new Intent(mContext, SearchByMonthActivity.class);
+                    intent.putExtra("area_code", kk);
+                    intent.putExtra("area_name", rankTripZone.getTitle());
+                    mContext.startActivity(intent);
+                }else {
+                    String area=rankTripZone.getGoto_ur();
+                    int lastIndex=area.lastIndexOf("/");
+                    String kk=area.substring(lastIndex+1,area.length());
+                    Intent intent=new Intent(mContext, TripAareTedianActivity.class);
+                    intent.putExtra("area_code", kk);
+                    intent.putExtra("area_name", rankTripZone.getTitle());
+                    mContext.startActivity(intent);
+                }
 
             }
         });

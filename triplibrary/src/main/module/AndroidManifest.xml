@@ -35,6 +35,9 @@
         <activity android:name=".ui.activity.LanscadeDetailActivity"/>
         <activity android:name=".ui.activity.TripFootPrintDetailAcitivity"/>
         <activity android:name=".ui.activity.TripLineDetailAcitivity"/>
+        <activity android:name=".ui.activity.TripAareTedianActivity"/>
+        <activity android:name=".ui.activity.SearchByMonthActivity"/>
+        <activity android:name=".ui.activity.SearchByAreaStartActivity"/>
     </application>
 
 </manifest>

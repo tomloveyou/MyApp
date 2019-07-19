@@ -1,6 +1,7 @@
 package com.yl.triplibrary.ui.activity.adapter.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ import com.standards.library.adapter.BaseQuickAdapter;
 import com.standards.library.constant.Constant;
 import com.yl.triplibrary.R;
 import com.yl.triplibrary.net.data.mvp.module.TripHomeSortConoditionEntity;
+import com.yl.triplibrary.ui.activity.SearchByAreaStartActivity;
+import com.yl.triplibrary.ui.activity.SearchByMonthActivity;
+import com.yl.triplibrary.ui.activity.TripAareTedianActivity;
 import com.yl.triplibrary.ui.activity.adapter.TripHomeSortSearchByTypeAdapter;
 
 import java.util.ArrayList;
@@ -29,7 +33,7 @@ public class TripHomeSortSeachAdapter extends DelegateAdapter.Adapter<TripHomeSo
     private Context mContext;
     private LayoutHelper mHelper;
     private TripHomeSortConoditionEntity mDatas;
-
+private  int type=0;
 
     public TripHomeSortSeachAdapter(Context mContext, LayoutHelper mHelper, TripHomeSortConoditionEntity mDatas) {
         this.mContext = mContext;
@@ -60,31 +64,60 @@ public class TripHomeSortSeachAdapter extends DelegateAdapter.Adapter<TripHomeSo
         holder.gvFilterName.setLayoutManager(gridLayoutManager);
         TripHomeSortSearchByTypeAdapter typeAdapter = new TripHomeSortSearchByTypeAdapter(new ArrayList<>());
         holder.gvFilterName.setAdapter(typeAdapter);
+
         typeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                typeAdapter.setNewData(new ArrayList<>());
+                if (type==2){
+                    String area=typeAdapter.getItem(position).getGoto_ur();
+                    int lastIndex=area.lastIndexOf("\\");
+                    String kk=area.substring(lastIndex+1,area.length());
+                    Intent intent=new Intent(mContext, TripAareTedianActivity.class);
+                    intent.putExtra("area_code", kk);
+                    intent.putExtra("area_name", typeAdapter.getItem(position).getTitle());
+                    mContext.startActivity(intent);
+                }else if (type==1){
+                    String area=typeAdapter.getItem(position).getGoto_ur();
+                    int lastIndex=area.lastIndexOf("\\");
+                    String kk=area.substring(lastIndex+1,area.length());
+                    Intent intent=new Intent(mContext, SearchByMonthActivity.class);
+                    intent.putExtra("area_code", kk);
+                    intent.putExtra("area_name", typeAdapter.getItem(position).getTitle());
+                    mContext.startActivity(intent);
+                }else{
+                    String area=typeAdapter.getItem(position).getGoto_ur();
+                    int lastIndex=area.lastIndexOf("\\");
+                    String kk=area.substring(lastIndex+1,area.length());
+                    Intent intent=new Intent(mContext, SearchByAreaStartActivity.class);
+                    intent.putExtra("area_code", kk);
+                    intent.putExtra("area_name", typeAdapter.getItem(position).getTitle());
+                    mContext.startActivity(intent);
+                }
+
             }
         });
         holder.llCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                type=0;
                 typeAdapter.setNewData(mDatas.getStart_area());
             }
         });
         holder.llSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                type=1;
                 typeAdapter.setNewData(mDatas.getStart_month());
             }
         });
         holder.llFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                type=2;
+
                 typeAdapter.setNewData(mDatas.getEnd_area());
             }
         });
-
 
 
     }
