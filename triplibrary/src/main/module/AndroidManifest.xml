@@ -38,6 +38,8 @@
         <activity android:name=".ui.activity.TripAareTedianActivity"/>
         <activity android:name=".ui.activity.SearchByMonthActivity"/>
         <activity android:name=".ui.activity.SearchByAreaStartActivity"/>
+        <activity android:name=".ui.activity.TripOnlineUploadActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

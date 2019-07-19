@@ -5,6 +5,7 @@ public class TripLineEntity extends ImgInfoEntity {
     private String go_start_eral;
     private String people_count;
     private String people_price_unit_info;
+    private String publish_time;
 
     public TripLineEntity(String title, String go_start_eral,String people_count, String people_price_unit_info) {
         this.title = title;
@@ -17,6 +18,14 @@ public class TripLineEntity extends ImgInfoEntity {
         this.title = title;
         this.go_start_eral = go_start_eral;
         this.people_price_unit_info = people_price_unit_info;
+    }
+
+    public String getPublish_time() {
+        return publish_time;
+    }
+
+    public void setPublish_time(String publish_time) {
+        this.publish_time = publish_time;
     }
 
     public String getPeople_count() {
