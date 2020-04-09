@@ -55,12 +55,12 @@ public abstract class BaseFragment extends RxFragment {
         view = LayoutInflater.from(this.getActivity()).inflate(getLayoutId(), null);
         superView.addView(view, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        init();
-        setListener();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        init();
+        setListener();
         return superView;
     }
 

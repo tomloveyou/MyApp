@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CalendarTodayView">
+        <attr name="calendar_today_select_status" format="integer"/>
+        <attr name="calendar_today_text" format="string"/>
+    </declare-styleable>
+</resources>

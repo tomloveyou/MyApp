@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="color_themes">
+        <item>官方蓝</item>
+        <item>粉色</item>
+        <item>绿色</item>
+        <item>黄色</item>
+        <item>黑色</item>
+        <item>灰色</item>
+        <item>白色</item>
+        <item>夜间</item>
+        <item>暗夜蓝</item>
+        <item>暗夜橙</item>
+    </string-array>
+</resources>

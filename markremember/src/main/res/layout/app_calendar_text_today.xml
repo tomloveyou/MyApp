@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_calendar_today_img_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_widget_today"
+        android:tint="@color/home_title_img_bg_color"
+        />
+    <TextView
+        android:id="@+id/tv_calendar_today_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="8"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</FrameLayout>

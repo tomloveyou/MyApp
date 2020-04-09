@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toLeftOf="@+id/ll_right_view_container"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.457" />
+
+        <LinearLayout
+            android:id="@+id/ll_right_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:paddingRight="16dp">
+
+           <com.yl.markremember.CalendarTodayView
+               android:id="@+id/calendar_todayView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+            <ImageView
+                android:tint="@color/home_title_img_bg_color"
+                android:id="@+id/imageView2"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/ic_overflow" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:tint="@color/home_title_img_bg_color"
+                app:srcCompat="@drawable/ic_overflow" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_view_type_switch"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+    </LinearLayout>
+
+    <com.haibin.calendarview.CalendarLayout
+        android:id="@+id/calendarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
+
+        <com.haibin.calendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:calendar_padding="10dp"
+            app:current_month_lunar_text_color="#CFCFCF"
+            app:current_month_text_color="#333333"
+            app:max_year="2020"
+            app:min_year="2004"
+            app:month_view_show_mode="mode_fix"
+            app:other_month_lunar_text_color="#e1e1e1"
+            app:other_month_text_color="#e1e1e1"
+            app:scheme_text="假"
+            app:scheme_text_color="#333"
+            app:scheme_theme_color="#128c4b"
+            app:selected_lunar_text_color="#fff"
+            app:selected_text_color="#fff"
+            app:selected_theme_color="#046cea"
+            app:week_background="#fff"
+            app:week_start_with="sun"
+            app:week_text_color="#e1e1e1"
+            app:year_view_day_text_color="#333333"
+            app:year_view_day_text_size="7sp"
+            app:year_view_month_text_color="#ff0000"
+            app:year_view_month_text_size="20sp"
+            app:year_view_scheme_color="#f17706"
+            app:year_view_select_text_color="#fff"
+            app:year_view_week_height="12dp"
+            app:year_view_week_text_color="#e1e1e1"
+            app:year_view_week_text_size="6sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.haibin.calendarview.CalendarLayout>
+
+
+</LinearLayout>
