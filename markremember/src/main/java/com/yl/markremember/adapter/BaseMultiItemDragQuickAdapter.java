@@ -10,11 +10,12 @@ import com.standards.library.adapter.BaseItemDraggableAdapter;
 import com.standards.library.adapter.BaseViewHolder;
 import com.standards.library.adapter.entity.MultiItemEntity;
 import com.standards.library.util.LogUtil;
-import com.yl.markremember.bean.MenuSubBean;
+
+import com.yl.markremember.db.model.LabelInfo;
 
 import java.util.List;
 
-public class BaseMultiItemDragQuickAdapter <T extends MultiItemEntity, K extends BaseViewHolder> extends BaseItemDraggableAdapter<T, K> {
+public class BaseMultiItemDragQuickAdapter<T extends MultiItemEntity, K extends BaseViewHolder> extends BaseItemDraggableAdapter<T, K> {
 
     /**
      * layouts indexed with their types
@@ -83,18 +84,18 @@ public class BaseMultiItemDragQuickAdapter <T extends MultiItemEntity, K extends
             return;
         }
 
-        if (getItem(from) instanceof MenuSubBean) {
-            MenuSubBean from_menuSubBean= (MenuSubBean) getItem(from);
-            if (from_menuSubBean==null)return;
-            LogUtil.d("from类型viewtype="+getItemViewType(from));
-            if (getItem(to) instanceof MenuSubBean){
-                MenuSubBean to_menuSubBean= (MenuSubBean) getItem(to);
-                if (to_menuSubBean==null)return;
-                LogUtil.d("to类型viewtype="+getItemViewType(to));
-                if (from_menuSubBean.getParent_menu_id()!=to_menuSubBean.getParent_menu_id()){
+        if (getItem(from) instanceof LabelInfo) {
+            LabelInfo from_menuSubBean = (LabelInfo) getItem(from);
+            if (from_menuSubBean == null) return;
+            LogUtil.d("from类型viewtype=" + getItemViewType(from));
+            if (getItem(to) instanceof LabelInfo) {
+                LabelInfo to_menuSubBean = (LabelInfo) getItem(to);
+                if (to_menuSubBean == null) return;
+                LogUtil.d("to类型viewtype=" + getItemViewType(to));
+                if (from_menuSubBean.getLabel_pid() != to_menuSubBean.getLabel_pid()) {
                     return;
                 }
-            }else {
+            } else {
                 return;
             }
 

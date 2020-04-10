@@ -1,13 +1,12 @@
-package com.yl.markremember
+package com.yl.markremember.ui.widget
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import com.yl.markremember.R
 
 import kotlinx.android.synthetic.main.app_calendar_text_today.view.*
 

@@ -3,7 +3,7 @@
     package="com.yl.markremember">
     <application android:theme="@style/AppTheme"
         tools:replace="android:theme">
-        <activity android:name=".CalendarMainActivity">
+        <activity android:name=".ui.activity.CalendarMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

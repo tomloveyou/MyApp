@@ -13,12 +13,13 @@ ext {
 
     version = [
             androidSupportSdkVersion: "1.0.0",
-            retrofitSdkVersion      : "2.1.0",
+            retrofitSdkVersion      : "2.5.0",
             glideSdkVersion         : "4.5.0",
             canarySdkVersion        : "1.5.4",
             constraintVersion       : "1.0.2",
             okhttp                  : "3.8.1",
             agentweb                  : "4.0.2"
+
     ]
 
     dependencies = [

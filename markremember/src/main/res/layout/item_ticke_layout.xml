@@ -2,8 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
+    android:layout_marginLeft="56dp"
     android:gravity="center_vertical"
     android:orientation="horizontal">
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -12,6 +16,7 @@
         android:tint="@color/colorPrimary" />
 
     <TextView
+        android:id="@+id/menu_name"
         android:gravity="center_vertical"
         android:text="子级"
         android:layout_weight="1"

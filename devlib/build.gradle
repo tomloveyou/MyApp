@@ -55,9 +55,9 @@ dependencies {
     api rootProject.ext.dependencies["rxjava2"]
     // Retrofit网络请求
     api rootProject.ext.dependencies["retrofit"]
-    implementation rootProject.ext.dependencies["retrofit-converter-gson"]
-    implementation rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
-    implementation 'com.google.code.gson:gson:2.8.5'
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    api 'com.google.code.gson:gson:2.8.5'
     api 'com.pnikosis:materialish-progress:1.7'
     //ptr
     implementation 'in.srain.cube:ultra-ptr:1.0.11'

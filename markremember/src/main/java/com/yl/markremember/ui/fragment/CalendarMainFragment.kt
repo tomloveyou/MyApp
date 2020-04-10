@@ -1,4 +1,4 @@
-package com.yl.markremember
+package com.yl.markremember.ui.fragment
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -15,6 +15,7 @@ import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
 import com.standards.library.adapter.BaseQuickAdapter
 import com.standards.library.adapter.BaseViewHolder
+import com.yl.markremember.R
 import kotlinx.android.synthetic.main.fragment_calendar_main.view.*
 
 class CalendarMainFragment : Fragment() {
@@ -30,8 +31,6 @@ class CalendarMainFragment : Fragment() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         val adapter: BaseQuickAdapter<String, BaseViewHolder> = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.cv_layout_calendar_view) {
             override fun convert(helper: BaseViewHolder?, item: String?) {
-
-
             }
         }
         adapter.isUseEmpty(true)

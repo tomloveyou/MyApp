@@ -33,7 +33,7 @@
             android:orientation="horizontal"
             android:paddingRight="16dp">
 
-           <com.yl.markremember.CalendarTodayView
+           <com.yl.markremember.ui.widget.CalendarTodayView
                android:id="@+id/calendar_todayView"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"/>

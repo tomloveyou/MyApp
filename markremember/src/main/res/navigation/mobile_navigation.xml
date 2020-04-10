@@ -6,7 +6,7 @@
     <fragment
         android:label="日历"
         android:id="@+id/fragment_home"
-        android:name="com.yl.markremember.CalendarMainFragment">
+        android:name="com.yl.markremember.ui.fragment.CalendarMainFragment">
         <action android:id="@+id/fragment_home_to_nav_gallery"/>
     </fragment>
 </navigation>

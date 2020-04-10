@@ -9,12 +9,13 @@
         android:layout_height="56dp"
         android:gravity="center">
 
-        <com.yl.markremember.CalendarTodayView
+        <com.yl.markremember.ui.widget.CalendarTodayView
             android:layout_width="36dp"
             android:layout_height="36dp" />
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/menu_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -24,6 +25,7 @@
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/menu_right_text"
         android:layout_width="46dp"
         android:layout_height="match_parent"
         android:gravity="center"
