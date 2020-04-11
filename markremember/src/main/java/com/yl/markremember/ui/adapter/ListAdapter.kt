@@ -1,12 +1,15 @@
-package com.yl.markremember.adapter
+package com.yl.markremember.ui.adapter
 
+import android.content.Intent
 import com.standards.library.adapter.BaseViewHolder
 import com.standards.library.adapter.entity.MultiItemEntity
 import com.yl.markremember.R
+import com.yl.markremember.base.BaseMultiItemDragQuickAdapter
 import com.yl.markremember.bean.MenuBean
 import com.yl.markremember.db.model.LabelInfo
+import com.yl.markremember.ui.activity.ListLabelManagerActivity
 
-class MenuExpandableAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<MultiItemEntity, BaseViewHolder>(args) {
+class ListAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<MultiItemEntity, BaseViewHolder>(args) {
     init {
         addItemType(0, R.layout.drawerlayout_section_item_view)
         addItemType(1, R.layout.item_ticke_layout)
@@ -25,10 +28,13 @@ class MenuExpandableAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuic
                         expand(helper.adapterPosition)
                     }
                 }
+                helper.itemView.setOnClickListener {
+
+                }
             }else{
                 val dd=item as LabelInfo
                 helper?.setText(R.id.menu_name,dd.label_name)
-                helper?.setText(R.id.menu_right_text,"${dd.label_use_count}")
+                //helper?.setText(R.id.menu_right_text,"${dd.label_use_count}")
             }
         }
     }

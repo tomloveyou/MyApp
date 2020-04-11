@@ -106,4 +106,5 @@ dependencies {
     api files('libs\\BmobSDK_3.7.4_20190523.jar')
     api 'cn.bmob.android:http-legacy:1.0'
     api 'com.squareup.okio:okio:2.1.0'
+    api 'com.lxj:xpopup:1.8.17'
 }

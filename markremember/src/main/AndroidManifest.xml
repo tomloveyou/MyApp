@@ -9,5 +9,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.ListLabelManagerActivity"/>
+        <activity android:name=".ui.activity.AddLabelActivity"/>
+        <activity android:name=".ui.activity.AddListActivity"/>
     </application>
 </manifest>

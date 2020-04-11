@@ -3,21 +3,22 @@ package com.yl.markremember.ui.activity
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.ui.fragment.NormalListFragment
+import com.yl.markremember.ui.fragment.label.LabelFragment
 import kotlinx.android.synthetic.main.activity_list_label_manager.*
 
 /**
  * 管理清单和标签
  */
 class ListLabelManagerActivity : BaseTitleBarActivity<BasePresenter<*>>() {
-    val titles by lazy {
-        arrayOf("普通清单","智能清单","标签")
-    }
+
     override fun setListener() {
 
     }
 
     override fun init() {
-        tablayout.setViewPager(viewpager, titles)
+        setTitle("管理清单和标签")
+        tablayout.setViewPager(viewpager, arrayOf("普通清单", "智能清单", "标签"), this, arrayListOf(NormalListFragment(), NormalListFragment(), LabelFragment()))
     }
 
     override fun getLayoutId(): Int {

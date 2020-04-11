@@ -1,4 +1,4 @@
-package com.yl.markremember.adapter
+package com.yl.markremember.ui.adapter
 
 import com.standards.library.adapter.BaseQuickAdapter
 import com.standards.library.adapter.BaseViewHolder

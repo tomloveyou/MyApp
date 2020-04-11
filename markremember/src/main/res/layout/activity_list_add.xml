@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:hint="清单名称" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="18dp"
+            android:src="@drawable/abc_text_select_handle_middle_mtrl_light"
+            android:tint="@color/home_title_img_bg_color" />
+
+        <TextView
+           style="@style/TextStyle16.black"
+            android:layout_weight="1"
+            android:text="颜色"
+            />
+
+        <RelativeLayout
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_list_tint_color"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
+                android:tint="@color/colorPrimary" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="18dp"
+            android:src="@drawable/ticktick_horizontal_new_tag"
+            android:tint="@color/home_title_img_bg_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="文件夹"
+                style="@style/TextStyle16.black" />
+
+            <TextView
+                android:id="@+id/tv_folder_pname"
+                style="@style/TextStyle14.gray"
+                android:layout_marginTop="2dp"
+                android:text="无" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_add_member"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/TextStyle12.gray"
+            android:text="成员"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="添加新成员"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            style="@style/TextStyle16.black" />
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:background="@color/gray"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+            <TextView
+                android:layout_weight="1"
+                android:text="不在智能清单中显示"
+                style="@style/TextStyle16.black" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginLeft="56dp"
+            style="@style/TextStyle14.gray"
+            android:layout_marginTop="2dp"
+            android:text="启用后，该清单中的任务不会在“所有”、“今天”，“明天”，“最近7天”等智能清单中显示，不过任务到期时依然会提醒。" />
+    </LinearLayout>
+
+</LinearLayout>

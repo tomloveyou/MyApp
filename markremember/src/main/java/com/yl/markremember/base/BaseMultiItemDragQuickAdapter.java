@@ -1,4 +1,4 @@
-package com.yl.markremember.adapter;
+package com.yl.markremember.base;
 
 import android.util.SparseArray;
 import android.view.ViewGroup;

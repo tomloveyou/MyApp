@@ -1,6 +1,5 @@
-package com.yl.markremember.ui.fragment.label
+package com.yl.markremember.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,45 +9,39 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.standards.library.adapter.entity.MultiItemEntity
 import com.yl.markremember.R
+import com.yl.markremember.ui.adapter.MenuExpandableAdapter
 import com.yl.markremember.callback.HomeItemDragAndSwipeCallback
+import com.yl.markremember.datamanager.DataManager
 import com.yl.markremember.db.viewmodel.LabelViewModel
-import com.yl.markremember.ui.activity.AddLabelActivity
-import com.yl.markremember.ui.adapter.LabelAdapter
+import com.yl.markremember.db.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_label_list.*
 
-/**
- * 标签管理页面
- */
-class LabelFragment : Fragment() {
-    private lateinit var labelViewModel: LabelViewModel
+class NormalListFragment :Fragment() {
+    private lateinit var labelViewModel: ListViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_label_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        labelViewModel = ViewModelProvider(this).get(LabelViewModel::class.java)
+        labelViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         super.onActivityCreated(savedInstanceState)
         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        val adapter = LabelAdapter(arrayListOf())
-        val haedview = LayoutInflater.from(activity).inflate(R.layout.label_control_layout_list_head, null)
-        adapter.setHeaderFooterEmpty(true, true)
+        val data: List<MultiItemEntity> = DataManager.homeMenuList
+        val adapter = MenuExpandableAdapter(data)
+        val haedview=LayoutInflater.from(activity).inflate(R.layout.label_control_layout_list_head,null)
+        adapter.setHeaderFooterEmpty(true,false)
         adapter.addHeaderView(haedview)
-        val footview = LayoutInflater.from(activity).inflate(R.layout.label_control_layout_list_foot, null)
-        adapter.addFooterView(footview)
-        val dd = HomeItemDragAndSwipeCallback(adapter)
-        val dddd = ItemTouchHelper(dd)
+        val dd= HomeItemDragAndSwipeCallback(adapter)
+        val dddd= ItemTouchHelper(dd)
         dddd.attachToRecyclerView(recyclerView)
         adapter.enableDragItem(dddd)
-        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.layoutManager=linearLayoutManager
         adapter.bindToRecyclerView(recyclerView)
         labelViewModel.allLabels.observe(this, Observer {
             adapter.setNewData(it)
         })
-        adapter.footerLayout.setOnClickListener {
-            startActivity(Intent(activity, AddLabelActivity::class.java))
-        }
-
     }
 }

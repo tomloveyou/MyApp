@@ -4,8 +4,10 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,5 +18,40 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="activityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+    <style name="TextStyle16">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="TextStyle16.black" parent="@style/TextStyle16">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextStyle14">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="text_size">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="TextStyle12">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="text_size">12sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="TextStyle14.black" parent="@style/TextStyle14">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextStyle14.gray" parent="@style/TextStyle14">
+        <item name="android:textColor">@color/gray_8f</item>
+    </style>
+    <style name="TextStyle12.gray" parent="@style/TextStyle12">
+        <item name="android:textColor">@color/gray_8f</item>
+    </style>
 </resources>

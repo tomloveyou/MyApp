@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="56dp"
+            android:layout_height="26dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:text="标签"
+                style="@style/TextStyle16.black" />
+
+            <TextView
+                style="@style/TextStyle14.gray"
+                android:layout_marginTop="2dp"
+                android:text="显示"
+               />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
 </LinearLayout>

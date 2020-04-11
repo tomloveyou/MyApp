@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_label_name"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:hint="标签名称" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="18dp"
+            android:src="@drawable/abc_text_select_handle_middle_mtrl_light"
+            android:tint="@color/home_title_img_bg_color" />
+
+        <TextView
+           style="@style/TextStyle16.black"
+            android:layout_weight="1"
+            android:text="颜色"
+            />
+
+        <RelativeLayout
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_label_tint_color"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
+                android:tint="@color/colorPrimary" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="18dp"
+            android:src="@drawable/ticktick_horizontal_new_tag"
+            android:tint="@color/home_title_img_bg_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="父标签"
+                style="@style/TextStyle16.black" />
+
+            <TextView
+                android:id="@+id/tv_label_pname"
+                style="@style/TextStyle14.gray"
+                android:layout_marginTop="2dp"
+                android:text="无" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

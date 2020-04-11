@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_add_key_inside"
+            android:tint="@color/home_title_img_bg_color" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/TextStyle16.black"
+        android:text="添加标签" />
+</LinearLayout>

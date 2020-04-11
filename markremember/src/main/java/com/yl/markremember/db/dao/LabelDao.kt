@@ -1,10 +1,7 @@
 package com.yl.markremember.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.model.UserInfo
 
@@ -21,6 +18,9 @@ interface LabelDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertLabelList(labelInfo: List<LabelInfo>)
+
+    @Delete
+   suspend fun deleteLabel(labelInfo: LabelInfo)
 
     @Query("DELETE FROM mark_labels")
     suspend fun deleteAllLabel()

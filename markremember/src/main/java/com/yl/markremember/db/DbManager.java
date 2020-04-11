@@ -73,7 +73,7 @@ public class DbManager {
            // SLog.e(LogTag.DB, "Get Dao need openDb first.");
             return null;
         }
-        return database.getUserDao();
+        return database.userDao();
     }
     public LabelDao getLabelDao() {
         if (database == null) {
