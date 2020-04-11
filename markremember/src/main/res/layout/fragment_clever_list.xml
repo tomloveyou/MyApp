@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="所有"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    android:id="@+id/tv_folder_pname"
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="隐藏" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="56dp"
+                android:layout_height="56dp">
+                <ImageView
+                    android:id="@+id/iv_calendar_today_img_bg"
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_widget_today"
+                    android:tint="@color/home_title_img_bg_color"
+                    />
+                <TextView
+                    android:textSize="8sp"
+                    android:text="11"
+                    android:id="@+id/tv_calendar_today_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="今天"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="显示" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="明天"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="隐藏" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="56dp"
+                android:layout_height="56dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_widget_today"
+                    android:tint="@color/home_title_img_bg_color"
+                    />
+                <TextView
+                    android:textSize="8sp"
+                    android:text="sa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="最近7天"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="显示" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="分配给我"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="隐藏" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="已完成"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="隐藏" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="垃圾桶"
+                    style="@style/TextStyle16.black" />
+
+                <TextView
+                    style="@style/TextStyle14.gray"
+                    android:layout_marginTop="2dp"
+                    android:text="隐藏" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_margin="18dp"
+            android:layout_width="match_parent"
+            android:background="@color/gray"
+            android:layout_height="1dp"/>
+        <TextView
+            android:layout_marginLeft="18dp"
+            style="@style/TextStyle14.gray"
+            android:layout_marginTop="2dp"
+            android:text="自定义智能清单" />
+        <LinearLayout
+            android:id="@+id/ll_new_user_leader"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="18dp"
+                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <TextView
+                style="@style/TextStyle16.black"
+                android:layout_weight="1"
+                android:text="添加智能清单" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

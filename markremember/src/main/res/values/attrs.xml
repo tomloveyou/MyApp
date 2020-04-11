@@ -3,5 +3,8 @@
     <declare-styleable name="CalendarTodayView">
         <attr name="calendar_today_select_status" format="integer"/>
         <attr name="calendar_today_text" format="string"/>
+        <attr name="calendar_today_textSize" format="dimension"/>
+        <attr name="calendar_today_imgSize" format="dimension"/>
+        <attr name="calendar_today_imgPadding" format="dimension"/>
     </declare-styleable>
 </resources>

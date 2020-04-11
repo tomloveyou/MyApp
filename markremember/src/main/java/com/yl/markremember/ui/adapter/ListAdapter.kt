@@ -7,6 +7,7 @@ import com.yl.markremember.R
 import com.yl.markremember.base.BaseMultiItemDragQuickAdapter
 import com.yl.markremember.bean.MenuBean
 import com.yl.markremember.db.model.LabelInfo
+import com.yl.markremember.db.model.ListInfo
 import com.yl.markremember.ui.activity.ListLabelManagerActivity
 
 class ListAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<MultiItemEntity, BaseViewHolder>(args) {
@@ -32,8 +33,8 @@ class ListAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<M
 
                 }
             }else{
-                val dd=item as LabelInfo
-                helper?.setText(R.id.menu_name,dd.label_name)
+                val dd=item as ListInfo
+                helper?.setText(R.id.menu_name,dd.list_name)
                 //helper?.setText(R.id.menu_right_text,"${dd.label_use_count}")
             }
         }

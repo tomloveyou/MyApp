@@ -7,7 +7,6 @@
         android:id="@+id/iv_calendar_today_img_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
         android:src="@drawable/ic_widget_today"
         android:tint="@color/home_title_img_bg_color"
         />

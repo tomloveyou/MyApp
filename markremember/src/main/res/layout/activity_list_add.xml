@@ -23,10 +23,11 @@
         android:gravity="center_vertical">
 
         <ImageView
+            android:rotation="180"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:padding="18dp"
-            android:src="@drawable/abc_text_select_handle_middle_mtrl_light"
+            android:src="@drawable/ic_mark_color_bg"
             android:tint="@color/home_title_img_bg_color" />
 
         <TextView
@@ -118,7 +119,7 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:padding="18dp"
-                android:src="@drawable/ticktick_horizontal_new_tag"
+                android:src="@drawable/ic_eys_unlook"
                 android:tint="@color/home_title_img_bg_color" />
             <TextView
                 android:layout_weight="1"
