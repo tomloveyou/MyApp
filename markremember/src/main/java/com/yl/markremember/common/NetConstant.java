@@ -9,6 +9,9 @@ public class NetConstant {
     public final static String API_SP_KEY_NET_HEADER_AUTH = "header_auth";
 
     public final static int REQUEST_SUCCESS_CODE = 200;
+    public final static int MENU_P_CODE = 51000;
+    public final static int LABEL_P_CODE = 51353;
+    public final static int LIST_P_CODE = 51354;
     public final static String USER_NAME_KEY = "userNameKey";
     public final static String USER_NUM_KEY = "userNumKey";
     public final static String USER_IS_VIP = "isVip";

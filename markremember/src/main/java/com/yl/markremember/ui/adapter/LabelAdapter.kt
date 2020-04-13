@@ -13,8 +13,8 @@ import com.yl.markremember.ui.activity.ListLabelManagerActivity
 
 class LabelAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<MultiItemEntity, BaseViewHolder>(args) {
     init {
-        addItemType(0, R.layout.drawerlayout_section_item_view)
-        addItemType(1, R.layout.item_ticke_normal_layout)
+        addItemType(0, R.layout.drawerlayout_section_groupitem_view)
+        addItemType(2, R.layout.item_ticke_normal_layout)
     }
 
     override fun convert(helper: BaseViewHolder?, item: MultiItemEntity?) {

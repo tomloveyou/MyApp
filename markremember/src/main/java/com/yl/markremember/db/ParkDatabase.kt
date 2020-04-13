@@ -9,6 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.luck.picture.lib.tools.DateUtils
 import com.yl.markremember.bean.MenuBean
+import com.yl.markremember.common.NetConstant
 import com.yl.markremember.db.dao.LabelDao
 import com.yl.markremember.db.dao.ListDao
 import com.yl.markremember.db.dao.UserDao
@@ -40,10 +41,8 @@ abstract class ParkDatabase : RoomDatabase() {
                     listDao.deleteAllList()
 
                     // Add sample user.
-                    var listInfo = ListInfo(0,null,"收集箱",DateUtils.timeParse(Date().time),null,0)
-                    listDao.insertList(listInfo)
-                    var listInfo_welcome = ListInfo(1,null,"welcome",DateUtils.timeParse(Date().time),null,0)
-                    listDao.insertList(listInfo)
+
+                    var listInfo_welcome = ListInfo(null,NetConstant.LIST_P_CODE,null,"welcome",DateUtils.timeParse(Date().time),null,0)
                     listDao.insertList(listInfo_welcome)
                 }
             }

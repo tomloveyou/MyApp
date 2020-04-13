@@ -8,21 +8,17 @@ import com.standards.library.adapter.entity.MultiItemEntity
 import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.model.ListInfo
 
-class MenuBean(
+class MenuSubBean(
         var icon_resid: Int,
-        var pid: Int?,
-        var id: Int?,
+        var id: Int,
         var view_type:Int,
         var title: String = "") : AbstractExpandableItem<LabelInfo>(), MultiItemEntity {
     override fun getLevel(): Int {
         return 0
     }
-    fun clearSubItems(){
-        mSubItems.clear()
-    }
 
     override fun getItemType(): Int {
-        return view_type
+        return 0
 //        return if (id == 51352) {//今天
 //            0
 //        } else {

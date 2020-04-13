@@ -13,6 +13,8 @@ import java.io.Serializable
 class ListInfo(@ColumnInfo(name = "mark_list_id")
                 @PrimaryKey(autoGenerate = true)
                 var list_id: Int?,
+               @ColumnInfo(name = "mark_list_pid")
+               var list_pid: Int,
                @ColumnInfo(name = "mark_list_tint_color")
                 var list_tint_color: String?,
                @ColumnInfo(name = "mark_list_name")

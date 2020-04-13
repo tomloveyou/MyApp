@@ -3,8 +3,21 @@
     <declare-styleable name="CalendarTodayView">
         <attr name="calendar_today_select_status" format="integer"/>
         <attr name="calendar_today_text" format="string"/>
-        <attr name="calendar_today_textSize" format="dimension"/>
-        <attr name="calendar_today_imgSize" format="dimension"/>
-        <attr name="calendar_today_imgPadding" format="dimension"/>
+
+    </declare-styleable>
+    <declare-styleable name="CalendarItemView">
+        <attr name="calendar_item_select_status" format="integer"/>
+        <attr name="calendar_item_text" format="string"/>
+        <attr name="calendar_item_textColor" format="color"/>
+        <attr name="calendar_item_textSize" format="dimension"/>
+        <attr name="calendar_item_leftText" format="string"/>
+        <attr name="calendar_item_leftImgSrc" format="reference"/>
+        <attr name="calendar_item_leftImgTintColor" format="color"/>
+        <attr name="calendar_item_leftImgPadding" format="dimension"/>
+        <attr name="calendar_item_isRightImg" format="boolean"/>
+        <attr name="calendar_item_rightImgSrc" format="reference"/>
+        <attr name="calendar_item_rightTextSize" format="dimension"/>
+        <attr name="calendar_item_rightText" format="string"/>
+        <attr name="calendar_item_isRightImgRota" format="boolean"/>
     </declare-styleable>
 </resources>

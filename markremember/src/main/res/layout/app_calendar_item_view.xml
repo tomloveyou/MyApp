@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_calendar_left_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_widget_today"
+            android:tint="@color/home_title_img_bg_color" />
+
+        <TextView
+            android:text="1"
+            android:id="@+id/tv_calendar_left_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_calendar_center_text"
+        android:textColor="@color/gray_8f"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/tv_calendar_right_img"
+            android:layout_width="26dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:src="@drawable/widget_pre_week_white"
+            android:text="1"
+            android:tint="@color/home_title_img_bg_color" />
+
+        <TextView
+            android:id="@+id/tv_calendar_right_text"
+            android:layout_width="46dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="1" />
+    </LinearLayout>
+</LinearLayout>

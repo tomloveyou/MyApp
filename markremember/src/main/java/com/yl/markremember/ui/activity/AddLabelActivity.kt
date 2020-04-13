@@ -18,6 +18,7 @@ import com.lxj.xpopup.interfaces.OnSelectListener
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.common.NetConstant
 import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.viewmodel.LabelViewModel
 import com.yl.markremember.ui.widget.LabelMergePopuView
@@ -90,7 +91,7 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.label_action_add) {
             if (!TextUtils.isEmpty(et_label_name.text.toString())) {
-                var labelInfo = LabelInfo(null, 1, null, null, et_label_name.text.toString(), DateUtils.timeParse(Date().time), null, 0);
+                var labelInfo = LabelInfo(null, NetConstant.LABEL_P_CODE, null, null, et_label_name.text.toString(), DateUtils.timeParse(Date().time), null, 0);
                 labelViewModel.insert(labelInfo)
                 finish()
             }

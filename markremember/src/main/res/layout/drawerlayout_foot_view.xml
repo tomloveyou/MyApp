@@ -2,65 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/ll_add_label"
+    <View
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:padding="18dp"
-            android:src="@drawable/ticktick_horizontal_new_tag"
-            android:tint="@color/home_title_img_bg_color" />
-
-        <TextView
-            style="@style/TextStyle16.black"
-            android:layout_weight="1"
-            android:text="添加清单" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_list_label_manager"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
+    <com.yl.markremember.ui.widget.CalendarItemView
+      android:id="@+id/add_label_view"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:padding="18dp"
-            android:src="@drawable/ticktick_horizontal_new_tag"
-            android:tint="@color/home_title_img_bg_color" />
-
-        <TextView
-            style="@style/TextStyle16.black"
-            android:layout_weight="1"
-            android:text="管理清单和标签" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_new_user_leader"
+        app:calendar_item_text="添加清单"
+        android:layout_height="56dp"/>
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:id="@+id/list_label_manager_view"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        app:calendar_item_text="管理清单和标签"
+        android:layout_height="56dp"/>
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        app:calendar_item_text="新手指南"
+        android:layout_height="56dp"/>
 
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:padding="18dp"
-            android:src="@drawable/ticktick_horizontal_new_tag"
-            android:tint="@color/home_title_img_bg_color" />
 
-        <TextView
-            style="@style/TextStyle16.black"
-            android:layout_weight="1"
-            android:text="新手指南" />
-    </LinearLayout>
+
 </LinearLayout>

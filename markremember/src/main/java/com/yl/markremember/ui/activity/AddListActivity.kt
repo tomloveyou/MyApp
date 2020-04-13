@@ -18,6 +18,7 @@ import com.lxj.xpopup.interfaces.OnSelectListener
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.common.NetConstant
 import com.yl.markremember.db.model.ListInfo
 
 
@@ -93,7 +94,7 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.label_action_add) {
             if (!TextUtils.isEmpty(et_list_name.text.toString())) {
-                var labelInfo = ListInfo(null, null, et_list_name.text.toString(), DateUtils.timeParse(Date().time), null,  0);
+                var labelInfo = ListInfo(null, NetConstant.LIST_P_CODE,null, et_list_name.text.toString(), DateUtils.timeParse(Date().time), null,  0);
                 labelViewModel.insert(labelInfo)
                 finish()
             }
