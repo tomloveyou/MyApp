@@ -12,15 +12,19 @@
         android:background="@color/gray" />
     <com.yl.markremember.ui.widget.CalendarItemView
       android:id="@+id/add_label_view"
+        app:calendar_item_leftImgSrc="@drawable/ic_h_drag_record"
+        app:calendar_item_leftImgPadding="18dp"
         android:layout_width="match_parent"
         app:calendar_item_text="添加清单"
         android:layout_height="56dp"/>
     <com.yl.markremember.ui.widget.CalendarItemView
+        app:calendar_item_leftImgPadding="15dp"
         android:id="@+id/list_label_manager_view"
         android:layout_width="match_parent"
         app:calendar_item_text="管理清单和标签"
         android:layout_height="56dp"/>
     <com.yl.markremember.ui.widget.CalendarItemView
+        app:calendar_item_leftImgPadding="15dp"
         android:layout_width="match_parent"
         app:calendar_item_text="新手指南"
         android:layout_height="56dp"/>

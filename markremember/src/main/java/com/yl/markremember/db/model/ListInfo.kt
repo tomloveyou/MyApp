@@ -28,6 +28,6 @@ class ListInfo(@ColumnInfo(name = "mark_list_id")
     : MultiItemEntity ,Serializable{
 
     override fun getItemType(): Int {
-        return 1
+        return 5
     }
 }

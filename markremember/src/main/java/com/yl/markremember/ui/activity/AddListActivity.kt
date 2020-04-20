@@ -41,7 +41,7 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     override fun init() {
         setTitle("添加清单")
         labelViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        val data = (intent?.extras?.getSerializable("label_data"))
+        val data = (intent?.extras?.getSerializable("list_data"))
         labelViewModel.allLabels.observe(this, androidx.lifecycle.Observer {
             megerData= it?.filter { it.list_id!=labelinfo?.list_id }
             ddddddd= megerData?.map {
@@ -86,7 +86,7 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
         if (labelinfo == null) {//有数据时菜单项变化
             menuInflater.inflate(R.menu.add_menu, menu)
         } else {
-            menuInflater.inflate(R.menu.edite_label_menu, menu)
+            menuInflater.inflate(R.menu.edite_list_menu, menu)
         }
         return true
     }

@@ -57,11 +57,7 @@ class CalendarItemView @JvmOverloads constructor(
         tv_calendar_left_text.text=calendar_item_leftText
         tv_calendar_left_text.textSize=calendar_item_textSize
         if(calendar_item_leftImgSrc!=0){
-            iv_calendar_left_img.setImageResource(calendar_item_leftImgSrc)
-            val up: Drawable = iv_calendar_left_img.drawable
-            val drawableUp: Drawable = DrawableCompat.wrap(up);
-            DrawableCompat.setTint(drawableUp, calendar_item_leftImgTintColor);
-            iv_calendar_left_img.setImageDrawable(drawableUp);
+          setLeftImg(calendar_item_leftImgSrc)
         }
 
         if (calendar_item_leftImgPadding!=0){
@@ -123,6 +119,14 @@ class CalendarItemView @JvmOverloads constructor(
             tv_calendar_center_text.text = this
         }
 
+    }
+    public fun setLeftImg(resid:Int){
+        if (resid==0)return
+        iv_calendar_left_img.setImageResource(resid)
+        val up: Drawable = iv_calendar_left_img.drawable
+        val drawableUp: Drawable = DrawableCompat.wrap(up);
+        DrawableCompat.setTint(drawableUp, calendar_item_leftImgTintColor);
+        iv_calendar_left_img.setImageDrawable(drawableUp);
     }
 
     /**

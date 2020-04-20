@@ -18,6 +18,7 @@ import com.yl.markremember.callback.HomeItemDragAndSwipeCallback
 import com.yl.markremember.common.NetConstant
 import com.yl.markremember.datamanager.DataManager
 import com.yl.markremember.db.model.LabelInfo
+import com.yl.markremember.db.model.ListInfo
 import com.yl.markremember.db.viewmodel.LabelViewModel
 import com.yl.markremember.db.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_calendar_main.*
@@ -27,7 +28,8 @@ import kotlinx.android.synthetic.main.drawerlayout_foot_view.view.*
 class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
     private lateinit var listViewModel: ListViewModel
     private lateinit var labelViewModel: LabelViewModel
-    private lateinit var data: List<MultiItemEntity>
+    private lateinit var data: ArrayList<MultiItemEntity>
+    private lateinit var headdata: List<MultiItemEntity>
     private lateinit var label_menu: MenuBean
     private var adapter: MenuExpandableAdapter? = null;
     override fun setListener() {
@@ -37,10 +39,11 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
 
         })
         listViewModel.allLabels.observe(this, Observer {
+            val menuBeanList = java.util.ArrayList<MultiItemEntity>()
+            menuBeanList.addAll(headdata)
+            menuBeanList.addAll(it)
+            adapter?.setNewData(menuBeanList)
 
-           it.forEach {
-               adapter?.addData(MenuBean(R.drawable.ic_menu,NetConstant.LIST_P_CODE, it.list_id, 0,it.list_name))
-           }
         })
     }
 
@@ -52,11 +55,13 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
-        data = DataManager.homeMenuList
-        label_menu = data.find {
+        headdata = DataManager.homeMenuList
+        data= ArrayList()
+        label_menu = headdata.find {
             val menu = it as MenuBean
             menu.id == 51353
         } as MenuBean
+        data.addAll(headdata)
         adapter = MenuExpandableAdapter(data)
         val headview: View = LayoutInflater.from(this).inflate(R.layout.drawerlayout_head_view, null, false)
         val footview: View = LayoutInflater.from(this).inflate(R.layout.drawerlayout_foot_view, null, false)
