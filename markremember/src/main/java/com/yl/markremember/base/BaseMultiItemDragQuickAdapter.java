@@ -13,6 +13,7 @@ import com.standards.library.util.LogUtil;
 
 import com.yl.markremember.bean.MenuBean;
 import com.yl.markremember.db.model.LabelInfo;
+import com.yl.markremember.db.model.ListInfo;
 
 import java.util.List;
 
@@ -107,6 +108,18 @@ public class BaseMultiItemDragQuickAdapter<T extends MultiItemEntity, K extends 
                 MenuBean to_menuSubBean = (MenuBean) getItem(to);
                 if (to_menuSubBean == null||to_menuSubBean.getId() == null||to_menuSubBean.getPid()==null) return;
                 if (from_menuBean.getPid().intValue() != to_menuSubBean.getPid().intValue()) {
+                    return;
+                }
+            } else {
+                return;
+            }
+        }else if (getItem(from) instanceof ListInfo){
+            ListInfo from_menuBean= (ListInfo) getItem(from);
+            if (from_menuBean == null||from_menuBean.getList_pid()==null) return;
+            if (getItem(to) instanceof ListInfo) {
+                ListInfo to_menuSubBean = (ListInfo) getItem(to);
+                if (to_menuSubBean == null||to_menuSubBean.getList_pid() == null||to_menuSubBean.getList_pid()==null) return;
+                if (from_menuBean.getList_pid().intValue() != to_menuSubBean.getList_pid().intValue()) {
                     return;
                 }
             } else {

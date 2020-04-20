@@ -56,13 +56,13 @@ class MenuExpandableAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuic
                 val ddview=helper.getView<CalendarItemView>(R.id.civ_setrion)
                 ddview.setToday(dd.list_name)
                 ddview.setLeftImg(R.drawable.ic_menu)
-                ddview.setOnClickListener {
-                    val bundle= Bundle()
-                    bundle.putSerializable("list_data",dd)
-                    val intent=Intent(mContext, AddListActivity::class.java)
-                    intent.putExtras(bundle)
-                    mContext. startActivity(intent)
-                }
+//                ddview.setOnClickListener {
+//                    val bundle= Bundle()
+//                    bundle.putSerializable("list_data",dd)
+//                    val intent=Intent(mContext, AddListActivity::class.java)
+//                    intent.putExtras(bundle)
+//                    mContext. startActivity(intent)
+//                }
             }else{
 
             }
