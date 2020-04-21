@@ -21,6 +21,7 @@ import com.yl.markremember.R
 import com.yl.markremember.common.NetConstant
 import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.viewmodel.LabelViewModel
+import com.yl.markremember.ui.widget.CenterPickColorPopu
 import com.yl.markremember.ui.widget.LabelMergePopuView
 import kotlinx.android.synthetic.main.activity_label_add.*
 import kotlinx.android.synthetic.main.app_calendar_text_today.view.*
@@ -65,6 +66,9 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
                 iv_label_tint_color.setImageDrawable(drawableUp);
             }
 
+        }
+        ll_color_pick.setOnClickListener {
+            XPopup.Builder(this).asCustom(CenterPickColorPopu(this)).show()
         }
 
     }

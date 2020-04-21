@@ -6,12 +6,15 @@ import androidx.annotation.Nullable;
 
 import com.yl.markremember.common.ErrorCode;
 
+import java.util.List;
+
 
 public class Result<T> {
     public Status status;
     public String message;
     public int code;
     public T data;
+    private List<Integer>color_resid;
 
     public Result(@NonNull Status status, @Nullable T data, @Nullable int code) {
         this.status = status;

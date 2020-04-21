@@ -20,4 +20,5 @@
         <attr name="calendar_item_rightText" format="string"/>
         <attr name="calendar_item_isRightImgRota" format="boolean"/>
     </declare-styleable>
+
 </resources>
