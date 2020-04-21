@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -22,38 +21,51 @@ import com.yl.triplibrary.net.data.mvp.presenter.RankTripPresenter;
 import com.yl.triplibrary.ui.activity.LanscadeDetailActivity;
 import com.yl.triplibrary.ui.activity.adapter.RankTripAdapter2;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.util.V;
-
 /**
  * 热门景点
-*@user yl
-*@date 11:26
-**/
+ *
+ * @user yl
+ * @date 11:26
+ **/
 public class LanscadeFragment extends BaseFuncFragment<RankTripPresenter> implements RankTripContract.RankTripView {
 
 
     private RecyclerView myRecyclerView;
     private SmartRefreshLayout smartRefreshLayout;
     private RankTripAdapter2 tripAdapter2;
-    List<RankTripZone> da = new ArrayList<>();
+    private List<RankTripZone> da = new ArrayList<>();
+     private String area_code="taiguo";
+
+    public LanscadeFragment getInstance(String url) {
+        LanscadeFragment baseFuncFragment = new LanscadeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("area_code", url);
+        baseFuncFragment.setArguments(bundle);
+        return baseFuncFragment;
+
+    }
+    @Override
+    public void getExtra() {
+        super.getExtra();
+        Bundle bundle=getArguments();
+        if (bundle!=null){
+            area_code=bundle.getString("area_code");
+        }
+    }
 
     @Override
     protected RankTripPresenter getPresenter() {
         return new RankTripPresenter(this);
     }
 
+
+
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_lanscade;
+        return R.layout.fragment_refresh_recycleview;
     }
 
     @Override
@@ -65,7 +77,7 @@ public class LanscadeFragment extends BaseFuncFragment<RankTripPresenter> implem
         manager.setOrientation(RecyclerView.VERTICAL);
         myRecyclerView.setLayoutManager(manager);
         tripAdapter2.bindToRecyclerView(myRecyclerView);
-        mPresenter.getRankTripData(true);
+        mPresenter.getRankTripData(area_code,true);
     }
 
     @Override
@@ -73,22 +85,22 @@ public class LanscadeFragment extends BaseFuncFragment<RankTripPresenter> implem
         smartRefreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                mPresenter.getRankTripData(false);
+                mPresenter.getRankTripData(area_code,false);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 mPresenter.setCurrent_page(0);
-                mPresenter.getRankTripData(false);
+                mPresenter.getRankTripData(area_code,false);
             }
         });
         tripAdapter2.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent=new Intent(mContext, LanscadeDetailActivity.class);
-                RankTripZone tripZone=tripAdapter2.getItem(position);
-                if (tripZone!=null){
-                    Bundle bundle=new Bundle();
+                Intent intent = new Intent(mContext, LanscadeDetailActivity.class);
+                RankTripZone tripZone = tripAdapter2.getItem(position);
+                if (tripZone != null) {
+                    Bundle bundle = new Bundle();
                     bundle.putString("url", tripZone.getUrl());
                     intent.putExtras(bundle);
                 }

@@ -4,6 +4,8 @@
     <item name="gridview" type="id"/>
     <item name="webview" type="id"/>
     <item name="scrollview" type="id"/>
+    <item name="tag_key_data" type="id" />
+    <item name="tag_key_position" type="id" />
     <!--zxing-->
     <item name="auto_focus" type="id"/>
     <item name="decode" type="id"/>

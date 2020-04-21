@@ -4,6 +4,10 @@ public class HomeTripTab {
     private String tab_title;
     private String tab_url;
 
+    public HomeTripTab(String tab_title) {
+        this.tab_title = tab_title;
+    }
+
     public HomeTripTab(String tab_title, String tab_url) {
         this.tab_title = tab_title;
         this.tab_url = tab_url;

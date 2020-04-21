@@ -1,31 +1,23 @@
 package com.yl.triplibrary.ui.fragment.zone;
 
 
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.standards.library.adapter.BaseQuickAdapter;
 import com.standards.library.base.BaseFuncFragment;
 import com.yl.triplibrary.R;
-import com.yl.triplibrary.net.data.manager.entity.RankTripZone;
-import com.yl.triplibrary.net.data.mvp.contract.RankTripContract;
 import com.yl.triplibrary.net.data.mvp.contract.TripWenDaContract;
 import com.yl.triplibrary.net.data.mvp.module.TripWenDaEntity;
-import com.yl.triplibrary.net.data.mvp.presenter.RankTripPresenter;
 import com.yl.triplibrary.net.data.mvp.presenter.TripWenDaPresenter;
-import com.yl.triplibrary.ui.activity.adapter.RankTripAdapter2;
 import com.yl.triplibrary.ui.activity.adapter.TripWenDaAdapter;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +33,24 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
     private SmartRefreshLayout smartRefreshLayout;
     private TripWenDaAdapter tripAdapter2;
     private  List<TripWenDaEntity> da = new ArrayList<>();
+    private String area_code="taiguo";
+
+    public TripWenDaFragment getInstance(String url) {
+        TripWenDaFragment baseFuncFragment = new TripWenDaFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("area_code", url);
+        baseFuncFragment.setArguments(bundle);
+        return baseFuncFragment;
+
+    }
+    @Override
+    public void getExtra() {
+        super.getExtra();
+        Bundle bundle=getArguments();
+        if (bundle!=null){
+            area_code=bundle.getString("area_code");
+        }
+    }
 
     @Override
     protected TripWenDaPresenter getPresenter() {
@@ -49,7 +59,7 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_lanscade;
+        return R.layout.fragment_refresh_recycleview;
     }
 
     @Override
@@ -61,7 +71,7 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
         manager.setOrientation(RecyclerView.VERTICAL);
         myRecyclerView.setLayoutManager(manager);
         tripAdapter2.bindToRecyclerView(myRecyclerView);
-        mPresenter.getLanScadeDeailData(true);
+        mPresenter.getLanScadeDeailData(area_code,true);
     }
 
     @Override
@@ -69,13 +79,13 @@ public class TripWenDaFragment extends BaseFuncFragment<TripWenDaPresenter> impl
         smartRefreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 mPresenter.setCurrent_page(0);
-                mPresenter.getLanScadeDeailData(false);
+                mPresenter.getLanScadeDeailData(area_code,false);
             }
         });
         tripAdapter2.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

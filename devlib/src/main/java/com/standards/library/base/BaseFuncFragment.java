@@ -2,6 +2,8 @@ package com.standards.library.base;
 
 import android.os.Bundle;
 
+import androidx.fragment.app.Fragment;
+
 import com.standards.library.rx.ErrorThrowable;
 import com.standards.library.util.ToastUtil;
 

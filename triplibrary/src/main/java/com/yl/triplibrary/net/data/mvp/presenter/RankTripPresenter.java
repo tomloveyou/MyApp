@@ -43,8 +43,10 @@ public class RankTripPresenter extends BasePresenter<RankTripContract.RankTripVi
         super(fragment);
     }
 
-    public void getRankTripData(boolean showloading) {
-        addSubscribe(getData().subscribeOn(Schedulers.io())
+    public void getRankTripData(String araa_code,boolean showloading) {
+        String url_head = "http://m.dazijia.com/jingdian/" +araa_code+
+                "?p=" + current_page;
+        addSubscribe(getData(url_head).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new CSubscriber<List<RankTripZone>>() {
                     @Override
                     public void onPrepare() {
@@ -72,10 +74,10 @@ public class RankTripPresenter extends BasePresenter<RankTripContract.RankTripVi
 
     }
 
-    private Observable<List<RankTripZone>> getData() {
+    private Observable<List<RankTripZone>> getData(String html_url) {
         return Observable.create(subscriber -> {
             List<RankTripZone> da = new ArrayList<>();
-            String url_head = "http://m.dazijia.com/jingdian/taiguo.html?p=" + current_page;
+            String url_head = html_url+"?p=" + current_page;
             try {
                 Document doc = Jsoup.connect(url_head).userAgent("Mozilla/5.0 (Windows NT 6.1; rv:30.0) Gecko/20100101 Firefox/30.0").get();
 

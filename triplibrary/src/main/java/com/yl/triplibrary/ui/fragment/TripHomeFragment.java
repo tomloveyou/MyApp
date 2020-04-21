@@ -1,54 +1,61 @@
 package com.yl.triplibrary.ui.fragment;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.flyco.tablayout.SlidingTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.ns.yc.ycutilslib.viewPager.NoSlidingViewPager;
+import com.alibaba.android.vlayout.DelegateAdapter;
+import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.ColumnLayoutHelper;
+import com.alibaba.android.vlayout.layout.FixLayoutHelper;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
+import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
+import com.lcodecore.tkrefreshlayout.utils.DensityUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.standards.library.base.BaseFuncFragment;
+import com.standards.library.util.Util;
+import com.standards.library.util.Utils;
 import com.yl.triplibrary.R;
-import com.yl.triplibrary.net.data.mvp.contract.HomeTripContract;
-import com.yl.triplibrary.net.data.mvp.module.HomeTripTab;
-import com.yl.triplibrary.net.data.mvp.presenter.HomeTripPresenter;
-import com.yl.triplibrary.ui.fragment.zone.LanscadeFragment;
-import com.yl.triplibrary.ui.fragment.zone.TripFootPrintFragment;
-import com.yl.triplibrary.ui.fragment.zone.TripLineFragment;
-import com.yl.triplibrary.ui.fragment.zone.TripNoteFragment;
-import com.yl.triplibrary.ui.fragment.zone.TripStrategyFragment;
-import com.yl.triplibrary.ui.fragment.zone.TripWenDaFragment;
+import com.yl.triplibrary.net.data.mvp.contract.TripHomeMainContract;
+import com.yl.triplibrary.net.data.mvp.module.TripHomeMainEntity;
+import com.yl.triplibrary.net.data.mvp.presenter.TripHomeMainPresenter;
+import com.yl.triplibrary.ui.activity.adapter.LanScadeDetailBodyTitleAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeBannerAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeGvAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeRecomentAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripHomeSortSeachAdapter;
+import com.yl.triplibrary.ui.activity.adapter.home.TripSearchAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class TripHomeFragment extends BaseFuncFragment<HomeTripPresenter> implements HomeTripContract.HomeTripView {
-    private SlidingTabLayout fragmentTab;
-    private NoSlidingViewPager viewPager;
-
-    private List<Fragment> fragmentList = new ArrayList<>();
-    private List<HomeTripTab> tabData = new ArrayList<>();
-    private MyPageAdapter myPageAdapter;
-
-    @Override
-    protected HomeTripPresenter getPresenter() {
-        return new HomeTripPresenter(this);
-    }
-
+public class TripHomeFragment extends BaseFuncFragment implements TripHomeMainContract.TripHomeMainView {
+    private RecyclerView myRecyclerView;
+    private SmartRefreshLayout smartRefreshLayout;
+    private DelegateAdapter adapters;
+    private TripHomeMainPresenter tripHomeMainPresenter;
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_trip_home_layout;
+        return R.layout.fragment_refresh_recycleview;
     }
 
     @Override
     public void init() {
-        fragmentTab = (SlidingTabLayout) findView(R.id.fragment_tab);
-        viewPager = (NoSlidingViewPager) findView(R.id.fragment_containner);
-        myPageAdapter = new MyPageAdapter(getFragmentManager());
-        viewPager.setAdapter(myPageAdapter);
-        fragmentTab.setViewPager(viewPager);
-        mPresenter.getHomeTripData();
+        tripHomeMainPresenter=new TripHomeMainPresenter(this);
+        myRecyclerView = (RecyclerView) findView(R.id.my_recycler_view);
+        smartRefreshLayout = findView(R.id.refreshLayout);
+        RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+        myRecyclerView.setRecycledViewPool(viewPool);
+        viewPool.setMaxRecycledViews(0, 20);
+
+        VirtualLayoutManager layoutManager = new VirtualLayoutManager(mContext);
+
+        myRecyclerView.setLayoutManager(layoutManager);
+
+        adapters = new DelegateAdapter(layoutManager, false);
+        FixLayoutHelper searchHelp = new FixLayoutHelper(FixLayoutHelper.TOP_LEFT,0,50);
+        TripSearchAdapter searchAdapter=new TripSearchAdapter(mContext,searchHelp);
+        adapters.addAdapter(searchAdapter);
+        myRecyclerView.setAdapter(adapters);
+        tripHomeMainPresenter.getHomeTripData();
+       // mPresenter.getLanScadeDeailData(true);
     }
 
     @Override
@@ -56,41 +63,39 @@ public class TripHomeFragment extends BaseFuncFragment<HomeTripPresenter> implem
 
     }
 
-
     @Override
-    public void getHomeTripTrip(List<HomeTripTab> data) {
-        tabData.clear();
-        tabData.addAll(data);
-        fragmentList.add(new TripLineFragment());
-        fragmentList.add(new TripNoteFragment());
-        fragmentList.add(new TripStrategyFragment());
-        fragmentList.add(new LanscadeFragment());
-        fragmentList.add(new TripWenDaFragment());
-        fragmentList.add(new TripFootPrintFragment());
-        myPageAdapter.notifyDataSetChanged();
-        fragmentTab.notifyDataSetChanged();
-    }
-
-    class MyPageAdapter extends FragmentPagerAdapter {
-        public MyPageAdapter(FragmentManager fm) {
-            super(fm);
+    public void getTripHomeMain(TripHomeMainEntity data) {
+        /*banner*/
+        if (data.getBanners_list()!=null&&data.getBanners_list().size()>0){
+            SingleLayoutHelper bannerHelp = new SingleLayoutHelper();
+            TripHomeBannerAdapter bannerAdapter=new TripHomeBannerAdapter(mContext,bannerHelp,data.getBanners_list());
+            adapters.addAdapter(bannerAdapter);
         }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
+        /*设置九宫格数据*/
+        if (data.getGrid_buttons_list()!=null&&data.getGrid_buttons_list().size()>0){
+            GridLayoutHelper gvHelp = new GridLayoutHelper(4);
+            int dp= DensityUtil.dp2px(mContext, 20);
+            gvHelp.setMargin(dp, dp, dp, dp);
+            gvHelp.setVGap(dp);
+            gvHelp.setHGap(dp);
+            TripHomeGvAdapter gvAdapter=new TripHomeGvAdapter(mContext,gvHelp,data.getGrid_buttons_list());
+            adapters.addAdapter(gvAdapter);
         }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragmentList.get(position);
+        /*设置分类搜索数据*/
+        if (data.getConoditionEntity()!=null){
+            StickyLayoutHelper sortSearchHelp = new StickyLayoutHelper();
+            TripHomeSortSeachAdapter sortSearchAdapter=new TripHomeSortSeachAdapter(mContext,sortSearchHelp,data.getConoditionEntity());
+            adapters.addAdapter(sortSearchAdapter);
         }
-
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return tabData.get(position).getTab_title();
+        /*设置热门推荐title*/
+        SingleLayoutHelper hotTitleHelp = new SingleLayoutHelper();
+        LanScadeDetailBodyTitleAdapter hotTitleAdapter=new LanScadeDetailBodyTitleAdapter(mContext,hotTitleHelp,"热门推荐自驾游");
+        adapters.addAdapter(hotTitleAdapter);
+        /*设置推荐数据*/
+        if (data.getRecomment_list()!=null&&data.getRecomment_list().size()>0){
+            LinearLayoutHelper recommntrHelp = new LinearLayoutHelper();
+            TripHomeRecomentAdapter recommntAdapter=new TripHomeRecomentAdapter(mContext,recommntrHelp,data.getRecomment_list());
+            adapters.addAdapter(recommntAdapter);
         }
     }
 }

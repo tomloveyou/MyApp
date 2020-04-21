@@ -32,16 +32,18 @@ public class TripLineAdapter extends BaseQuickAdapter<TripLineEntity, BaseViewHo
             helper.setText(R.id.item_trip_line_right_text, item.getGo_start_eral());
             helper.setText(R.id.item_trip_line_bottom_title,item.getTitle() );
             ImageView itemRankImg=helper.getView(R.id.item_trip_line_img);
-            GlideUrl cookie = new GlideUrl(item.getImg_url(), new Headers() {
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> head=new HashMap<>();
-                    head.put("Referer", item.getSource_url());
-                    return head;
-                }
-            });
+            if (item.getImg_url()!=null&&!"".equals(item.getImg_url())){
+                GlideUrl cookie = new GlideUrl(item.getImg_url(), new Headers() {
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> head=new HashMap<>();
+                        head.put("Referer", item.getSource_url());
+                        return head;
+                    }
+                });
+                Glide.with(mContext).load(cookie).into(itemRankImg);
+            }
 
-            Glide.with(mContext).load(cookie).into(itemRankImg);
         }
 
     }

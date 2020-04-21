@@ -45,8 +45,9 @@ public class TripStrategyPresenter extends BasePresenter<TripStrategyContract.TT
         super(fragment);
     }
 
-    public void getLanScadeDeailData(boolean showloading) {
-        String url_head = "http://m.dazijia.com/gonglue/taiguo?p=" + current_page;
+    public void getLanScadeDeailData(String area_code,boolean showloading) {
+        String url_head = "http://m.dazijia.com/gonglue/" +area_code+
+                "?p=" + current_page;
         addSubscribe(getData(url_head).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new CSubscriber<List<TripStrategyEntity>>() {
                     @Override

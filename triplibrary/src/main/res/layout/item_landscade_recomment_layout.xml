@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <ImageView
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:id="@+id/recomment_img"
         android:layout_width="180dp"
         android:layout_height="120dp" />

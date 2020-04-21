@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+   android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/shape_cicle_cornor10"
+    android:orientation="vertical">
+
+    <EditText
+        android:textSize="12sp"
+        android:gravity="center_vertical"
+        android:id="@+id/item_trip_search_et_text"
+        android:textColor="#333"
+        android:hint="输入想去的地方"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null" />
+
+    <ImageView
+        android:id="@+id/item_trip_search_iv_search"
+        android:src="@android:drawable/ic_menu_search"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" />
+</RelativeLayout>

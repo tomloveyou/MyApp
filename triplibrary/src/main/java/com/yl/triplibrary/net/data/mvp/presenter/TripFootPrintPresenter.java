@@ -52,8 +52,9 @@ public class TripFootPrintPresenter extends BasePresenter<TripFootPrintContract.
         super(fragment);
     }
 
-    public void getLanScadeDeailData(boolean showloading) {
-        String url_head = "http://m.dazijia.com/zuji/taiguo.html?p=" + current_page;
+    public void getLanScadeDeailData(String area_code,boolean showloading) {
+        String url_head = "http://m.dazijia.com/zuji/" +area_code+
+                "?p=" + current_page;
         addSubscribe(getData(url_head).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new CSubscriber<List<TripFootPrintEntity>>() {
                     @Override

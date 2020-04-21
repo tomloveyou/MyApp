@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.orhanobut.logger.Logger;
+import com.standards.library.base.BaseFuncActivity;
 import com.standards.library.base.BaseTitleBarActivity;
 import com.yl.triplibrary.R;
 
@@ -15,7 +16,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class MytripActivity extends BaseTitleBarActivity {
+public class MytripActivity extends BaseFuncActivity {
 
 
     @Override
@@ -25,7 +26,7 @@ public class MytripActivity extends BaseTitleBarActivity {
 
     @Override
     protected void init() {
-        setTitle("热点景区排行");
+
     }
 
     @Override

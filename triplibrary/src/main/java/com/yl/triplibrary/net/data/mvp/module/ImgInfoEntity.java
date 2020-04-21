@@ -1,6 +1,8 @@
 package com.yl.triplibrary.net.data.mvp.module;
 
-public class ImgInfoEntity {
+import cn.bmob.v3.BmobObject;
+
+public class ImgInfoEntity extends BmobObject {
     private String img_url;
     private String source_url;
     private String goto_url;

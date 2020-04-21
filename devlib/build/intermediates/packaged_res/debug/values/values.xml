@@ -271,6 +271,10 @@
     <dimen name="indicator_internal_padding">4dp</dimen>
     <dimen name="indicator_right_padding">10dp</dimen>
     <dimen name="progress_size">80dp</dimen>
+    <item name="BaseQuickAdapter_databinding_support" type="id"/>
+    <item name="BaseQuickAdapter_dragging_support" type="id"/>
+    <item name="BaseQuickAdapter_swiping_support" type="id"/>
+    <item name="BaseQuickAdapter_viewholder_support" type="id"/>
     <item name="auto_focus" type="id"/>
     <item name="decode" type="id"/>
     <item name="decode_failed" type="id"/>
@@ -285,6 +289,8 @@
     <item name="scrollview" type="id"/>
     <item name="search_book_contents_failed" type="id"/>
     <item name="search_book_contents_succeeded" type="id"/>
+    <item name="tag_key_data" type="id"/>
+    <item name="tag_key_position" type="id"/>
     <item name="webview" type="id"/>
     <string name="April">四月</string>
     <string name="August">八月</string>
@@ -300,6 +306,9 @@
     <string name="September">九月</string>
     <string name="afteroon">下午</string>
     <string name="app_name">ListGroupLibary</string>
+    <string name="brvah_load_end">没有更多数据</string>
+    <string name="brvah_load_failed">加载失败，请点我重试</string>
+    <string name="brvah_loading">@string/load_more_ing</string>
     <string name="emoring">凌晨</string>
     <string name="format_date">MM月dd日</string>
     <string name="format_date_year">yyyy年MM月dd日</string>
@@ -463,19 +472,19 @@
     </declare-styleable>
     <declare-styleable name="PullToRefresh">
         
-        
+        <!-- A drawable to use as the background of the Refreshable View -->
         <attr format="reference|color" name="ptrRefreshableViewBackground"/>
 
-        
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
         <attr format="reference|color" name="ptrHeaderBackground"/>
 
-        
+        <!-- Text Color of the Header and Footer Loading Views -->
         <attr format="reference|color" name="ptrHeaderTextColor"/>
 
-        
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
         <attr format="reference|color" name="ptrHeaderSubTextColor"/>
 
-        
+        <!-- Mode of Pull-to-Refresh that should be used -->
         <attr name="ptrMode">
             <flag name="disabled" value="0x0"/>
             <flag name="pullFromStart" value="0x1"/>
@@ -483,48 +492,55 @@
             <flag name="both" value="0x3"/>
             <flag name="manualOnly" value="0x4"/>
 
-            
+            <!-- These last two are depreacted -->
             <flag name="pullDownFromTop" value="0x1"/>
             <flag name="pullUpFromBottom" value="0x2"/>
         </attr>
 
-        
+        <!-- Whether the Indicator overlay(s) should be used -->
         <attr format="reference|boolean" name="ptrShowIndicator"/>
 
-        
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
         <attr format="reference" name="ptrDrawable"/>
 
-        
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
         <attr format="reference" name="ptrDrawableStart"/>
 
-        
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
         <attr format="reference" name="ptrDrawableEnd"/>
 
-        
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
         <attr format="reference|boolean" name="ptrOverScroll"/>
 
-        
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
         <attr format="reference" name="ptrHeaderTextAppearance"/>
 
-        
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
         <attr format="reference" name="ptrSubHeaderTextAppearance"/>
 
-        
+        <!-- Style of Animation should be used displayed when pulling. -->
         <attr name="ptrAnimationStyle">
             <flag name="rotate" value="0x0"/>
             <flag name="flip" value="0x1"/>
         </attr>
 
-        
+        <!-- Whether the user can scroll while the View is Refreshing -->
         <attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/>
 
-        
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
         <attr format="reference|boolean" name="ptrListViewExtrasEnabled"/>
 
-        
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
         <attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/>
 
-        
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
         <attr format="reference|color" name="ptrAdapterViewBackground"/>
         <attr format="reference" name="ptrDrawableTop"/>
         <attr format="reference" name="ptrDrawableBottom"/>
@@ -548,5 +564,24 @@
         <attr format="reference" name="inner_scan_bitmap"/>
         <attr format="integer" name="inner_scan_speed"/>
         <attr format="boolean" name="inner_scan_iscircle"/>
+    </declare-styleable>
+    <declare-styleable name="labels_view">
+        <attr format="enum" name="selectType">
+            <enum name="NONE" value="1"/>
+            <enum name="SINGLE" value="2"/>
+            <enum name="SINGLE_IRREVOCABLY" value="3"/>
+            <enum name="MULTI" value="4"/>
+        </attr>
+        <attr format="integer" name="maxSelect"/>
+        <attr format="integer" name="maxLines"/>
+        <attr format="reference|color" name="labelTextColor"/>
+        <attr format="dimension" name="labelTextSize"/>
+        <attr format="dimension" name="labelTextPaddingLeft"/>
+        <attr format="dimension" name="labelTextPaddingTop"/>
+        <attr format="dimension" name="labelTextPaddingRight"/>
+        <attr format="dimension" name="labelTextPaddingBottom"/>
+        <attr format="dimension" name="lineMargin"/>
+        <attr format="dimension" name="wordMargin"/>
+        <attr format="reference|color" name="labelBackground"/>
     </declare-styleable>
 </resources>
