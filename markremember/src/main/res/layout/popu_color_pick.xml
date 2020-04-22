@@ -1,76 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_cornor_rad10"
+    android:orientation="vertical"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    android:orientation="vertical">
+    android:paddingRight="8dp">
 
-    <TextView
-        style="@style/TextStyle16.black"
-        android:text="选择颜色" />
-    <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <ImageView
-            android:layout_width="26dp"
-            android:layout_height="26dp"/>
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:text="无颜色"
-            android:layout_weight="1"
-          style="@style/TextStyle14.gray"/>
-        <RadioGroup
-            android:layout_width="26dp"
-            android:layout_height="26dp"/>
-    </LinearLayout>
-    <View
-        android:background="@color/line_color"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
-    <androidx.recyclerview.widget.RecyclerView
+
+    <com.yl.markremember.ui.widget.CustomRecycleView
         android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:layout_width="match_parent"
         app:spanCount="5"
-        tools:listitem="@layout/item_color_pick"
         tools:itemCount="10"
-        android:layout_height="wrap_content"/>
+        tools:listitem="@layout/item_color_pick" />
+
+
     <RelativeLayout
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="30dp"
+        android:id="@+id/rl_bottom"
         android:layout_width="match_parent"
-        android:layout_height="112dp">
+        android:layout_height="92dp">
+
         <RelativeLayout
             android:id="@+id/rl_arrow_view"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_above="@+id/tv_cancel"
-            android:layout_centerHorizontal="true"
-            android:layout_width="56dp"
-            android:layout_height="56dp">
+            android:layout_centerHorizontal="true">
+
             <ImageView
                 android:id="@+id/iv_arrow"
-                android:layout_centerInParent="true"
-                android:tint="@color/colorPrimary"
-                android:src="@drawable/spinner_down"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/abc_spinner_mtrl_am_alpha"
+                android:tint="@color/colorPrimary" />
         </RelativeLayout>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/tv_cancel"
-            android:textColor="@color/colorPrimary"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_width="80dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
             android:text="取消"
-            android:layout_height="56dp"/>
+            android:textColor="@color/colorPrimary" />
     </RelativeLayout>
 </LinearLayout>

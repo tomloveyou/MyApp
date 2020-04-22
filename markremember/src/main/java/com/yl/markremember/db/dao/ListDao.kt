@@ -17,6 +17,10 @@ interface ListDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertList(listInfo: ListInfo)
 
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateList(listInfo: ListInfo)
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertListList(listInfo: List<ListInfo>)
 

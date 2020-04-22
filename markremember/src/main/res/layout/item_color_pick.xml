@@ -3,28 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <FrameLayout
+        android:id="@+id/fl_color_img0"
         android:layout_width="46dp"
         android:layout_height="46dp"
 
         >
 
-        <com.standards.library.widget.EaseImageView
+        <ImageView
             android:id="@+id/eiv_color_img0"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="center"
             android:tint="@color/aquamarine"
-            android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
-            app:ease_border_color="@color/aquamarine"
-            app:ease_radius="5dp"
-            app:ease_press_color="@color/line_color"
-            app:ease_shape_type="round"
-            app:ease_border_width="2dp" />
+            android:src="@drawable/il"
+       />
         <ImageView
             android:visibility="gone"
             android:id="@+id/eiv_color_select_status_img0"
@@ -36,24 +32,21 @@
 
 
     <FrameLayout
-        android:layout_marginTop="10dp"
+        android:id="@+id/fl_color_img1"
         android:layout_width="46dp"
         android:layout_height="46dp"
         >
 
-        <com.standards.library.widget.EaseImageView
+        <ImageView
             android:id="@+id/eiv_color_img1"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="center"
             android:tint="@color/aquamarine"
-            android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
-            app:ease_border_color="@color/aquamarine"
-            app:ease_radius="5dp"
-            app:ease_press_color="@color/line_color"
-            app:ease_shape_type="round"
-            app:ease_border_width="2dp" />
+            android:src="@drawable/il"
+          />
         <ImageView
+
             android:id="@+id/eiv_color_select_status_img1"
             android:layout_gravity="center"
             android:layout_width="20dp"
@@ -62,7 +55,7 @@
     </FrameLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:id="@+id/ll_color_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,21 +63,18 @@
         android:visibility="gone">
 
         <FrameLayout
+            android:id="@+id/fl_color_img2"
             android:layout_width="46dp"
             android:layout_height="46dp">
 
-            <com.standards.library.widget.EaseImageView
+            <ImageView
                 android:id="@+id/eiv_color_img2"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center"
                 android:tint="@color/aquamarine"
-                android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
-                app:ease_border_color="@color/aquamarine"
-                app:ease_radius="5dp"
-                app:ease_press_color="@color/line_color"
-                app:ease_shape_type="round"
-                app:ease_border_width="2dp" />
+                android:src="@drawable/il"
+               />
             <ImageView
                 android:id="@+id/eiv_color_select_status_img2"
                 android:layout_gravity="center"
@@ -93,23 +83,19 @@
                 android:layout_height="20dp"/>
         </FrameLayout>
         <FrameLayout
-            android:layout_marginTop="10dp"
+            android:id="@+id/fl_color_img3"
             android:layout_width="46dp"
             android:layout_height="46dp"
             >
 
-            <com.standards.library.widget.EaseImageView
+            <ImageView
                 android:id="@+id/eiv_color_img3"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center"
                 android:tint="@color/aquamarine"
-                android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
-                app:ease_border_color="@color/aquamarine"
-                app:ease_radius="5dp"
-                app:ease_press_color="@color/line_color"
-                app:ease_shape_type="round"
-                app:ease_border_width="2dp" />
+                android:src="@drawable/il"
+         />
             <ImageView
                 android:id="@+id/eiv_color_select_status_img3"
                 android:layout_gravity="center"
@@ -118,22 +104,19 @@
                 android:layout_height="20dp"/>
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/fl_color_img4"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:layout_marginTop="10dp">
+           >
 
-            <com.standards.library.widget.EaseImageView
+            <ImageView
                 android:id="@+id/eiv_color_img4"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center"
                 android:tint="@color/aquamarine"
-                android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
-                app:ease_border_color="@color/aquamarine"
-                app:ease_radius="5dp"
-                app:ease_press_color="@color/line_color"
-                app:ease_shape_type="round"
-                app:ease_border_width="2dp" />
+                android:src="@drawable/il"
+               />
             <ImageView
                 android:id="@+id/eiv_color_select_status_img4"
                 android:layout_gravity="center"

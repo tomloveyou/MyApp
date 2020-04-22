@@ -10,6 +10,9 @@ class LabelRepository(var labelDao: LabelDao) {
     suspend fun insert(todo: LabelInfo){
         labelDao.insertLabel(todo)
     }
+    suspend fun upDateLabel(todo: LabelInfo){
+        labelDao.upDateLabel(todo)
+    }
     fun getLabelById(id: Int){
         labelDao.getLabelById(id)
     }

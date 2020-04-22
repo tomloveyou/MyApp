@@ -12,76 +12,76 @@
         <item>暗夜蓝</item>
         <item>暗夜橙</item>
     </string-array>
-    <integer-array name="color0">
-        <item>@color/color0</item>
-        <item>@color/color1</item>
-        <item>@color/color2</item>
-        <item>@color/color3</item>
-        <item>@color/color4</item>
-    </integer-array>
-    <integer-array name="color1">
-        <item>@color/color5</item>
-        <item>@color/color6</item>
-        <item>@color/color7</item>
-        <item>@color/color8</item>
-        <item>@color/color9</item>
-    </integer-array>
+    <string-array name="color0">
+        <item>@string/color0</item>
+        <item>@string/color1</item>
+        <item>@string/color2</item>
+        <item>@string/color3</item>
+        <item>@string/color4</item>
+    </string-array>
+    <string-array name="color1">
+        <item>@string/color5</item>
+        <item>@string/color6</item>
+        <item>@string/color7</item>
+        <item>@string/color8</item>
+        <item>@string/color9</item>
+    </string-array>
 
-    <integer-array name="color2">
-        <item>@color/color10</item>
-        <item>@color/color11</item>
-        <item>@color/color12</item>
-        <item>@color/color13</item>
-        <item>@color/color14</item>
-    </integer-array>
-    <integer-array name="color3">
-        <item>@color/color15</item>
-        <item>@color/color16</item>
-        <item>@color/color17</item>
-        <item>@color/color18</item>
-        <item>@color/color19</item>
-    </integer-array>
-    <integer-array name="color4">
-        <item>@color/color20</item>
-        <item>@color/color21</item>
-        <item>@color/color22</item>
-        <item>@color/color23</item>
-        <item>@color/color24</item>
+    <string-array name="color2">
+        <item>@string/color10</item>
+        <item>@string/color11</item>
+        <item>@string/color12</item>
+        <item>@string/color13</item>
+        <item>@string/color14</item>
+    </string-array>
+    <string-array name="color3">
+        <item>@string/color15</item>
+        <item>@string/color16</item>
+        <item>@string/color17</item>
+        <item>@string/color18</item>
+        <item>@string/color19</item>
+    </string-array>
+    <string-array name="color4">
+        <item>@string/color20</item>
+        <item>@string/color21</item>
+        <item>@string/color22</item>
+        <item>@string/color23</item>
+        <item>@string/color24</item>
 
-    </integer-array>
-    <integer-array name="color5">
-        <item>@color/color25</item>
-        <item>@color/color26</item>
-        <item>@color/color27</item>
-        <item>@color/color28</item>
-        <item>@color/color29</item>
-    </integer-array>
-    <integer-array name="color6">
-        <item>@color/color30</item>
-        <item>@color/color31</item>
-        <item>@color/color32</item>
-        <item>@color/color33</item>
-        <item>@color/color34</item>
-    </integer-array>
-    <integer-array name="color7">
-        <item>@color/color35</item>
-        <item>@color/color36</item>
-        <item>@color/color37</item>
-        <item>@color/color38</item>
-        <item>@color/color39</item>
-    </integer-array>
-    <integer-array name="color8">
-        <item>@color/color40</item>
-        <item>@color/color41</item>
-        <item>@color/color42</item>
-        <item>@color/color43</item>
-        <item>@color/color44</item>
-    </integer-array>
-    <integer-array name="color9">
-        <item>@color/color45</item>
-        <item>@color/color46</item>
-        <item>@color/color47</item>
-        <item>@color/color48</item>
-        <item>@color/color49</item>
-    </integer-array>
+    </string-array>
+    <string-array name="color5">
+        <item>@string/color25</item>
+        <item>@string/color26</item>
+        <item>@string/color27</item>
+        <item>@string/color28</item>
+        <item>@string/color29</item>
+    </string-array>
+    <string-array name="color6">
+        <item>@string/color30</item>
+        <item>@string/color31</item>
+        <item>@string/color32</item>
+        <item>@string/color33</item>
+        <item>@string/color34</item>
+    </string-array>
+    <string-array name="color7">
+        <item>@string/color35</item>
+        <item>@string/color36</item>
+        <item>@string/color37</item>
+        <item>@string/color38</item>
+        <item>@string/color39</item>
+    </string-array>
+    <string-array name="color8">
+        <item>@string/color40</item>
+        <item>@string/color41</item>
+        <item>@string/color42</item>
+        <item>@string/color43</item>
+        <item>@string/color44</item>
+    </string-array>
+    <string-array name="color9">
+        <item>@string/color45</item>
+        <item>@string/color46</item>
+        <item>@string/color47</item>
+        <item>@string/color48</item>
+        <item>@string/color49</item>
+    </string-array>
 </resources>

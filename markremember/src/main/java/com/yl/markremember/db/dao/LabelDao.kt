@@ -16,11 +16,14 @@ interface LabelDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLabel(labelInfo: LabelInfo)
 
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upDateLabel(labelInfo: LabelInfo)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertLabelList(labelInfo: List<LabelInfo>)
 
     @Delete
-   suspend fun deleteLabel(labelInfo: LabelInfo)
+    suspend fun deleteLabel(labelInfo: LabelInfo)
 
     @Query("DELETE FROM mark_labels")
     suspend fun deleteAllLabel()

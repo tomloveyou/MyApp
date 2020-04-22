@@ -24,6 +24,11 @@ class LabelViewModel (application: Application): AndroidViewModel(application) {
     fun insert(labelinfo: LabelInfo) = viewModelScope.launch {
         repository.insert(labelinfo)
     }
+
+    fun update(labelinfo: LabelInfo) = viewModelScope.launch {
+        repository.upDateLabel(labelinfo)
+    }
+
     fun deleteLabel(labelInfo: LabelInfo)= viewModelScope.launch {
         repository.deleteLabel(labelInfo)
     }

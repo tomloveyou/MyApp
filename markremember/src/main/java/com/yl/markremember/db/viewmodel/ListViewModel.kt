@@ -25,6 +25,9 @@ class ListViewModel (application: Application): AndroidViewModel(application) {
     fun insert(listinfo: ListInfo) = viewModelScope.launch {
         repository.insert(listinfo)
     }
+    fun update(listinfo: ListInfo) = viewModelScope.launch {
+        repository.update(listinfo)
+    }
     fun deleteLabel(labelInfo: ListInfo)= viewModelScope.launch {
         repository.deleteList(labelInfo)
     }

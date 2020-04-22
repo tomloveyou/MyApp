@@ -12,6 +12,9 @@ class ListRepository(var listDao: ListDao) {
     suspend fun insert(todo: ListInfo){
         listDao.insertList(todo)
     }
+    suspend fun update(todo: ListInfo){
+        listDao.updateList(todo)
+    }
     suspend fun deleteList(todo: ListInfo){
         listDao.deleteList(todo)
     }

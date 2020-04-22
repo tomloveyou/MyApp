@@ -10,8 +10,10 @@ import android.view.View
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.ViewModelProvider
 import com.luck.picture.lib.tools.DateUtils
+import com.luck.picture.lib.tools.ScreenUtils
 import com.luck.picture.lib.tools.StringUtils
 import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.core.BasePopupView
 import com.lxj.xpopup.interfaces.OnCancelListener
 import com.lxj.xpopup.interfaces.OnConfirmListener
 import com.lxj.xpopup.interfaces.OnSelectListener
@@ -30,8 +32,10 @@ import java.util.*
 class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     private var labelinfo: LabelInfo? = null
     private lateinit var labelViewModel: LabelViewModel
-    private  var megerData:List<LabelInfo>?=null
-    private  var ddddddd:List<String>?=null
+    private var megerData: List<LabelInfo>? = null
+    private var ddddddd: List<String>? = null
+    private var colorPopu: BasePopupView? = null
+    private var label_tint_color: String = "0"
     override fun setListener() {
 
     }
@@ -41,8 +45,8 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
         labelViewModel = ViewModelProvider(this).get(LabelViewModel::class.java)
         val data = (intent?.extras?.getSerializable("label_data"))
         labelViewModel.allLabels.observe(this, androidx.lifecycle.Observer {
-            megerData= it?.filter { it.label_id!=labelinfo?.label_id }
-            ddddddd= megerData?.map {
+            megerData = it?.filter { it.label_id != labelinfo?.label_id }
+            ddddddd = megerData?.map {
                 it.label_name
             }
         })
@@ -59,7 +63,8 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
                 label_pname
             }
             tv_label_pname.text = tint
-            if (!TextUtils.isEmpty(label_tint_color)) {
+            if (!TextUtils.isEmpty(label_tint_color)&&!"0".equals(label_tint_color)&&!"-1".equals(label_tint_color)) {
+                iv_label_tint_color.visibility=View.VISIBLE
                 val up: Drawable = iv_label_tint_color.drawable
                 val drawableUp: Drawable = DrawableCompat.wrap(up);
                 DrawableCompat.setTint(drawableUp, Color.parseColor(label_tint_color));
@@ -68,7 +73,28 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
 
         }
         ll_color_pick.setOnClickListener {
-            XPopup.Builder(this).asCustom(CenterPickColorPopu(this)).show()
+            if (colorPopu == null) {
+                colorPopu = XPopup.Builder(this)//.maxHeight((ScreenUtils.getScreenHeight(this)*0.8f).toInt())
+                        .asCustom(CenterPickColorPopu(this, object : CenterPickColorPopu.ColorPickCallBack {
+                            override fun getColor(color: String) {
+                                if ("0".equals(color)) {
+                                    iv_label_tint_color.visibility = View.GONE
+                                } else {
+                                    iv_label_tint_color.visibility = View.VISIBLE
+                                }
+                                if (!"0".equals(color) && !"-1".equals(color)) {
+                                    label_tint_color = color;
+                                    val up: Drawable = iv_label_tint_color.drawable
+                                    val drawableUp: Drawable = DrawableCompat.wrap(up);
+                                    DrawableCompat.setTint(drawableUp, Color.parseColor(color));
+                                    iv_label_tint_color.setImageDrawable(drawableUp);
+                                }
+                            }
+                        })).show()
+            } else {
+                colorPopu?.show()
+            }
+
         }
 
     }
@@ -95,23 +121,31 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.label_action_add) {
             if (!TextUtils.isEmpty(et_label_name.text.toString())) {
-                var labelInfo = LabelInfo(null, NetConstant.LABEL_P_CODE, null, null, et_label_name.text.toString(), DateUtils.timeParse(Date().time), null, 0);
-                labelViewModel.insert(labelInfo)
+                if (labelinfo == null) {
+                    var labelInfo = LabelInfo(null, NetConstant.LABEL_P_CODE, null, label_tint_color, et_label_name.text.toString(), DateUtils.timeParse(Date().time), null, 0);
+                    labelViewModel.insert(labelInfo)
+                } else {
+                    labelinfo?.label_name = et_label_name.text.toString();
+                    labelinfo?.label_tint_color = label_tint_color;
+                    labelinfo?.label_update_time=DateUtils.timeParse(Date().time)
+                    labelViewModel.update(labelinfo!!)
+                }
                 finish()
             }
 
         } else if (item?.itemId == R.id.label_action_delete) {
             labelinfo?.run {
-                XPopup.Builder(this@AddLabelActivity).asConfirm("删除标签","删除后，标签“${labelinfo?.label_name}”将会从任务中删除","取消","确定", {
+                XPopup.Builder(this@AddLabelActivity).asConfirm("删除标签", "删除后，标签“${labelinfo?.label_name}”将会从任务中删除", "取消", "确定", {
                     labelViewModel.deleteLabel(this)
                     finish()
                 }, {
 
-                },false).show()
+                }, false).show()
 
             }
 
         } else if (item?.itemId == R.id.label_action_merge) {
+
             XPopup.Builder(this).asCustom(LabelMergePopuView(this)).show()
         }
         return super.onOptionsItemSelected(item)

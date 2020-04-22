@@ -17,4 +17,65 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <!---->
+    <string name="color0">#FF920000</string>
+    <string name="color1">#FFE13E39</string>
+    <string name="color2">#FFEC6665</string>
+    <string name="color3">#FFF18180</string>
+    <string name="color4">#FFB69A8F</string>
+
+    <!---->
+    <string name="color5">#B45F05</string>
+    <string name="color6">#E69137</string>
+    <string name="color7">#F1B04A</string>
+    <string name="color8">#F9CA9C</string>
+    <string name="color9">#C9B59D</string>
+    <!---->
+    <string name="color10">#BF9002</string>
+    <string name="color11">#F1C332</string>
+    <string name="color12">#FED966</string>
+    <string name="color13">#FFE59A</string>
+    <string name="color14">#BFB89E</string>
+    <!---->
+    <string name="color15">#73761D</string>
+    <string name="color16">#A0BA32</string>
+    <string name="color17">#DCE359</string>
+    <string name="color18">#D1D7A9</string>
+    <string name="color19">#BDC1B0</string>
+    <!---->
+    <string name="color20">#37761D</string>
+    <string name="color21">#6DBE5F</string>
+    <string name="color22">#92C47D</string>
+    <string name="color23">#B6D7A8</string>
+    <string name="color24">#B6C5B0</string>
+    <!---->
+    <string name="color25">#299363</string>
+    <string name="color26">#3BB880</string>
+    <string name="color27">#5DD2A8</string>
+    <string name="color28">#6FEABE</string>
+    <string name="color29">#ABC5BC</string>
+    <!---->
+    <string name="color30">#144F5D</string>
+    <string name="color31">#2AA6C0</string>
+    <string name="color32">#52B8D1</string>
+    <string name="color33">#7CEDEB</string>
+    <string name="color34">#AABDC4</string>
+    <!---->
+    <string name="color35">#134397</string>
+    <string name="color36">#3876E3</string>
+    <string name="color37">#5992F9</string>
+    <string name="color38">#4AA6EF</string>
+    <string name="color39">#A4AEC7</string>
+    <!---->
+    <string name="color40">#491D76</string>
+    <string name="color41">#9842EB</string>
+    <string name="color42">#9E4CEE</string>
+    <string name="color43">#CF66F7</string>
+    <string name="color44">#AAA6B5</string>
+    <!---->
+    <string name="color45">#731C63</string>
+    <string name="color46">#BE3A83</string>
+    <string name="color47">#D35293</string>
+    <string name="color48">#EC70A4</string>
+    <string name="color49">#A9949D</string>
 </resources>

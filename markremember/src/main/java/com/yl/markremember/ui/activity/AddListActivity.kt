@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.luck.picture.lib.tools.DateUtils
 import com.luck.picture.lib.tools.StringUtils
 import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.core.BasePopupView
 import com.lxj.xpopup.interfaces.OnCancelListener
 import com.lxj.xpopup.interfaces.OnConfirmListener
 import com.lxj.xpopup.interfaces.OnSelectListener
@@ -19,11 +20,14 @@ import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
 import com.yl.markremember.common.NetConstant
+import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.model.ListInfo
 
 
 import com.yl.markremember.db.viewmodel.ListViewModel
+import com.yl.markremember.ui.widget.CenterPickColorPopu
 import com.yl.markremember.ui.widget.LabelMergePopuView
+import kotlinx.android.synthetic.main.activity_label_add.*
 
 import kotlinx.android.synthetic.main.activity_list_add.*
 
@@ -34,6 +38,8 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     private lateinit var labelViewModel: ListViewModel
     private  var megerData:List<ListInfo>?=null
     private  var ddddddd:List<String>?=null
+    private var colorPopu: BasePopupView? = null
+    private var label_tint_color: String = "0"
     override fun setListener() {
 
     }
@@ -61,11 +67,36 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
                 list_name
             }
             tv_folder_pname.text = tint
-            if (!TextUtils.isEmpty(list_tint_color)) {
+            if (!TextUtils.isEmpty(list_tint_color)&&!"0".equals(list_tint_color)&&!"-1".equals(list_tint_color)) {
+                iv_list_tint_color.visibility=View.VISIBLE
                 val up: Drawable = iv_list_tint_color.drawable
                 val drawableUp: Drawable = DrawableCompat.wrap(up);
                 DrawableCompat.setTint(drawableUp, Color.parseColor(list_tint_color));
                 iv_list_tint_color.setImageDrawable(drawableUp);
+            }
+
+        }
+        ll_list_color_pick.setOnClickListener {
+            if (colorPopu == null) {
+                colorPopu = XPopup.Builder(this)//.maxHeight((ScreenUtils.getScreenHeight(this)*0.8f).toInt())
+                        .asCustom(CenterPickColorPopu(this, object : CenterPickColorPopu.ColorPickCallBack {
+                            override fun getColor(color: String) {
+                                if ("0".equals(color)) {
+                                    iv_list_tint_color.visibility = View.GONE
+                                } else {
+                                    iv_list_tint_color.visibility = View.VISIBLE
+                                }
+                                if (!"0".equals(color) && !"-1".equals(color)) {
+                                    label_tint_color = color;
+                                    val up: Drawable = iv_list_tint_color.drawable
+                                    val drawableUp: Drawable = DrawableCompat.wrap(up);
+                                    DrawableCompat.setTint(drawableUp, Color.parseColor(color));
+                                    iv_list_tint_color.setImageDrawable(drawableUp);
+                                }
+                            }
+                        })).show()
+            } else {
+                colorPopu?.show()
             }
 
         }
@@ -93,9 +124,17 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.label_action_add) {
-            if (!TextUtils.isEmpty(et_list_name.text.toString())) {
-                var labelInfo = ListInfo(null, NetConstant.LIST_P_CODE,null, et_list_name.text.toString(), DateUtils.timeParse(Date().time), null,  0);
-                labelViewModel.insert(labelInfo)
+            val lable_name=et_list_name.text.toString();
+            if (!TextUtils.isEmpty(lable_name)) {
+                if (labelinfo == null) {
+                    var labelInfo = ListInfo(null, NetConstant.LABEL_P_CODE, label_tint_color, lable_name, DateUtils.timeParse(Date().time), null, 0);
+                    labelViewModel.insert(labelInfo)
+                } else {
+                    labelinfo?.list_name =lable_name;
+                    labelinfo?.list_tint_color = label_tint_color;
+                    labelinfo?.list_update_time=DateUtils.timeParse(Date().time)
+                    labelViewModel.update(labelinfo!!)
+                }
                 finish()
             }
 

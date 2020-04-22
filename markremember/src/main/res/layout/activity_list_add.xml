@@ -18,6 +18,7 @@
         android:background="@color/gray" />
 
     <LinearLayout
+        android:id="@+id/ll_list_color_pick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
@@ -42,6 +43,7 @@
             android:gravity="center">
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/iv_list_tint_color"
                 android:layout_width="20dp"
                 android:layout_height="20dp"

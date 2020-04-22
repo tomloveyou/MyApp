@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="13dp"
+    android:paddingRight="13dp"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextStyle16.black"
+        android:text="选择颜色"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ll_none_color_view"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:padding="4dp"
+            android:src="@drawable/abc_text_select_handle_middle_mtrl_dark" />
+
+        <TextView
+            style="@style/TextStyle14.gray"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="无颜色" />
+
+        <RadioButton
+            android:id="@+id/rb_none_color"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:buttonTint="@color/colorPrimary"
+            android:checked="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color" />
+
+
+</LinearLayout>
