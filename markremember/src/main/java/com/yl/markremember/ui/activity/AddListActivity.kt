@@ -39,7 +39,7 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     private  var megerData:List<ListInfo>?=null
     private  var ddddddd:List<String>?=null
     private var colorPopu: BasePopupView? = null
-    private var label_tint_color: String = "0"
+    private var label_tint_color: String? = "0"
     override fun setListener() {
 
     }
@@ -67,6 +67,7 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
                 list_name
             }
             tv_folder_pname.text = tint
+            label_tint_color=list_tint_color;
             if (!TextUtils.isEmpty(list_tint_color)&&!"0".equals(list_tint_color)&&!"-1".equals(list_tint_color)) {
                 iv_list_tint_color.visibility=View.VISIBLE
                 val up: Drawable = iv_list_tint_color.drawable
@@ -79,15 +80,16 @@ class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
         ll_list_color_pick.setOnClickListener {
             if (colorPopu == null) {
                 colorPopu = XPopup.Builder(this)//.maxHeight((ScreenUtils.getScreenHeight(this)*0.8f).toInt())
-                        .asCustom(CenterPickColorPopu(this, object : CenterPickColorPopu.ColorPickCallBack {
+                        .asCustom(CenterPickColorPopu(this,label_tint_color, object : CenterPickColorPopu.ColorPickCallBack {
                             override fun getColor(color: String) {
+                                label_tint_color = color;
                                 if ("0".equals(color)) {
                                     iv_list_tint_color.visibility = View.GONE
                                 } else {
                                     iv_list_tint_color.visibility = View.VISIBLE
                                 }
                                 if (!"0".equals(color) && !"-1".equals(color)) {
-                                    label_tint_color = color;
+
                                     val up: Drawable = iv_list_tint_color.drawable
                                     val drawableUp: Drawable = DrawableCompat.wrap(up);
                                     DrawableCompat.setTint(drawableUp, Color.parseColor(color));

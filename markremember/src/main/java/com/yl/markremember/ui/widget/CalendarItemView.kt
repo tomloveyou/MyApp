@@ -87,9 +87,13 @@ class CalendarItemView @JvmOverloads constructor(
         if (calendar_item_isRightImgRota){
             current_slide_isopen=stat
             if(current_slide_isopen){
-                animationIvClose(tv_calendar_right_img)
+               // animationIvOpen(tv_calendar_right_img)
+                tv_calendar_right_img.setImageResource(R.drawable.widget_pre_week_white)
+                //animationIvClose(tv_calendar_right_img)
             }else{
-                animationIvOpen(tv_calendar_right_img)
+                tv_calendar_right_img.setImageResource(R.drawable.arrow_down)
+                //animationIvClose(tv_calendar_right_img)
+                //animationIvOpen(tv_calendar_right_img)
             }
         }
 

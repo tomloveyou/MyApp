@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#FFF1F1FE</color>
     <color name="home_title_img_bg_color">#FF777478</color>
-
+<color name="default_bg_color">#DADADA</color>
 
 </resources>

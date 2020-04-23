@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +24,7 @@ import com.yl.markremember.db.model.ListInfo
 import com.yl.markremember.db.viewmodel.LabelViewModel
 import com.yl.markremember.db.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_calendar_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.drawerlayout_foot_view.view.*
 
 
@@ -56,7 +59,7 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
         headdata = DataManager.homeMenuList
-        data= ArrayList()
+        data = ArrayList()
         label_menu = headdata.find {
             val menu = it as MenuBean
             menu.id == 51353
@@ -74,6 +77,16 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
             setHeaderView(headview)
             setFooterView(footview)
             recyclerView.adapter = this
+            setOnItemClickListener { adapter, view, position ->
+                val viewtype = getItemViewType(position)
+                if (viewtype == 2) {//标签
+                    //点击跳转page2
+                   // Navigation.findNavController(view).navigate(R.id.ragment_task_list_to_nav_gallery)
+                } else if (viewtype == 5) {//清单
+                    //点击跳转page2
+                   // Navigation.findNavController(view).navigate(R.id.ragment_task_list_to_nav_gallery)
+                }
+            }
         }
 
         footview.list_label_manager_view.setOnClickListener {
@@ -85,6 +98,8 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
 
     }
 
+    override fun onSupportNavigateUp() =
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
 
     override fun getLayoutId(): Int {
         return R.layout.activity_calendar_main

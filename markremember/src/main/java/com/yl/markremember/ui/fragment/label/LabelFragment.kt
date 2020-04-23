@@ -10,6 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.interfaces.OnSelectListener
+import com.lxj.xpopup.util.XPopupUtils
 import com.yl.markremember.R
 import com.yl.markremember.callback.HomeItemDragAndSwipeCallback
 import com.yl.markremember.db.viewmodel.LabelViewModel
@@ -48,6 +51,13 @@ class LabelFragment : Fragment() {
         })
         adapter.footerLayout.setOnClickListener {
             startActivity(Intent(activity, AddLabelActivity::class.java))
+        }
+        haedview.setOnClickListener {
+            XPopup.Builder(activity).asCenterList("标签", arrayOf("自动","显示","隐藏"), IntArray(0),0,object : OnSelectListener{
+                override fun onSelect(position: Int, text: String?) {
+
+                }
+            }).show()
         }
 
     }

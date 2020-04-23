@@ -12,7 +12,6 @@ public class NetConstant {
     public final static int MENU_P_CODE = 51000;
     public final static int LABEL_P_CODE = 51353;
     public final static int LIST_P_CODE = 51354;
-    public final static String USER_NAME_KEY = "userNameKey";
-    public final static String USER_NUM_KEY = "userNumKey";
-    public final static String USER_IS_VIP = "isVip";
+    public final static String KEY_LABEL_DATA = "label_data";
+    public final static String KEY_LIST_DATA = "label_data";
 }

@@ -7,6 +7,19 @@
         android:label="日历"
         android:id="@+id/fragment_home"
         android:name="com.yl.markremember.ui.fragment.CalendarMainFragment">
-        <action android:id="@+id/fragment_home_to_nav_gallery"/>
+        <action android:id="@+id/fragment_home_to_nav_gallery"
+            />
+    </fragment>
+    <fragment
+        android:label="清单任务"
+        android:id="@+id/fragment_task_list"
+        android:name="com.yl.markremember.ui.fragment.list.ListTaskListFragment">
+        <action android:id="@+id/ragment_task_list_to_nav_gallery"/>
+    </fragment>
+    <fragment
+        android:label="标签任务"
+        android:id="@+id/fragment_task_label"
+        android:name="com.yl.markremember.ui.fragment.label.LabelTaskListFragment">
+        <action android:id="@+id/ragment_task_list_to_nav_gallery"/>
     </fragment>
 </navigation>

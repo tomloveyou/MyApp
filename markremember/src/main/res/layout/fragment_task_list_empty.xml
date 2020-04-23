@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="86dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:background="@drawable/bg_whitegray_cicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_empty_all_a1_inbox_a1_normal"
+                android:tint="@color/colorPrimary"
+                android:visibility="visible" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_empty_all_a1_inbox_a1_normal_black"
+                android:tint="@color/home_title_img_bg_color"
+                android:tintMode="add"
+
+
+                />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="没有任务，放松一下"
+            android:textColor="#757575" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="想记点什么？点击+那妞写下来"
+            android:textColor="#A3A3A3"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

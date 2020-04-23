@@ -35,7 +35,7 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     private var megerData: List<LabelInfo>? = null
     private var ddddddd: List<String>? = null
     private var colorPopu: BasePopupView? = null
-    private var label_tint_color: String = "0"
+    private var label_tint_color: String? = "0"
     override fun setListener() {
 
     }
@@ -43,7 +43,7 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
     override fun init() {
         setTitle("添加标签")
         labelViewModel = ViewModelProvider(this).get(LabelViewModel::class.java)
-        val data = (intent?.extras?.getSerializable("label_data"))
+        val data = (intent?.extras?.getSerializable(NetConstant.KEY_LABEL_DATA))
         labelViewModel.allLabels.observe(this, androidx.lifecycle.Observer {
             megerData = it?.filter { it.label_id != labelinfo?.label_id }
             ddddddd = megerData?.map {
@@ -63,6 +63,7 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
                 label_pname
             }
             tv_label_pname.text = tint
+            this@AddLabelActivity.label_tint_color=label_tint_color
             if (!TextUtils.isEmpty(label_tint_color)&&!"0".equals(label_tint_color)&&!"-1".equals(label_tint_color)) {
                 iv_label_tint_color.visibility=View.VISIBLE
                 val up: Drawable = iv_label_tint_color.drawable
@@ -75,15 +76,15 @@ class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
         ll_color_pick.setOnClickListener {
             if (colorPopu == null) {
                 colorPopu = XPopup.Builder(this)//.maxHeight((ScreenUtils.getScreenHeight(this)*0.8f).toInt())
-                        .asCustom(CenterPickColorPopu(this, object : CenterPickColorPopu.ColorPickCallBack {
+                        .asCustom(CenterPickColorPopu(this, label_tint_color,object : CenterPickColorPopu.ColorPickCallBack {
                             override fun getColor(color: String) {
+                                label_tint_color = color;
                                 if ("0".equals(color)) {
                                     iv_label_tint_color.visibility = View.GONE
                                 } else {
                                     iv_label_tint_color.visibility = View.VISIBLE
                                 }
                                 if (!"0".equals(color) && !"-1".equals(color)) {
-                                    label_tint_color = color;
                                     val up: Drawable = iv_label_tint_color.drawable
                                     val drawableUp: Drawable = DrawableCompat.wrap(up);
                                     DrawableCompat.setTint(drawableUp, Color.parseColor(color));
