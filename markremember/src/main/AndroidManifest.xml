@@ -12,5 +12,7 @@
         <activity android:name=".ui.activity.ListLabelManagerActivity"/>
         <activity android:name=".ui.activity.AddLabelActivity"/>
         <activity android:name=".ui.activity.AddListActivity"/>
+        <activity android:name=".ui.activity.TabControlActivity"/>
+        <activity android:name=".ui.activity.SettingActivity"/>
     </application>
 </manifest>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@color/line_color" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:id="@+id/civ_fuction_model"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="功能模块" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@color/line_color" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="外观" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="日期和时间" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="声音、提醒与通知" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="更多设置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@color/line_color" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="新手指南" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="帮助中心" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="反馈与建议" />
+
+    <com.yl.markremember.ui.widget.CalendarItemView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:calendar_item_text="关于" />
+</LinearLayout>

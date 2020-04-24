@@ -15,10 +15,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
+import androidx.appcompat.widget.AppCompatImageView;
+
 import com.standards.library.R;
 
 
-public class EaseImageView extends ImageView {
+public class EaseImageView extends AppCompatImageView {
     // paint when user press
     private Paint pressPaint;
     private int width;
@@ -172,6 +174,7 @@ public class EaseImageView extends ImageView {
             Paint paint = new Paint();
             paint.setStrokeWidth(borderWidth);
             paint.setStyle(Paint.Style.STROKE);
+            paint.setAlpha(4);
             paint.setColor(borderColor);
             paint.setAntiAlias(true);
             // // check is rectangle or circle

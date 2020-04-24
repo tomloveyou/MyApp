@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_calendar"
+            android:layout_width="56dp"
+            android:layout_height="56dp">
+
+            <ImageView
+                android:id="@+id/iv_calendar_today_img_bg"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_widget_today"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <TextView
+                android:id="@+id/tv_calendar_today_text"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle16.black"
+                android:text="日历" />
+
+            <TextView
+                style="@style/TextStyle14.gray"
+                android:text="开启后，既可在5种日历视图中方便地规划任务。" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+
+            android:layout_width="56dp"
+            android:layout_height="56dp">
+
+            <ImageView
+
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_widget_today"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <TextView
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle16.black"
+                android:text="番茄倒计时" />
+
+            <TextView
+                style="@style/TextStyle14.gray"
+                android:text="开启后，既可在主界面选项卡、任务详情活提醒弹窗总开始关注，并在个人中心查看相关统计。" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+
+            android:layout_width="56dp"
+            android:layout_height="56dp">
+
+            <ImageView
+
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_widget_today"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <TextView
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle16.black"
+                android:text="打卡" />
+
+            <TextView
+                style="@style/TextStyle14.gray"
+                android:text="开启后，既可在添加想要养成的习惯，并追踪打卡数据。" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+
+            android:layout_width="56dp"
+            android:layout_height="56dp">
+
+            <ImageView
+
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_widget_today"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <TextView
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle16.black"
+                android:text="搜索" />
+
+            <TextView
+                style="@style/TextStyle14.gray"
+                android:text="开启后，既可在主界面选项卡快速速锁任务。" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="56dp"
+            android:layout_height="56dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_widget_today"
+                android:tint="@color/home_title_img_bg_color" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle16.black"
+                android:text="设置" />
+
+            <TextView
+                style="@style/TextStyle14.gray"
+                android:text="开启后，既可在主界面选项卡查看并更改各类配置。" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

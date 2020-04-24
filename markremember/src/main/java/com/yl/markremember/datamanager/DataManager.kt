@@ -5,6 +5,7 @@ import com.yl.markremember.R
 import com.yl.markremember.bean.MenuBean
 import com.yl.markremember.common.NetConstant
 import java.util.*
+import kotlin.collections.ArrayList
 
 object DataManager {
     val homeMenuList: List<MultiItemEntity>
@@ -16,4 +17,10 @@ object DataManager {
             menuBeanList.add(MenuBean(R.drawable.ic_widget_today, NetConstant.MENU_P_CODE,null, 4,""))
             return menuBeanList
         }
+    val tabs:List<String>
+    get() {
+        val tabs=ArrayList<String>()
+        tabs.add("首页")
+        return tabs
+    }
 }

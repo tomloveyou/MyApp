@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="com.yl.markremember.ui.fragment.SettingFragment"
+    android:id="@+id/fragment_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</fragment>
