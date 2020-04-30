@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="color_themes">
+    <string-array name="color_themes_name">
         <item>官方蓝</item>
         <item>粉色</item>
         <item>绿色</item>
@@ -11,6 +11,30 @@
         <item>夜间</item>
         <item>暗夜蓝</item>
         <item>暗夜橙</item>
+    </string-array>
+    <string-array name="color_primary_themes">
+        <item>#617FDF</item>
+        <item>#FD7897</item>
+        <item>#06CE90</item>
+        <item>#F9BF13</item>
+        <item>#272B36</item>
+        <item>#7E7F84</item>
+        <item>#F0F0F0</item>
+        <item>#212121</item>
+        <item>#000000</item>
+        <item>#000000</item>
+    </string-array>
+    <string-array name="color_accent_themes">
+        <item>#617FDF</item>
+        <item>#FD7897</item>
+        <item>#06CE90</item>
+        <item>#F9BF13</item>
+        <item>#272B36</item>
+        <item>#7E7F84</item>
+        <item>#FBFBFB</item>
+        <item>#212121</item>
+        <item>#617FDF</item>
+        <item>#FF9910</item>
     </string-array>
     <string-array name="color0">
         <item>@string/color0</item>

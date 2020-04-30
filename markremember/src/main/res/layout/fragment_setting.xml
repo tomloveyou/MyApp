@@ -24,6 +24,7 @@
         android:background="@color/line_color" />
 
     <com.yl.markremember.ui.widget.CalendarItemView
+        android:id="@+id/civ_change_appearance"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         app:calendar_item_text="外观" />

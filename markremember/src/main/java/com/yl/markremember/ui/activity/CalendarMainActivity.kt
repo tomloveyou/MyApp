@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -30,6 +31,7 @@ import com.yl.markremember.db.model.ListInfo
 import com.yl.markremember.db.viewmodel.LabelViewModel
 import com.yl.markremember.db.viewmodel.ListViewModel
 import com.yl.markremember.event.MsgEvent
+import com.yl.markremember.ui.fragment.CalendarMainFragment
 import com.yl.markremember.ui.fragment.SettingFragment
 import com.yl.markremember.ui.fragment.label.LabelTaskListFragment
 import com.yl.markremember.ui.fragment.list.ListTaskListFragment
@@ -42,6 +44,7 @@ import kotlinx.android.synthetic.main.drawerlayout_head_view.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.lang.Exception
 
 
 class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
@@ -52,7 +55,13 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
     private lateinit var headdata: List<MultiItemEntity>
     private lateinit var label_menu: MenuBean
     private var adapter: MenuExpandableAdapter? = null;
-    private var fragments = mutableMapOf<String, Fragment>(NetConstant.KEY_HOME_HAS_LABEL_TAB to LabelTaskListFragment())
+
+    private  var homeFragment:Fragment?=null
+    private  var calendarFragment:Fragment?=null
+    private  var settingFragment:Fragment?=null
+    private  var signFragment:Fragment?=null
+    private  var countDownFragment:Fragment?=null
+    private var fragments = mutableMapOf<String, Fragment?>()
     override fun setListener() {
         labelViewModel.allLabels.observe(this, Observer {
             label_menu.subItems = it
@@ -73,14 +82,19 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
 
         rl_list_data.setOnClickListener {
             setCheckByPosition(NetConstant.KEY_HOME_HAS_LABEL_TAB)
+
+
         }
         rl_calendar.setOnClickListener {
+
             setCheckByPosition(NetConstant.KEY_HOME_HAS_CALENDER_TAB)
         }
         rl_fanqie_counttime.setOnClickListener {
+
             setCheckByPosition(NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB)
         }
         rl_location_sign.setOnClickListener {
+
             setCheckByPosition(NetConstant.KEY_HOME_HAS_SIGN_TAB)
         }
         rl_setting.setOnClickListener {
@@ -94,36 +108,72 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
 
         } else if (NetConstant.KEY_HOME_HAS_CALENDER_TAB == msgEvent.code) {//选中日历
             rl_calendar.visibility = if (msgEvent.t) {
-                fragments[NetConstant.KEY_HOME_HAS_CALENDER_TAB] = ListTaskListFragment()
+                if (!fragments.containsKey(NetConstant.KEY_HOME_HAS_CALENDER_TAB)){
+                    if (calendarFragment==null){
+                        calendarFragment=CalendarMainFragment();
+                        supportFragmentManager.beginTransaction().add(R.id.fragment_container,calendarFragment!!).commitAllowingStateLoss()
+                    }
+                    fragments[NetConstant.KEY_HOME_HAS_CALENDER_TAB] = calendarFragment
+                }
                 View.VISIBLE
             } else {
+                if (calendarFragment!=null){
+                    supportFragmentManager.beginTransaction().hide(calendarFragment!!).commitAllowingStateLoss()
+                }
                 fragments.remove(NetConstant.KEY_HOME_HAS_CALENDER_TAB)
                 View.GONE
             }
 
         } else if (NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB == msgEvent.code) {//选中番茄倒计时
             rl_fanqie_counttime.visibility = if (msgEvent.t) {
-                fragments[NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB] = ListTaskListFragment()
+                if (!fragments.containsKey(NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB)){
+                    if (countDownFragment==null){
+                        countDownFragment=ListTaskListFragment();
+                        supportFragmentManager.beginTransaction().add(R.id.fragment_container,countDownFragment!!).commitAllowingStateLoss()
+                    }
+                    fragments[NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB] = countDownFragment
+                }
                 View.VISIBLE
             } else {
+                if (countDownFragment!=null){
+                    supportFragmentManager.beginTransaction().hide(countDownFragment!!).commitAllowingStateLoss()
+                }
                 fragments.remove(NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB)
                 View.GONE
             }
 
         } else if (NetConstant.KEY_HOME_HAS_SIGN_TAB == msgEvent.code) {
             rl_location_sign.visibility = if (msgEvent.t) {
-                fragments[NetConstant.KEY_HOME_HAS_SIGN_TAB] = ListTaskListFragment()
+                if (!fragments.containsKey(NetConstant.KEY_HOME_HAS_SIGN_TAB)){
+                    if (signFragment==null){
+                        signFragment=ListTaskListFragment();
+                        supportFragmentManager.beginTransaction().add(R.id.fragment_container,signFragment!!).commitAllowingStateLoss()
+                    }
+                    fragments[NetConstant.KEY_HOME_HAS_SIGN_TAB] = signFragment
+                }
                 View.VISIBLE
             } else {
+                if (signFragment!=null){
+                    supportFragmentManager.beginTransaction().hide(signFragment!!).commitAllowingStateLoss()
+                }
                 fragments.remove(NetConstant.KEY_HOME_HAS_SIGN_TAB)
                 View.GONE
             }
 
         } else {
             rl_setting.visibility = if (msgEvent.t) {
-                fragments[NetConstant.KEY_HOME_HAS_SETTING_TAB] = SettingFragment()
+                if (!fragments.containsKey(NetConstant.KEY_HOME_HAS_SETTING_TAB)){
+                    if (settingFragment==null){
+                        settingFragment=SettingFragment();
+                        supportFragmentManager.beginTransaction().add(R.id.fragment_container,settingFragment!!).commitAllowingStateLoss()
+                    }
+                    fragments[NetConstant.KEY_HOME_HAS_SETTING_TAB] = settingFragment
+                }
                 View.VISIBLE
             } else {
+                if (settingFragment!=null){
+                    supportFragmentManager.beginTransaction().hide(settingFragment!!).commitAllowingStateLoss()
+                }
                 fragments.remove(NetConstant.KEY_HOME_HAS_SETTING_TAB)
                 View.GONE
             }
@@ -136,38 +186,55 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
     }
 
     fun setCheckByPosition(key: String) {
+        val ft=supportFragmentManager.beginTransaction();
+        for ((key_fragment,fragment) in fragments){
+            if (key==key_fragment){
+                ft.show(fragment!!)
+            }else{
+                ft.hide(fragment!!)
+            }
+
+        }
+        ft.commitAllowingStateLoss()
         val select_color = resources.getColor(R.color.colorPrimary)
         val unselect_color = resources.getColor(R.color.home_title_img_bg_color)
-        if (NetConstant.KEY_HOME_HAS_LABEL_TAB == key) {//选中首页
-            setImgTintColor(home_view_list_bg, select_color)//首页
-            setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
-            setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
-            setImgTintColor(home_iv_location_sign, unselect_color)//打卡
-            setImgTintColor(home_iv_setting, unselect_color)//设置
-        } else if (NetConstant.KEY_HOME_HAS_CALENDER_TAB == key) {//选中日历
-            setImgTintColor(home_view_list_bg, unselect_color)//首页
-            setImgTintColor(iv_calendar_today_img_bg, select_color)//日历
-            setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
-            setImgTintColor(home_iv_location_sign, unselect_color)//打卡
-            setImgTintColor(home_iv_setting, unselect_color)//设置
-        } else if (NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB == key) {//选中番茄倒计时
-            setImgTintColor(home_view_list_bg, unselect_color)//首页
-            setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
-            setImgTintColor(home_fanqie_counttime, select_color)//番茄
-            setImgTintColor(home_iv_location_sign, unselect_color)//打卡
-            setImgTintColor(home_iv_setting, unselect_color)//设置
-        } else if (NetConstant.KEY_HOME_HAS_SIGN_TAB == key) {
-            setImgTintColor(home_view_list_bg, unselect_color)//首页
-            setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
-            setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
-            setImgTintColor(home_iv_location_sign, select_color)//打卡
-            setImgTintColor(home_iv_setting, unselect_color)//设置
-        } else {
-            setImgTintColor(home_view_list_bg, unselect_color)//首页
-            setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
-            setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
-            setImgTintColor(home_iv_location_sign, unselect_color)//打卡
-            setImgTintColor(home_iv_setting, select_color)//设置
+
+        when {
+            NetConstant.KEY_HOME_HAS_LABEL_TAB == key -> {//选中首页
+                setImgTintColor(home_view_list_bg, select_color)//首页
+                setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
+                setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
+                setImgTintColor(home_iv_location_sign, unselect_color)//打卡
+                setImgTintColor(home_iv_setting, unselect_color)//设置
+            }
+            NetConstant.KEY_HOME_HAS_CALENDER_TAB == key -> {//选中日历
+                setImgTintColor(home_view_list_bg, unselect_color)//首页
+                setImgTintColor(iv_calendar_today_img_bg, select_color)//日历
+                setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
+                setImgTintColor(home_iv_location_sign, unselect_color)//打卡
+                setImgTintColor(home_iv_setting, unselect_color)//设置
+            }
+            NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB == key -> {//选中番茄倒计时
+                setImgTintColor(home_view_list_bg, unselect_color)//首页
+                setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
+                setImgTintColor(home_fanqie_counttime, select_color)//番茄
+                setImgTintColor(home_iv_location_sign, unselect_color)//打卡
+                setImgTintColor(home_iv_setting, unselect_color)//设置
+            }
+            NetConstant.KEY_HOME_HAS_SIGN_TAB == key -> {
+                setImgTintColor(home_view_list_bg, unselect_color)//首页
+                setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
+                setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
+                setImgTintColor(home_iv_location_sign, select_color)//打卡
+                setImgTintColor(home_iv_setting, unselect_color)//设置
+            }
+            else -> {
+                setImgTintColor(home_view_list_bg, unselect_color)//首页
+                setImgTintColor(iv_calendar_today_img_bg, unselect_color)//日历
+                setImgTintColor(home_fanqie_counttime, unselect_color)//番茄
+                setImgTintColor(home_iv_location_sign, unselect_color)//打卡
+                setImgTintColor(home_iv_setting, select_color)//设置
+            }
         }
 
 
@@ -229,11 +296,14 @@ class CalendarMainActivity : BaseFuncActivity<BasePresenter<*>>() {
         headview.rl_action_settings.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))
         }
+        homeFragment=LabelTaskListFragment()
+        fragments[NetConstant.KEY_HOME_HAS_LABEL_TAB] = homeFragment
+        supportFragmentManager.beginTransaction().hide(homeFragment!!).commitAllowingStateLoss()
         getSettingNotify(MsgEvent(NetConstant.KEY_HOME_HAS_CALENDER_TAB,null,SPUtils.getInstance().getBoolean(NetConstant.KEY_HOME_HAS_CALENDER_TAB,true)))
         getSettingNotify(MsgEvent(NetConstant.KEY_HOME_HAS_SIGN_TAB,null,SPUtils.getInstance().getBoolean(NetConstant.KEY_HOME_HAS_SIGN_TAB)))
         getSettingNotify(MsgEvent(NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB,null,SPUtils.getInstance().getBoolean(NetConstant.KEY_HOME_HAS_COUNTDOWN_TAB)))
         getSettingNotify(MsgEvent(NetConstant.KEY_HOME_HAS_SETTING_TAB,null,SPUtils.getInstance().getBoolean(NetConstant.KEY_HOME_HAS_SETTING_TAB)))
-
+        setCheckByPosition(NetConstant.KEY_HOME_HAS_LABEL_TAB)
     }
 
 

@@ -38,6 +38,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.vlayout.DelegateAdapter;
+import com.alibaba.android.vlayout.LayoutHelper;
 import com.standards.library.adapter.animation.AlphaInAnimation;
 import com.standards.library.adapter.animation.BaseAnimation;
 import com.standards.library.adapter.animation.ScaleInAnimation;
@@ -67,7 +69,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  */
-public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends RecyclerView.Adapter<K> {
+public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends DelegateAdapter.Adapter<K> {
 
     //load more
     private boolean mNextLoadEnable = false;
@@ -136,7 +138,7 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     private UpFetchListener mUpFetchListener;
     private RecyclerView mRecyclerView;
     private int mPreLoadNumber = 1;
-
+    protected LayoutHelper mHelper;
     /**
      * start up fetch position, default is 1.
      */
@@ -156,6 +158,10 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
         return mRecyclerView;
     }
 
+    @Override
+    public LayoutHelper onCreateLayoutHelper() {
+        return mHelper;
+    }
     private void setRecyclerView(RecyclerView recyclerView) {
         mRecyclerView = recyclerView;
     }

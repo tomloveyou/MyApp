@@ -16,6 +16,7 @@
         <attr name="calendar_item_leftImgPadding" format="dimension"/>
         <attr name="calendar_item_isRightImg" format="boolean"/>
         <attr name="calendar_item_rightImgSrc" format="reference"/>
+        <attr name="calendar_item_rightImgTintColor" format="color"/>
         <attr name="calendar_item_rightTextSize" format="dimension"/>
         <attr name="calendar_item_rightText" format="string"/>
         <attr name="calendar_item_isRightImgRota" format="boolean"/>

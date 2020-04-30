@@ -14,5 +14,7 @@
         <activity android:name=".ui.activity.AddListActivity"/>
         <activity android:name=".ui.activity.TabControlActivity"/>
         <activity android:name=".ui.activity.SettingActivity"/>
+        <activity android:name=".ui.activity.ChangeAppearanceActivity"/>
+        <activity android:name=".ui.activity.ThemePreViewActivity"/>
     </application>
 </manifest>

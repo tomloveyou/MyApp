@@ -20,12 +20,13 @@ class CalendarItemView @JvmOverloads constructor(
     var calendar_item_text: String? = null
     var calendar_item_leftText: String? = null
     var calendar_item_textColor = 0
-    var calendar_item_leftImgTintColor=0
     var calendar_item_textSize:Float = 12f
     var calendar_item_leftImgSrc = 0
+    var calendar_item_leftImgTintColor=0
     var calendar_item_leftImgPadding:Int = 0
     var calendar_item_isRightImg :Boolean= false
     var calendar_item_rightImgSrc = 0
+    var calendar_item_rightImgTintColor=0;
     var calendar_item_rightTextSize = 0f
     var calendar_item_rightText:String? = null
     var calendar_item_isRightImgRota:Boolean = false
@@ -46,6 +47,7 @@ class CalendarItemView @JvmOverloads constructor(
             calendar_item_rightTextSize = typedArray.getDimension(R.styleable.CalendarItemView_calendar_item_rightTextSize,12f)
             calendar_item_rightText = typedArray.getString(R.styleable.CalendarItemView_calendar_item_rightText)
             calendar_item_isRightImgRota = typedArray.getBoolean(R.styleable.CalendarItemView_calendar_item_isRightImgRota,false)
+            calendar_item_rightImgTintColor = typedArray.getColor(R.styleable.CalendarItemView_calendar_item_rightImgTintColor,resources.getColor(R.color.home_title_img_bg_color))
             typedArray.recycle()
         }
         LayoutInflater.from(context).inflate(R.layout.app_calendar_item_view, this, true)
@@ -65,17 +67,17 @@ class CalendarItemView @JvmOverloads constructor(
         }
         if (calendar_item_isRightImg){
             tv_calendar_right_text.visibility=View.GONE
-            tv_calendar_right_img.visibility=View.VISIBLE
+            rl_calendar_right_img.visibility=View.VISIBLE
             if(calendar_item_rightImgSrc!=0){
                 tv_calendar_right_img.setImageResource(calendar_item_rightImgSrc)
                 val up: Drawable = tv_calendar_right_img.drawable
                 val drawableUp: Drawable = DrawableCompat.wrap(up);
-                DrawableCompat.setTint(drawableUp, calendar_item_leftImgTintColor);
+                DrawableCompat.setTint(drawableUp, calendar_item_rightImgTintColor);
                 tv_calendar_right_img.setImageDrawable(drawableUp);
             }
         }else{
             tv_calendar_right_text.visibility=View.VISIBLE
-            tv_calendar_right_img.visibility=View.GONE
+            rl_calendar_right_img.visibility=View.GONE
             tv_calendar_right_text.text=calendar_item_rightText
         }
         tv_calendar_right_text.textSize=calendar_item_rightTextSize
