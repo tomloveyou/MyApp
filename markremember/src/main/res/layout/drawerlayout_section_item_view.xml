@@ -9,7 +9,7 @@
         android:id="@+id/civ_setrion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:calendar_item_leftImgPadding="10dp"
+        app:calendar_item_leftImgPadding="4dp"
         app:calendar_item_leftImgSrc="@drawable/ticktick_horizontal_new_tag"
         app:calendar_item_text="22" />
 </LinearLayout>

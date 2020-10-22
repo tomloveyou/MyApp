@@ -61,7 +61,7 @@ import com.standards.library.entry.TabEntity;
 
 import com.standards.library.util.ToastUtil;
 import com.yl.myapp.bean.ControlBean;
-import com.yl.triplibrary.ui.fragment.TripHomeFragment;
+
 import com.yl.userlibrary.mvp.module.UserinfoBean;
 import com.yl.myapp.ui.HomeFragment;
 import com.yl.myapp.ui.ListStyleActivity;
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity
         navigationView = findViewById(R.id.nav_view);
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.tab_viewpager);
-        mFragments.add(new TripHomeFragment());
+       // mFragments.add(new TripHomeFragment());
         mFragments.add(new MineFragment());
         tabsDatas.add(new TabEntity("首页", R.mipmap.tab_home_select, R.mipmap.tab_home_unselect));
         tabsDatas.add(new TabEntity("我的", R.mipmap.tab_contact_select, R.mipmap.tab_contact_unselect));

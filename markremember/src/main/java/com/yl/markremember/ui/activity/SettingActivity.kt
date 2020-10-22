@@ -4,8 +4,9 @@ import com.standards.library.base.BaseFuncActivity
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.base.MarkBaseTitleActivity
 
-class SettingActivity : BaseTitleBarActivity<BasePresenter<*>>() {
+class SettingActivity : MarkBaseTitleActivity<BasePresenter<*>>() {
     override fun setListener() {
 
     }

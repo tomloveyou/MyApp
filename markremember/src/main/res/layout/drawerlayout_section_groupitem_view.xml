@@ -9,7 +9,7 @@
         android:id="@+id/civ_setrion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:calendar_item_leftImgPadding="10dp"
+        app:calendar_item_leftImgPadding="8dp"
         app:calendar_item_isRightImg="true"
         app:calendar_item_isRightImgRota="true"
         app:calendar_item_rightImgSrc="@drawable/widget_pre_week_white"

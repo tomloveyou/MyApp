@@ -1,12 +1,15 @@
 package com.standards.library.base;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.jakewharton.rxbinding.view.RxView;
 import com.ns.yc.ycutilslib.activityManager.AppManager;
 import com.standards.library.BuildConfig;
@@ -42,6 +45,7 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         AppManager.getAppManager().addActivity(this);
         getExtra();
         handlerSaveInstanceState(savedInstanceState);
+        //BarUtils.setStatusBarColor(this, getResources().getColor(R.color.colorPrimary));
         contentView = LayoutInflater.from(this).inflate(getLayoutId(), null);
         setContentView(contentView);
         init();

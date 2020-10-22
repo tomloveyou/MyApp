@@ -10,18 +10,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.standards.library.adapter.entity.MultiItemEntity
 import com.yl.markremember.R
-import com.yl.markremember.ui.adapter.MenuExpandableAdapter
+
 import com.yl.markremember.callback.HomeItemDragAndSwipeCallback
-import com.yl.markremember.datamanager.DataManager
-import com.yl.markremember.db.viewmodel.LabelViewModel
+
 import com.yl.markremember.db.viewmodel.ListViewModel
-import com.yl.markremember.ui.adapter.LabelAdapter
+
 import com.yl.markremember.ui.adapter.ListAdapter
 import kotlinx.android.synthetic.main.fragment_label_list.*
 
 class NormalListFragment :Fragment() {
+    private var default_tint_color: Int = 0
     private lateinit var labelViewModel: ListViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_label_list, container, false)
@@ -32,7 +31,7 @@ class NormalListFragment :Fragment() {
         super.onActivityCreated(savedInstanceState)
         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-
+        default_tint_color = resources.getColor(R.color.colorPrimary)
         val adapter = ListAdapter(arrayListOf())
         val haedview=LayoutInflater.from(activity).inflate(R.layout.list_control_head,null)
         adapter.setHeaderFooterEmpty(true,false)

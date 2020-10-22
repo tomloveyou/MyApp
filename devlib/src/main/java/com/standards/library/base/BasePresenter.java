@@ -97,6 +97,16 @@ public abstract class BasePresenter<T extends ILoadingView> implements IPresente
     }
 
     @Override
+    public void attachView(ILoadingView view) {
+        mView= (T) view;
+    }
+
+    @Override
+    public boolean isViewAttached() {
+        return mView!=null;
+    }
+
+    @Override
     public void detachView() {
         this.mView = null;
         mActivity = null;

@@ -19,6 +19,7 @@
         <attr name="ease_press_alpha" format="integer" />
         <attr name="ease_press_color" format="color" />
         <attr name="ease_radius" format="dimension" />
+        <attr name="ease_can_touch_press" format="boolean"/>
         <attr name="ease_shape_type" format="enum">
             <enum name="none" value="0" />
             <enum name="round" value="1" />

@@ -2,7 +2,10 @@ package com.yl.markremember.ui.adapter
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.core.graphics.drawable.DrawableCompat
 import com.standards.library.adapter.BaseViewHolder
 import com.standards.library.adapter.entity.MultiItemEntity
 import com.yl.markremember.R
@@ -14,8 +17,9 @@ import com.yl.markremember.ui.activity.AddLabelActivity
 import com.yl.markremember.ui.activity.AddListActivity
 import com.yl.markremember.ui.activity.ListLabelManagerActivity
 import com.yl.markremember.ui.widget.CalendarItemView
+import skin.support.widget.SkinCompatImageView
 
-class MenuExpandableAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<MultiItemEntity, BaseViewHolder>(args) {
+class MenuExpandableAdapter(var default_tint_color:Int,args: List<MultiItemEntity>) : BaseMultiItemDragQuickAdapter<MultiItemEntity, BaseViewHolder>(args) {
     init {
         addItemType(0, R.layout.drawerlayout_section_item_view)
         addItemType(1, R.layout.drawerlayout_section_groupitem_view)//
@@ -53,6 +57,8 @@ class MenuExpandableAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuic
                 }else{
                     helper.setVisible(R.id.v_stick_color,false )
                 }
+                val img=helper.getView<SkinCompatImageView>(R.id.siv_tick_img)
+                setImgTintColor(img,default_tint_color)
                 helper.setText(R.id.tv_menu_name, dd.label_name)
                 helper.setText(R.id.tv_menu_subcount, "${dd.label_use_count}")
 
@@ -73,6 +79,11 @@ class MenuExpandableAdapter(args: List<MultiItemEntity>) : BaseMultiItemDragQuic
             }
         }
     }
-
+    fun setImgTintColor(img: ImageView, color: Int) {
+        val up: Drawable = img.drawable
+        val drawableUp: Drawable = DrawableCompat.wrap(up);
+        DrawableCompat.setTint(drawableUp, color);
+        img.setImageDrawable(drawableUp);
+    }
 
 }

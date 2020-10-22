@@ -10,7 +10,8 @@
         android:layout_width="4dp"
         android:layout_height="match_parent"/>
 
-    <ImageView
+    <skin.support.widget.SkinCompatImageView
+        android:id="@+id/siv_tick_img"
         android:layout_marginLeft="52dp"
         android:layout_width="26dp"
         android:layout_height="26dp"

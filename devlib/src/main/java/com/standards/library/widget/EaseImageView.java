@@ -32,6 +32,10 @@ public class EaseImageView extends AppCompatImageView {
 
     // border color
     private int borderColor;
+    /**
+     * 是否拦截触摸事件
+     */
+    private boolean easeCanTouchPress=false;
     // width of border
     private int borderWidth;
     // alpha when pressed
@@ -72,6 +76,7 @@ public class EaseImageView extends AppCompatImageView {
         if (attrs != null) {
             TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.EaseImageView);
             borderColor = array.getColor(R.styleable.EaseImageView_ease_border_color, borderColor);
+            easeCanTouchPress=array.getBoolean(R.styleable.EaseImageView_ease_can_touch_press, false);
             borderWidth = array.getDimensionPixelOffset(R.styleable.EaseImageView_ease_border_width, borderWidth);
             pressAlpha = array.getInteger(R.styleable.EaseImageView_ease_press_alpha, pressAlpha);
             pressColor = array.getColor(R.styleable.EaseImageView_ease_press_color, pressColor);
@@ -211,23 +216,26 @@ public class EaseImageView extends AppCompatImageView {
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                pressPaint.setAlpha(0);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_UP:
-                pressPaint.setAlpha(0);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_MOVE:
+        if (easeCanTouchPress){
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    pressPaint.setAlpha(0);
+                    invalidate();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    pressPaint.setAlpha(0);
+                    invalidate();
+                    break;
+                case MotionEvent.ACTION_MOVE:
 
-                break;
-            default:
-                pressPaint.setAlpha(0);
-                invalidate();
-                break;
+                    break;
+                default:
+                    pressPaint.setAlpha(0);
+                    invalidate();
+                    break;
+            }
         }
+
         return super.onTouchEvent(event);
     }
 

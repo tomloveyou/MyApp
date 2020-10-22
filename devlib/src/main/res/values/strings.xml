@@ -61,6 +61,11 @@
     <string name="update_version">版本更新</string>
     <string name="update_button_update">更新</string>
     <!-- 请求状态-->
+    <string name="un_authorized">未授权</string>
+    <string name="un_authorized_forbidden">403禁止访问</string>
+    <string name="network_time_out">请求超时</string>
+    <string name="data_parse_exception">数据解析异常</string>
+    <string name="network_no">请确认网络正常</string>
     <string name="load_system_busy">一不留神，页面走丢啦~</string>
     <string name="load_loading_dialog_text">加载中</string>
     <string name="load_empty">暂无数据</string>

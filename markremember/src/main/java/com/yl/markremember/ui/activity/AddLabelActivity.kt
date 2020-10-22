@@ -20,6 +20,7 @@ import com.lxj.xpopup.interfaces.OnSelectListener
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.base.MarkBaseTitleActivity
 import com.yl.markremember.common.NetConstant
 import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.viewmodel.LabelViewModel
@@ -29,7 +30,7 @@ import kotlinx.android.synthetic.main.activity_label_add.*
 import kotlinx.android.synthetic.main.app_calendar_text_today.view.*
 import java.util.*
 
-class AddLabelActivity : BaseTitleBarActivity<BasePresenter<*>>() {
+class AddLabelActivity : MarkBaseTitleActivity<BasePresenter<*>>() {
     private var labelinfo: LabelInfo? = null
     private lateinit var labelViewModel: LabelViewModel
     private var megerData: List<LabelInfo>? = null

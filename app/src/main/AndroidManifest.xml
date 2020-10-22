@@ -47,7 +47,7 @@
         <activity android:name=".ui.BSELineActivity" />
         <activity android:name=".ui.ListStyleActivity" />
         <activity android:name=".ListTestActivity"
-            android:theme="@style/list_hint_color_theme"></activity>
+            android:theme="@style/list_hint_color_theme"/>
         <!--数据共享-->
 
         <provider

@@ -1,2 +1,3 @@
+include ':ThreeStoneCoupon'
 include ':app',':devlib',':picture_library',':ucrop', ':userlibrary', ':triplibrary'
 include ':markremember'

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -14,36 +15,42 @@
             android:layout_width="66dp"
             android:layout_height="66dp">
 
-            <View
+            <com.standards.library.widget.EaseImageView
                 android:id="@+id/v_bg_color"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_colorprimary_cornor_rad10"
-                android:backgroundTint="@color/colorPrimary" />
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:src="@color/colorPrimary"
+                app:ease_radius="10dp"
+                app:ease_shape_type="rectangle" />
 
             <ImageView
                 android:id="@+id/iv_lock_status"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:background="@drawable/bg_whitegray_cicle"
                 android:padding="12dp"
                 android:src="@drawable/ic_widget_lock"
                 android:tint="@color/home_title_img_bg_color"
                 android:visibility="gone" />
+
             <ImageView
-                android:visibility="gone"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="bottom|center"
-                android:id="@+id/iv_theme_color_other_style"
+                android:id="@+id/iv_theme_color_other_yellow_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/oe"
-                android:tint="@color/colorPrimaryDark" />
+                android:visibility="gone" />
 
+            <ImageView
+                android:id="@+id/iv_theme_color_other_blue_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/od"
+                android:visibility="gone" />
         </FrameLayout>
 
         <ImageView
@@ -60,7 +67,7 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="68dp"
+        android:layout_width="66dp"
         android:layout_height="wrap_content"
         android:gravity="center">
 

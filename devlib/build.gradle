@@ -21,6 +21,10 @@ android {
             }
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
     buildTypes {
         debug {
             buildConfigField("boolean", "NETWORK_LOG", "true")
@@ -104,8 +108,8 @@ dependencies {
     }
     api rootProject.ext.dependencies["YCUtilsLib"]
     api files('libs\\BmobSDK_3.7.4_20190523.jar')
-    api 'cn.bmob.android:http-legacy:1.0'
     api 'com.squareup.okio:okio:2.1.0'
-    api 'com.lxj:xpopup:1.8.17'
+    api 'com.lxj:xpopup:1.9.0'
     api 'com.blankj:utilcode:1.25.5'
+    api 'com.github.AriesHoo:RadiusView:1.1.0'
 }

@@ -12,6 +12,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.alibaba.android.vlayout.layout.GridLayoutHelper
 import com.yl.markremember.R
 import com.yl.markremember.bean.ThemeBean
+import com.yl.markremember.common.NetConstant
 import com.yl.markremember.ui.activity.ThemePreViewActivity
 import com.yl.markremember.ui.adapter.vlayout.VThemeColorAdapter
 import kotlinx.android.synthetic.main.fragment_label_list.*
@@ -48,7 +49,16 @@ class ChangeThemeFragment : Fragment() {
         adapter.addAdapter(vThemeColorAdapter)
         recyclerView.adapter = adapter
         vThemeColorAdapter.setOnItemClickListener { adapter, view, position ->
-            startActivity(Intent(activity,ThemePreViewActivity::class.java))
+            val bundle=Bundle()
+            bundle.putSerializable(NetConstant.KEY_THEME_DATA,vThemeColorAdapter.getItem(position))
+            startActivity(Intent(activity,ThemePreViewActivity::class.java).putExtras(bundle))
+        }
+        vThemeColorAdapter.setOnItemChildClickListener { adapter, view, position ->
+            if (R.id.v_bg_color==view.id){
+                val bundle=Bundle()
+                bundle.putSerializable(NetConstant.KEY_THEME_DATA,vThemeColorAdapter.getItem(position))
+                startActivity(Intent(activity,ThemePreViewActivity::class.java).putExtras(bundle))
+            }
         }
     }
 }

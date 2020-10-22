@@ -14,6 +14,8 @@ public class NetConstant {
     public final static int LIST_P_CODE = 51354;
     public final static String KEY_LABEL_DATA = "label_data";
     public final static String KEY_LIST_DATA = "label_data";
+    public final static String KEY_THEME_DATA = "key_theme_data";
+    public final static String KEY_HOME_HAS_CHANGE_THEME = "key_home_has_change_theme";
     public final static String KEY_HOME_HAS_LABEL_TAB = "key_home_has_label_tab";
     public final static String KEY_HOME_HAS_SIGN_TAB = "key_home_has_sign_tab";
     public final static String KEY_HOME_HAS_CALENDER_TAB = "key_home_has_calendar_tab";

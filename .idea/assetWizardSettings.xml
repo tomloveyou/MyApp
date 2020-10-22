@@ -57,6 +57,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\lenovo\Documents\WXWork\1688851845185213\Cache\File\2020-05\头像+大图\头像+大图\default_user_avaotr.png" />
                                       <entry key="outputName" value="ic_action_setting" />
                                       <entry key="theme" value="HOLO_DARK" />
                                       <entry key="themeColor" value="ffffff" />
@@ -76,11 +78,18 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="72" />
                                               </map>
                                             </option>
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="foregroundImage" value="C:\Users\lenovo\Documents\WXWork\1688851845185213\Cache\File\2020-05\头像+大图\头像+大图\default_user_avaotr.png" />
+                                      <entry key="outputName" value="default_user_avator" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -166,11 +175,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

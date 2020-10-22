@@ -3,6 +3,7 @@ package com.yl.userlibrary.mvp.presenter;
 import android.app.Activity;
 
 import com.standards.library.base.BasePresenter;
+import com.standards.library.base.ILoadingView;
 import com.standards.library.rx.ErrorThrowable;
 
 import com.yl.userlibrary.mvp.contract.UserContract;
@@ -57,5 +58,15 @@ public class UserPresenterImpl extends BasePresenter<UserContract.UserLoginView>
 //        addSubscribe(DataManager.login(data).subscribe(getSubscriber(o -> {
 //            mView.loginSuccess();
 //        })));
+    }
+
+    @Override
+    public void attachView(ILoadingView view) {
+
+    }
+
+    @Override
+    public boolean isViewAttached() {
+        return false;
     }
 }

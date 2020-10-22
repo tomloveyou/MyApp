@@ -102,6 +102,8 @@
         android:id="@+id/calendarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:default_status="shrink"
+        app:calendar_content_view_id="@+id/content"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
         <com.haibin.calendarview.CalendarView
@@ -125,6 +127,7 @@
             app:selected_theme_color="#046cea"
             app:week_background="#fff"
             app:week_start_with="sun"
+            app:week_view="com.haibin.calendarview.DefaultWeekView"
             app:week_text_color="#e1e1e1"
             app:year_view_day_text_color="#333333"
             app:year_view_day_text_size="7sp"
@@ -135,11 +138,17 @@
             app:year_view_week_height="12dp"
             app:year_view_week_text_color="#e1e1e1"
             app:year_view_week_text_size="6sp" />
+<RelativeLayout
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
     </com.haibin.calendarview.CalendarLayout>
 
 

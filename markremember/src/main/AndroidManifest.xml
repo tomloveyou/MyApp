@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yl.markremember">
     <application android:theme="@style/AppTheme"
+        android:name=".base.MarkApplication"
         tools:replace="android:theme">
         <activity android:name=".ui.activity.CalendarMainActivity">
             <intent-filter>

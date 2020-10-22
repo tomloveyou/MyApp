@@ -19,6 +19,7 @@ import com.lxj.xpopup.interfaces.OnSelectListener
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.base.MarkBaseTitleActivity
 import com.yl.markremember.common.NetConstant
 import com.yl.markremember.db.model.LabelInfo
 import com.yl.markremember.db.model.ListInfo
@@ -33,7 +34,7 @@ import kotlinx.android.synthetic.main.activity_list_add.*
 
 import java.util.*
 
-class AddListActivity : BaseTitleBarActivity<BasePresenter<*>>() {
+class AddListActivity : MarkBaseTitleActivity<BasePresenter<*>>() {
     private var labelinfo: ListInfo? = null
     private lateinit var labelViewModel: ListViewModel
     private  var megerData:List<ListInfo>?=null

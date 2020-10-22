@@ -4,6 +4,41 @@
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#FFF1F1FE</color>
     <color name="home_title_img_bg_color">#FF777478</color>
-<color name="default_bg_color">#DADADA</color>
+    <color name="default_bg_color">#DADADA</color>
+    <color name="colorDefault">#adaeb3</color>
+    <color name="titleTextColor_night">#dddddd</color>
+    <color name="subtitleTextColor_night">#aaaaaa</color>
+    <color name="textColorPrimary">#adaeb3</color>
+    <color name="textColorPrimaryPressed">#6b6c74</color>
+    <color name="textColorSecondary">#75777e</color>
+    <color name="textColorSecondaryPressed">#5b5d63</color>
+    <color name="textColorTip">#2b6e90</color>
+    <color name="textColorTipPressed">#3f6f99</color>
+    <color name="textBackground">#111214</color>
+    <color name="tabSelected">#ce3d3a</color>
+    <color name="circle_border_color">#477aac</color>
+    <color name="title_text_color">#ddffffff</color>
+    <color name="subtitle_text_color">#aaffffff</color>
+    <color name="text_color_tip">#ce3d3a</color>
+    <color name="text_color">#ff333333</color>
+    <color name="text_color_hint">#ffb2b2b2</color>
+    <color name="text_background">#ffffffff</color>
+    <color name="background">#f2f4f5</color>
+    <color name="divider">#44000000</color>
+    <color name="ripple_color">#44000000</color>
+    <color name="statusBarColor">#44000000</color>
+    <drawable name="windowBackground">#f2f4f5</drawable>
+    <!--纯色主体-->
+    <color name="theme_blu_color">#617FDF</color>
+    <color name="theme_pink_color">#FD7897</color>
+    <color name="theme_green_color">#06CE90</color>
+    <color name="theme_yellow_second_color">#FF9910</color>
+    <color name="theme_yellow_color">#F9BF13</color>
+    <color name="theme_black_color">#272B36</color>
+    <color name="theme_gray_color">#7E7F84</color>
+    <color name="theme_white_color">#F0F0F0</color>
+    <color name="theme_night_color">#212121</color>
+    <color name="theme_dark_night_color">#000000</color>
+
 
 </resources>

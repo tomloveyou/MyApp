@@ -5,13 +5,14 @@ import com.blankj.utilcode.util.SPUtils
 import com.standards.library.base.BasePresenter
 import com.standards.library.base.BaseTitleBarActivity
 import com.yl.markremember.R
+import com.yl.markremember.base.MarkBaseTitleActivity
 import com.yl.markremember.common.NetConstant
 import com.yl.markremember.event.MsgEvent
 import com.yl.markremember.ui.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_tab_control.*
 import org.greenrobot.eventbus.EventBus
 
-class TabControlActivity : BaseTitleBarActivity<BasePresenter<*>>() {
+class TabControlActivity : MarkBaseTitleActivity<BasePresenter<*>>() {
     private lateinit var homeViewModel: HomeViewModel
     override fun setListener() {
         sw_calendar.setOnCheckedChangeListener { buttonView, isChecked ->
