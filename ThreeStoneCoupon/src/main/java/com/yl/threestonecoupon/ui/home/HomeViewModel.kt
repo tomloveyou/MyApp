@@ -32,12 +32,7 @@ class HomeViewModel : ViewModel() {
                     override fun onSuccess(response: Response<BaseResponse<PgeRep<RepGoodListBean>?>?>?) {
                         goods.postValue(response?.body()?.data?.list)
                     }
-//                    override fun onSuccess(response: Response<String>?) {
-//                        val type = object : TypeToken<BaseRep<BaseResponse<PgeRep<RepGoodListBean>?>?>>() {}.type
-//                        val data = Gson().fromJson<BaseRep<BaseResponse<PgeRep<RepGoodListBean>?>?>>(response?.body(), type)
-//                        goods.postValue(data?.data?.data?.list)
-////
-//                    }
+
                 })
     }
 

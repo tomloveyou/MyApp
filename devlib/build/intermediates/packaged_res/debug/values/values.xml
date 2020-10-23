@@ -271,6 +271,10 @@
     <dimen name="indicator_internal_padding">4dp</dimen>
     <dimen name="indicator_right_padding">10dp</dimen>
     <dimen name="progress_size">80dp</dimen>
+    <item name="BaseQuickAdapter_databinding_support" type="id"/>
+    <item name="BaseQuickAdapter_dragging_support" type="id"/>
+    <item name="BaseQuickAdapter_swiping_support" type="id"/>
+    <item name="BaseQuickAdapter_viewholder_support" type="id"/>
     <item name="auto_focus" type="id"/>
     <item name="decode" type="id"/>
     <item name="decode_failed" type="id"/>
@@ -300,6 +304,10 @@
     <string name="September">九月</string>
     <string name="afteroon">下午</string>
     <string name="app_name">ListGroupLibary</string>
+    <string name="brvah_load_end">没有更多数据</string>
+    <string name="brvah_load_failed">加载失败，请点我重试</string>
+    <string name="brvah_loading">@string/load_more_ing</string>
+    <string name="data_parse_exception">数据解析异常</string>
     <string name="emoring">凌晨</string>
     <string name="format_date">MM月dd日</string>
     <string name="format_date_year">yyyy年MM月dd日</string>
@@ -324,6 +332,8 @@
     <string name="minute_ago">分钟前</string>
     <string name="moment_ago">刚刚</string>
     <string name="moring">早上</string>
+    <string name="network_no">请确认网络正常</string>
+    <string name="network_time_out">请求超时</string>
     <string name="night">晚上</string>
     <string name="number_character">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
     <string name="permission_access_coarse_location_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_ACCESS_COARSE_LOCATION</string>
@@ -351,6 +361,8 @@
     <string name="today">今天</string>
     <string name="tomorrow">明天</string>
     <string name="umeng_socialize_network_break_alert" translatable="false">请连接网络后再尝试！</string>
+    <string name="un_authorized">未授权</string>
+    <string name="un_authorized_forbidden">403禁止访问</string>
     <string name="update">软件升级</string>
     <string name="update_button_update">更新</string>
     <string name="update_cancel">以后再说</string>
@@ -455,6 +467,7 @@
         <attr format="integer" name="ease_press_alpha"/>
         <attr format="color" name="ease_press_color"/>
         <attr format="dimension" name="ease_radius"/>
+        <attr format="boolean" name="ease_can_touch_press"/>
         <attr format="enum" name="ease_shape_type">
             <enum name="none" value="0"/>
             <enum name="round" value="1"/>
@@ -463,19 +476,19 @@
     </declare-styleable>
     <declare-styleable name="PullToRefresh">
         
-        
+        <!-- A drawable to use as the background of the Refreshable View -->
         <attr format="reference|color" name="ptrRefreshableViewBackground"/>
 
-        
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
         <attr format="reference|color" name="ptrHeaderBackground"/>
 
-        
+        <!-- Text Color of the Header and Footer Loading Views -->
         <attr format="reference|color" name="ptrHeaderTextColor"/>
 
-        
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
         <attr format="reference|color" name="ptrHeaderSubTextColor"/>
 
-        
+        <!-- Mode of Pull-to-Refresh that should be used -->
         <attr name="ptrMode">
             <flag name="disabled" value="0x0"/>
             <flag name="pullFromStart" value="0x1"/>
@@ -483,48 +496,55 @@
             <flag name="both" value="0x3"/>
             <flag name="manualOnly" value="0x4"/>
 
-            
+            <!-- These last two are depreacted -->
             <flag name="pullDownFromTop" value="0x1"/>
             <flag name="pullUpFromBottom" value="0x2"/>
         </attr>
 
-        
+        <!-- Whether the Indicator overlay(s) should be used -->
         <attr format="reference|boolean" name="ptrShowIndicator"/>
 
-        
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
         <attr format="reference" name="ptrDrawable"/>
 
-        
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
         <attr format="reference" name="ptrDrawableStart"/>
 
-        
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
         <attr format="reference" name="ptrDrawableEnd"/>
 
-        
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
         <attr format="reference|boolean" name="ptrOverScroll"/>
 
-        
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
         <attr format="reference" name="ptrHeaderTextAppearance"/>
 
-        
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
         <attr format="reference" name="ptrSubHeaderTextAppearance"/>
 
-        
+        <!-- Style of Animation should be used displayed when pulling. -->
         <attr name="ptrAnimationStyle">
             <flag name="rotate" value="0x0"/>
             <flag name="flip" value="0x1"/>
         </attr>
 
-        
+        <!-- Whether the user can scroll while the View is Refreshing -->
         <attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/>
 
-        
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
         <attr format="reference|boolean" name="ptrListViewExtrasEnabled"/>
 
-        
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
         <attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/>
 
-        
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
         <attr format="reference|color" name="ptrAdapterViewBackground"/>
         <attr format="reference" name="ptrDrawableTop"/>
         <attr format="reference" name="ptrDrawableBottom"/>

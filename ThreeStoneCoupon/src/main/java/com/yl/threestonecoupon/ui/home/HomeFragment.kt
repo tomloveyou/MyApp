@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.standards.library.adapter.BaseQuickAdapter
 import com.standards.library.adapter.BaseViewHolder
 import com.yl.threestonecoupon.R
@@ -39,7 +40,9 @@ class HomeFragment : Fragment() {
             override fun convert(helper: BaseViewHolder, item: RepGoodListBean?) {
                 helper.apply {
                     setText(R.id.tv_goods_title,item?.title)
-                    Glide.with(mContext).load(item?.mainPic).into(getView(R.id.iv_good_img))
+                    setText(R.id.tv_current_price,item?.actualPrice.toString())
+                    val option=RequestOptions().placeholder(R.drawable.ic_loading).error(R.drawable.ic_load_empty)
+                    Glide.with(mContext).load(item?.marketingMainPic).apply(option).into(getView(R.id.iv_good_img))
                 }
             }
 
