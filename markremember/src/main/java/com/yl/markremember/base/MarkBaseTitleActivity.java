@@ -16,7 +16,7 @@ public abstract class MarkBaseTitleActivity<T extends BasePresenter> extends Bas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStatusBarTransparent(this);
+        //setStatusBarTransparent(this);
     }
 
     @NonNull

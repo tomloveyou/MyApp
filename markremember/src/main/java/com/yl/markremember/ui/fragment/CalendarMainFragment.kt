@@ -36,47 +36,25 @@ class CalendarMainFragment : Fragment() {
         adapter.isUseEmpty(true)
         adapter.emptyView = emptyView
         rootView.apply {
-            recyclerView.layoutManager = layoutManager
-            recyclerView.adapter = adapter
-            tv_top_title.text=getMouthString(calendarView.curMonth)
-            calendar_todayView.setToday(calendarView.curDay.toString())
-            calendarView.setOnCalendarSelectListener(object : CalendarView.OnCalendarSelectListener {
-                override fun onCalendarSelect(calendar: Calendar?, isClick: Boolean) {
-                    tv_top_title.text=getMouthString(calendar!!.month)
-                }
 
-                override fun onCalendarOutOfRange(calendar: Calendar?) {
 
-                }
-            })
-
-            calendar_todayView.setOnClickListener {
-                calendarView.scrollToCalendar(calendarView.curYear, calendarView.curMonth, calendarView.curDay)
-
-            }
             imageView2.setOnClickListener {
                 if (ll_view_type_switch.getVisibility() == View.GONE) {
                     animateOpen(ll_view_type_switch);
-                    animationIvOpen(imageView2);
+                    //  animationIvOpen(imageView2);
                 } else {
                     animateClose(ll_view_type_switch);
-                    animationIvClose(imageView2);
+                    // animationIvClose(imageView2);
                 }
             }
         }
+        childFragmentManager.beginTransaction().add(R.id.fragment_container,CalendarListEventFragment()).commit()
 
 
 
         return rootView
     }
 
-    /**
-     * 获取汉字月份
-     * @param mouth 罗马数字月份
-     */
-    fun getMouthString(mouth: Int): String {
-        return activity!!.resources.getStringArray(R.array.lunar_first_of_month)[(mouth - 1)]
-    }
 
     private fun animateOpen(v: View) {
         v.visibility = View.VISIBLE;
@@ -86,23 +64,6 @@ class CalendarMainFragment : Fragment() {
 
     }
 
-    private fun animationIvOpen(view: View) {
-        val animation: RotateAnimation = RotateAnimation(0f, 180f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-                0.5f);
-        animation.fillAfter = true;
-        animation.duration = 100;
-        view.startAnimation(animation);
-    }
-
-    private fun animationIvClose(view: View) {
-        val animation: RotateAnimation = RotateAnimation(180f, 0f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-                0.5f);
-        animation.fillAfter = true;
-        animation.duration = 100;
-        view.startAnimation(animation);
-    }
 
     private fun animateClose(view: View) {
         val origHeight = view.height;
